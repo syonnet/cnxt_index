@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flota Especializada & Talleres Propios — CONEXPET Cía. Ltda.</title>
+<meta name="description" content="Catálogo técnico de la flota de carga pesada, cabezales 6x4, tanqueros vacuum, grúas telescópicas de hasta 120 t y talleres mecánicos propios de Conexpet en Ecuador.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<script>
+  if (localStorage.getItem('conexpet-theme') === 'dark' || (!localStorage.getItem('conexpet-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          console: '#0B0B0C',
+          panel: '#151517',
+          line: '#26262A',
+          paper: '#F4F4F6',
+          steel: '#E2E2E6',
+          carbon: '#18181B',
+          graphite: '#606066',
+          red: { DEFAULT: '#C60C30', deep: '#9E0A26', light: '#E82A2A' },
+          green: '#1E8E47'
+        },
+        fontFamily: {
+          display: ['Space Grotesk', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/slider.css">
+</head>
+
+<body class="bg-white dark:bg-console text-carbon dark:text-white antialiased transition-colors duration-200">
+
+<a href="#flota" class="skip-link">Saltar al catálogo de flota</a>
+
+<!-- =============== CINTILLO PATRIO INSTITUCIONAL =============== -->
+<div class="bg-red text-white text-xs font-medium py-1.5 px-5 text-center flex items-center justify-center gap-2.5 tracking-wide">
+  <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-white/40 shrink-0">
+  <span>Catálogo Técnico de Unidades & Infraestructura Mecánica In-House</span>
+</div>
+
+<!-- =============== NAVEGACIÓN PRINCIPAL (ANIMATED TOP DOCK) =============== -->
+<header id="site-nav" class="sticky top-0 inset-x-0 z-50 pointer-events-none transition-all duration-300">
+  <div class="max-w-[1440px] mx-auto px-3 sm:px-5 md:px-8 pt-2.5 pb-2 pointer-events-auto">
+    <div class="atd-modern__bar flex items-center justify-between mx-auto transition-all duration-200">
+      
+      <!-- Resplandor sutil Aurora de fondo -->
+      <div class="atd-modern__aurora" aria-hidden="true"></div>
+
+      <!-- Logo Corporativo -->
+      <a href="index.html" class="atd-modern__brand flex items-center gap-3 shrink-0 group z-10" aria-label="Inicio Conexpet">
+        <span class="w-3 h-3 rounded-full bg-red pulse-dot"></span>
+        <div class="flex flex-col">
+          <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-carbon dark:text-white group-hover:text-red transition-colors">CONEXPET</span>
+          <span class="text-[9px] uppercase tracking-widest text-graphite dark:text-white/50 -mt-1 font-semibold hidden sm:inline">Logística & Carga Pesada</span>
+        </div>
+      </a>
+
+      <!-- Dock Interactivo Central con Física de Proximidad -->
+      <nav id="atd-dock-track" class="atd-modern__dock hidden lg:flex items-center" aria-label="Navegación principal" data-dock-state="idle" data-dock-max="0.00">
+        <!-- Ítem 1: Inicio / Conócenos -->
+        <a href="index.html#conocenos" class="atd-modern__item" data-dock-item aria-label="Ir a Conócenos">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M8 1.5l5.5 3.2v6.6L8 14.5l-5.5-3.2V4.7z"/><circle cx="8" cy="8" r="2.2"/></svg>
+          </span>
+          <span class="atd-modern__label">Conócenos</span>
+        </a>
+
+        <!-- Ítem 2: Servicios -->
+        <a href="index.html#servicios" class="atd-modern__item" data-dock-item aria-label="Ir a Servicios">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="9" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="2.5" y="9" width="4.5" height="4.5" rx="1"/><rect x="9" y="9" width="4.5" height="4.5" rx="1"/></svg>
+          </span>
+          <span class="atd-modern__label">Servicios</span>
+        </a>
+
+        <!-- Ítem 3: Talleres Propios -->
+        <a href="#talleres" class="atd-modern__item" data-dock-item aria-label="Ir a Talleres Propios">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M13.5 4.5l-2 2-1.5-1.5 2-2a2.5 2.5 0 00-3.5 0L3 10.5a1.5 1.5 0 000 2.1l.4.4a1.5 1.5 0 002.1 0l5.5-5.5a2.5 2.5 0 000-3.5z"/></svg>
+          </span>
+          <span class="atd-modern__label">Talleres</span>
+        </a>
+
+        <!-- Ítem 4: Flota (Página Actual) -->
+        <a href="#flota" class="atd-modern__item is-active" data-dock-item aria-pressed="true" aria-label="Flota Especializada">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><rect x="1.5" y="4" width="8" height="6.5" rx="1"/><path d="M9.5 6.5h2.5l2 2v2h-4.5"/><circle cx="4.5" cy="11.5" r="1.5"/><circle cx="12" cy="11.5" r="1.5"/></svg>
+          </span>
+          <span class="atd-modern__label">Flota</span>
+        </a>
+
+        <!-- Ítem 5: Cobertura Nacional -->
+        <a href="cobertura.html" class="atd-modern__item" data-dock-item aria-label="Ir a Cobertura Nacional">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2.5"/><path d="M8 2v3M8 11v3M2 8h3M11 8h3"/></svg>
+          </span>
+          <span class="atd-modern__label">Cobertura</span>
+        </a>
+
+        <!-- Ítem 6: Contacto -->
+        <a href="#contacto" class="atd-modern__item" data-dock-item aria-label="Ir a Contacto">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M2.5 4h11a1 1 0 011 1v6a1 1 0 01-1 1h-11a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M2.5 5l5.5 4 5.5-4"/></svg>
+          </span>
+          <span class="atd-modern__label">Contacto</span>
+        </a>
+      </nav>
+
+      <!-- Acciones de Cabecera (Derecha) -->
+      <div class="atd-modern__actions flex items-center gap-3 z-10">
+        <span class="text-[11px] font-semibold text-graphite dark:text-white/60 hidden xl:flex items-center gap-1.5 bg-paper/80 dark:bg-panel/80 px-3 py-1.5 rounded-full border border-steel/60 dark:border-line">
+          <span class="w-2 h-2 rounded-full bg-green animate-pulse"></span>
+          24/7 en ruta
+        </span>
+        
+        <!-- Conmutador Claro / Oscuro -->
+        <button type="button" class="theme-toggle-btn atd-modern__ghost border border-steel/60 dark:border-line rounded-full p-2 text-carbon dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors" aria-label="Cambiar tema">
+        </button>
+
+        <!-- Botón CTA de Acción Rápida -->
+        <a href="#contacto" class="atd-modern__cta bg-red hover:bg-red-deep text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+          <span>Cotizar</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+
+        <!-- Botón Menú Móvil -->
+        <button id="menu-btn" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="w-9 h-9 flex flex-col justify-center items-center gap-[4.5px] rounded-full border border-steel dark:border-line lg:hidden bg-paper dark:bg-panel">
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-transform"></span>
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-opacity"></span>
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-transform"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Desplegable Móvil Flotante -->
+    <div id="mobile-menu" class="lg:hidden overflow-hidden max-h-0 opacity-0 mt-2 rounded-2xl border border-steel/70 dark:border-line bg-white/95 dark:bg-console/95 backdrop-blur-xl shadow-2xl transition-all duration-300">
+      <nav class="flex flex-col px-5 py-5 gap-3 font-medium text-sm text-carbon dark:text-white/90">
+        <a href="index.html" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Inicio
+        </a>
+        <a href="index.html#servicios" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Servicios
+        </a>
+        <a href="#flota" class="text-red font-semibold py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Flota Especializada
+        </a>
+        <a href="#talleres" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Talleres Propios
+        </a>
+        <a href="cobertura.html" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Cobertura Nacional
+        </a>
+        <a href="#contacto" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Cotizar Ahora
+        </a>
+      </nav>
+    </div>
+
+    <!-- Barra de progreso de scroll -->
+    <div id="scroll-progress-track" class="w-full relative mt-2 rounded-full overflow-visible pointer-events-none">
+      <div id="scroll-progress-bar" class="h-full rounded-full relative" style="width: 0%;">
+        <div id="scroll-truck-icon" class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center">
+          <svg class="w-6 h-6 text-red filter drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5h2.5M6 18.5A1.5 1.5 0 0 1 4.5 17 1.5 1.5 0 0 1 6 15.5 1.5 1.5 0 0 1 7.5 17 1.5 1.5 0 0 1 6 18.5M20 7h-4V4H2v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h2v-6l-2-4z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<!-- =============== CABECERA DE LA PÁGINA FLOTA =============== -->
+<section class="relative pt-12 pb-8 md:pt-16 md:pb-12 bg-white dark:bg-console border-b border-steel/60 dark:border-line transition-colors">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red/10 text-red text-xs font-bold uppercase tracking-wider mb-3">
+          <span class="w-2 h-2 rounded-full bg-red animate-pulse"></span>
+          <span>Equipos de Alto Rendimiento</span>
+        </div>
+        <h1 class="font-display uppercase font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-carbon dark:text-white leading-tight">
+          Flota Homologada & Talleres Propios
+        </h1>
+        <p class="text-graphite dark:text-white/70 text-base md:text-lg mt-4 leading-relaxed">
+          Unidades motrices 6x4, cisternas de vacío, grúas telescópicas y plataformas multieje con telemetría satelital activa y mantenimiento in-house 24/7.
+        </p>
+      </div>
+
+      <!-- Quick KPI Chips -->
+      <div class="flex flex-wrap gap-3">
+        <div class="px-4 py-3 rounded-2xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <span class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 block">Capacidad Izaje</span>
+          <span class="font-display font-bold text-xl text-red">Hasta 120 t</span>
+        </div>
+        <div class="px-4 py-3 rounded-2xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <span class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 block">Cisternas Vacuum</span>
+          <span class="font-display font-bold text-xl text-carbon dark:text-white">120 - 200 bbl</span>
+        </div>
+        <div class="px-4 py-3 rounded-2xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <span class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 block">Telemetría GPS</span>
+          <span class="font-display font-bold text-xl text-green">100% en Vivo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SLIDER CINEMÁTICO DE LA FLOTA (PROTAGONISTA) =============== -->
+<section id="flota" class="cnx-cslider-section relative w-full overflow-hidden bg-carbon dark:bg-black border-b border-steel dark:border-line" aria-label="Galería Cinemática de Flota">
+  <div class="cnx-cslider-container relative w-full h-[620px] md:h-[680px] lg:h-[740px] overflow-hidden">
+    <ul class="cnx-cslider-list m-0 p-0">
+      
+      <!-- Slide 1: Cabezales de Fuerza -->
+      <li class="cnx-cslider-item" style="background-image: url('images/truck-heavy.jpg');">
+        <div class="cnx-cslider-overlay"></div>
+        <div class="cnx-cslider-content">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red/90 backdrop-blur-sm text-[11px] font-bold tracking-[0.2em] uppercase text-white mb-3 shadow-md">
+            Tracción Pesada 6x4
+          </div>
+          <h2 class="cnx-cslider-title font-display uppercase font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight drop-shadow-md">
+            Cabezales de Fuerza
+          </h2>
+          <p class="cnx-cslider-desc text-white/90 text-xs sm:text-sm md:text-base leading-relaxed my-4 line-clamp-3 md:line-clamp-none max-w-xl drop-shadow">
+            Unidades motrices de alta potencia y configuración 6x4 preparadas para arrastre continuo en carreteras de montaña y vías de acceso a plataformas petroleras, garantizando cero retrasos.
+          </p>
+          <a href="#contacto" class="cnx-cslider-action inline-flex items-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+            <span>Solicitar Cabezal</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <span class="cnx-cslider-badge-preview">Cabezales 6x4</span>
+      </li>
+
+      <!-- Slide 2: Tanqueros Vacuum -->
+      <li class="cnx-cslider-item" style="background-image: url('images/vacuum-tanker.jpg');">
+        <div class="cnx-cslider-overlay"></div>
+        <div class="cnx-cslider-content">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red/90 backdrop-blur-sm text-[11px] font-bold tracking-[0.2em] uppercase text-white mb-3 shadow-md">
+            Fluidos & Crudo (120 - 200 bbl)
+          </div>
+          <h2 class="cnx-cslider-title font-display uppercase font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight drop-shadow-md">
+            Tanqueros Vacuum
+          </h2>
+          <p class="cnx-cslider-desc text-white/90 text-xs sm:text-sm md:text-base leading-relaxed my-4 line-clamp-3 md:line-clamp-none max-w-xl drop-shadow">
+            Cisternas herméticas con sistemas de succión por vacío para el transporte y trasvase de fluidos de perforación, aguas de producción y crudo, certificadas bajo estrictas normas ambientales.
+          </p>
+          <a href="#contacto" class="cnx-cslider-action inline-flex items-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+            <span>Solicitar Vacuum</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <span class="cnx-cslider-badge-preview">Tanqueros Vacuum</span>
+      </li>
+
+      <!-- Slide 3: Grúas de 60 a 120 t -->
+      <li class="cnx-cslider-item" style="background-image: url('images/oilfield-crane.jpg');">
+        <div class="cnx-cslider-overlay"></div>
+        <div class="cnx-cslider-content">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red/90 backdrop-blur-sm text-[11px] font-bold tracking-[0.2em] uppercase text-white mb-3 shadow-md">
+            Izaje de Alto Tonelaje
+          </div>
+          <h2 class="cnx-cslider-title font-display uppercase font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight drop-shadow-md">
+            Grúas Telescópicas (60 a 120 t)
+          </h2>
+          <p class="cnx-cslider-desc text-white/90 text-xs sm:text-sm md:text-base leading-relaxed my-4 line-clamp-3 md:line-clamp-none max-w-xl drop-shadow">
+            Grúas autopropulsadas todo terreno operadas por personal técnico certificado bajo rigurosos estándares internacionales para maniobras críticas de montaje y desmontaje de taladros petroleros.
+          </p>
+          <a href="#contacto" class="cnx-cslider-action inline-flex items-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+            <span>Consultar Grúas</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <span class="cnx-cslider-badge-preview">Grúas Telescópicas</span>
+      </li>
+
+      <!-- Slide 4: Camas Altas (RA) -->
+      <li class="cnx-cslider-item" style="background-image: url('images/convoy-road.jpg');">
+        <div class="cnx-cslider-overlay"></div>
+        <div class="cnx-cslider-content">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red/90 backdrop-blur-sm text-[11px] font-bold tracking-[0.2em] uppercase text-white mb-3 shadow-md">
+            Tubería Petrolera & Carga General
+          </div>
+          <h2 class="cnx-cslider-title font-display uppercase font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight drop-shadow-md">
+            Camas Altas (RA)
+          </h2>
+          <p class="cnx-cslider-desc text-white/90 text-xs sm:text-sm md:text-base leading-relaxed my-4 line-clamp-3 md:line-clamp-none max-w-xl drop-shadow">
+            Plataformas planas reforzadas para el transporte ágil y masivo de tubería de perforación (OCTG), contenedores, generadores e insumos industriales a través de las rutas andinas y amazónicas.
+          </p>
+          <a href="#contacto" class="cnx-cslider-action inline-flex items-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+            <span>Cotizar Cama Alta</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <span class="cnx-cslider-badge-preview">Camas Altas (RA)</span>
+      </li>
+
+      <!-- Slide 5: Camas Bajas (RB) -->
+      <li class="cnx-cslider-item" style="background-image: url('images/763740409_2444014902794569_6731216830115790141_n.jfif');">
+        <div class="cnx-cslider-overlay"></div>
+        <div class="cnx-cslider-content">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red/90 backdrop-blur-sm text-[11px] font-bold tracking-[0.2em] uppercase text-white mb-3 shadow-md">
+            Maquinaria & Equipos Viales
+          </div>
+          <h2 class="cnx-cslider-title font-display uppercase font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight drop-shadow-md">
+            Camas Bajas (RB)
+          </h2>
+          <p class="cnx-cslider-desc text-white/90 text-xs sm:text-sm md:text-base leading-relaxed my-4 line-clamp-3 md:line-clamp-none max-w-xl drop-shadow">
+            Semirremolques con plataforma deprimida y rampas reforzadas para la movilización segura y estable de retroexcavadoras, rodillos y maquinaria pesada de obras viales y civiles.
+          </p>
+          <a href="#contacto" class="cnx-cslider-action inline-flex items-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+            <span>Movilizar Maquinaria</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <span class="cnx-cslider-badge-preview">Camas Bajas (RB)</span>
+      </li>
+
+      <!-- Slide 6: Lowboys Industriales -->
+      <li class="cnx-cslider-item" style="background-image: url('images/784419875_1734032834383881_1042603843053924022_n.jfif');">
+        <div class="cnx-cslider-overlay"></div>
+        <div class="cnx-cslider-content">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red/90 backdrop-blur-sm text-[11px] font-bold tracking-[0.2em] uppercase text-white mb-3 shadow-md">
+            Carga Extrapesada & Sobredimensionada
+          </div>
+          <h2 class="cnx-cslider-title font-display uppercase font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight drop-shadow-md">
+            Lowboys Industriales
+          </h2>
+          <p class="cnx-cslider-desc text-white/90 text-xs sm:text-sm md:text-base leading-relaxed my-4 line-clamp-3 md:line-clamp-none max-w-xl drop-shadow">
+            Equipos multieje con cuello de ganso desmontable y despeje mínimo al suelo, diseñados para trasladar transformadores eléctricos, subestaciones y cargas indivisibles de gran porte.
+          </p>
+          <a href="#contacto" class="cnx-cslider-action inline-flex items-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+            <span>Cotizar Transporte Especial</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <span class="cnx-cslider-badge-preview">Lowboys Multieje</span>
+      </li>
+
+      <!-- Slide 7: Brazos Grúa Hidráulicos (10-15 t) -->
+      <li class="cnx-cslider-item" style="background-image: url('images/760891210_28095600460064076_2827928803429847890_n.jfif');">
+        <div class="cnx-cslider-overlay"></div>
+        <div class="cnx-cslider-content">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red/90 backdrop-blur-sm text-[11px] font-bold tracking-[0.2em] uppercase text-white mb-3 shadow-md">
+            Autocarga & Maniobras Ágiles
+          </div>
+          <h2 class="cnx-cslider-title font-display uppercase font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight drop-shadow-md">
+            Brazos Grúa Hidráulicos (10 a 15 t)
+          </h2>
+          <p class="cnx-cslider-desc text-white/90 text-xs sm:text-sm md:text-base leading-relaxed my-4 line-clamp-3 md:line-clamp-none max-w-xl drop-shadow">
+            Camiones autocargables con brazos hidráulicos articulados para operaciones dinámicas de izaje, transporte y descarga directa en locaciones reducidas sin necesidad de grúa externa.
+          </p>
+          <a href="#contacto" class="cnx-cslider-action inline-flex items-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+            <span>Solicitar Brazo Grúa</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <span class="cnx-cslider-badge-preview">Brazos Grúa (10-15t)</span>
+      </li>
+
+    </ul>
+
+    <!-- Controles de Navegación -->
+    <nav class="cnx-cslider-nav flex items-center gap-3">
+      <button class="cnx-cslider-btn-nav cnx-cslider-prev group" aria-label="Diapositiva anterior">
+        <svg class="w-5 h-5 text-white transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button class="cnx-cslider-btn-nav cnx-cslider-next group" aria-label="Diapositiva siguiente">
+        <svg class="w-5 h-5 text-white transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </nav>
+  </div>
+</section>
+
+<!-- =============== ESPECIFICACIONES TÉCNICAS EN GRID RESUMEN =============== -->
+<section class="bg-paper dark:bg-console py-16 md:py-24 border-b border-steel dark:border-line transition-colors">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-xs font-bold uppercase tracking-wider text-red mb-2">Cuadro Operativo</p>
+      <h2 class="font-display uppercase font-bold text-2xl md:text-4xl text-carbon dark:text-white">Capacidades y Homologaciones</h2>
+      <p class="text-sm text-graphite dark:text-white/60 mt-3">Estándares estrictos de cumplimiento para la industria petrolera y minera.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl border border-steel dark:border-line bg-white dark:bg-panel shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-red/10 text-red flex items-center justify-center font-bold text-sm mb-4">01</div>
+        <h3 class="font-display font-bold text-lg text-carbon dark:text-white">Cabezales 6x4 de Alta Potencia</h3>
+        <p class="text-xs text-graphite dark:text-white/70 mt-2 leading-relaxed">
+          Motores Cummins y Detroit Diesel de 450 a 550 HP con frenos de motor auxiliares para pendientes extremas en la cordillera oriental y caminos de acceso petrolero.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-steel dark:border-line bg-white dark:bg-panel shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-red/10 text-red flex items-center justify-center font-bold text-sm mb-4">02</div>
+        <h3 class="font-display font-bold text-lg text-carbon dark:text-white">Cisternas Herméticas Vacuum</h3>
+        <p class="text-xs text-graphite dark:text-white/70 mt-2 leading-relaxed">
+          Bombas de desplazamiento positivo con capacidad de succión de hasta 350 CFM para trasvase seguro de lodos base agua y base aceite, aguas de formación y crudo.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-steel dark:border-line bg-white dark:bg-panel shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-red/10 text-red flex items-center justify-center font-bold text-sm mb-4">03</div>
+        <h3 class="font-display font-bold text-lg text-carbon dark:text-white">Grúas Autopropulsadas 120 t</h3>
+        <p class="text-xs text-graphite dark:text-white/70 mt-2 leading-relaxed">
+          Plumas telescópicas de 5 secciones con alcances superiores a 50 metros y computadoras de momento de carga (LMI) calibradas anualmente por certificadores internacionales.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-steel dark:border-line bg-white dark:bg-panel shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-red/10 text-red flex items-center justify-center font-bold text-sm mb-4">04</div>
+        <h3 class="font-display font-bold text-lg text-carbon dark:text-white">Camas Altas de 3 Ejes (RA)</h3>
+        <p class="text-xs text-graphite dark:text-white/70 mt-2 leading-relaxed">
+          Chasis en acero de alta resistencia con estacas y pines para sujeción certificada de tuberías OCTG de 2-7/8" a 13-3/8" y contenedores marítimos de 20 y 40 pies.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-steel dark:border-line bg-white dark:bg-panel shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-red/10 text-red flex items-center justify-center font-bold text-sm mb-4">05</div>
+        <h3 class="font-display font-bold text-lg text-carbon dark:text-white">Lowboys Multieje Desmontables</h3>
+        <p class="text-xs text-graphite dark:text-white/70 mt-2 leading-relaxed">
+          Sistemas hidráulicos de cuello desmontable para carga frontal segura de maquinaria pesada sin necesidad de rampas provisionales en plataformas remotas.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-steel dark:border-line bg-white dark:bg-panel shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-red/10 text-red flex items-center justify-center font-bold text-sm mb-4">06</div>
+        <h3 class="font-display font-bold text-lg text-carbon dark:text-white">Monitoreo Satelital y Canbus</h3>
+        <p class="text-xs text-graphite dark:text-white/70 mt-2 leading-relaxed">
+          Transmisión continua de velocidad, frenadas bruscas, consumo de combustible y geocercas activas enlazadas a nuestro Centro de Control Central 24/7.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SECCIÓN TALLERES PROPIOS =============== -->
+<section id="talleres" class="bg-white dark:bg-[#111113] border-b border-steel dark:border-line py-20 md:py-28 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-6">
+        <div class="inline-flex items-center gap-2 border border-red/20 bg-red/5 dark:bg-red/10 rounded-full px-3.5 py-1.5 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-red">Infraestructura Mecánica In-House</span>
+        </div>
+        <h2 class="font-display uppercase font-bold text-3xl md:text-5xl leading-tight text-carbon dark:text-white mb-6">
+          Talleres Propios:<br>Mantenimiento y Reparación Continua.
+        </h2>
+        
+        <p class="text-graphite dark:text-white/70 font-normal text-base md:text-lg leading-relaxed mb-6">
+          Conexpet cuenta con talleres propios diseñados para garantizar el óptimo funcionamiento de su flota, asegurando la continuidad y seguridad en las operaciones de nuestros clientes.
+        </p>
+
+        <p class="text-graphite dark:text-white/70 font-normal text-sm md:text-base leading-relaxed mb-8">
+          A través de un mantenimiento preventivo y correctivo sistemático, se optimiza el rendimiento de los vehículos, evitando fallas mecánicas en ruta y reduciendo tiempos de inactividad al mínimo. Nuestro equipo de técnicos especializados trabaja con repuestos certificados y tecnología de última generación para brindar un servicio confiable y de alta calidad.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl border border-steel dark:border-line bg-paper dark:bg-panel">
+            <p class="font-bold text-base text-carbon dark:text-white">Cero Tiempos Muertos</p>
+            <p class="text-xs text-graphite dark:text-white/60 mt-1">Inspecciones rigurosas antes de cada viaje para cuidar tu producción.</p>
+          </div>
+          <div class="p-4 rounded-xl border border-steel dark:border-line bg-paper dark:bg-panel">
+            <p class="font-bold text-base text-carbon dark:text-white">Técnicos Certificados</p>
+            <p class="text-xs text-graphite dark:text-white/60 mt-1">Personal altamente calificado con repuestos homologados de fábrica.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <div class="bg-paper dark:bg-panel border border-steel dark:border-line rounded-2xl p-8 md:p-10 shadow-sm">
+          <h3 class="font-display text-xl font-bold uppercase text-carbon dark:text-white mb-6 flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-red"></span>
+            ¿Por qué nuestros talleres garantizan tu éxito?
+          </h3>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <span class="w-8 h-8 rounded-lg bg-red text-white flex items-center justify-center font-bold text-sm shrink-0">1</span>
+              <div>
+                <h4 class="font-bold text-base text-carbon dark:text-white">Disponibilidad Inmediata de Flota</h4>
+                <p class="text-sm text-graphite dark:text-white/70 mt-1">Capacidad de respuesta rápida ante contingencias de transporte en cualquier punto del territorio nacional.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="w-8 h-8 rounded-lg bg-red text-white flex items-center justify-center font-bold text-sm shrink-0">2</span>
+              <div>
+                <h4 class="font-bold text-base text-carbon dark:text-white">Optimización de Costos Operativos</h4>
+                <p class="text-sm text-graphite dark:text-white/70 mt-1">Tarifas altamente competitivas respaldadas por infraestructura interna propia sin depender de intermediarios.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="w-8 h-8 rounded-lg bg-red text-white flex items-center justify-center font-bold text-sm shrink-0">3</span>
+              <div>
+                <h4 class="font-bold text-base text-carbon dark:text-white">Seguridad Mecánica en Rutas Extremas</h4>
+                <p class="text-sm text-graphite dark:text-white/70 mt-1">Vehículos preparados específicamente para cruzar la cordillera andina y los terrenos más difíciles de la Amazonía ecuatoriana.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-steel dark:border-line">
+            <a href="#contacto" class="w-full inline-flex justify-center bg-carbon dark:bg-white text-white dark:text-carbon font-semibold text-sm px-6 py-3.5 rounded-lg transition-colors">
+              Hablar con un asesor operativo
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACTO Y COTIZACIÓN INMEDIATA =============== -->
+<section id="contacto" class="bg-paper dark:bg-console text-carbon dark:text-white py-20 md:py-28 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    
+    <div class="grid lg:grid-cols-12 gap-12">
+      
+      <div class="lg:col-span-5">
+        <div class="inline-flex items-center gap-2 border border-red/20 bg-red/5 dark:bg-red/10 rounded-full px-3.5 py-1.5 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-red">Atención Inmediata</span>
+        </div>
+        <h2 class="font-display uppercase font-bold text-3xl md:text-5xl leading-tight mb-6">
+          Cotiza tu Flota de Transporte Pesado
+        </h2>
+        <p class="text-graphite dark:text-white/70 font-normal text-base md:text-lg mb-8 leading-relaxed">
+          En Conexpet, ofrecemos soluciones a medida con el mejor servicio, seguridad y eficiencia. Envíanos los requerimientos de tu proyecto y recibe una cotización personalizada en menos de 24 horas.
+        </p>
+
+        <div class="space-y-4 text-sm font-medium">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green"></span>
+            <span>Respuesta técnica y logística en menos de 24h</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green"></span>
+            <span>Seguro de carga incluido y monitoreo satelital continuo</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green"></span>
+            <span>Flota 100% propia con talleres y auxilio mecánico in-house</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="border border-steel dark:border-line bg-white dark:bg-panel rounded-3xl p-8 md:p-10 shadow-sm">
+          <form class="space-y-6" onsubmit="event.preventDefault(); alert('¡Gracias por tu solicitud! Un coordinador de flota de CONEXPET se comunicará contigo de inmediato.');">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="flota-nombre" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Nombre Completo *</label>
+                <input type="text" id="flota-nombre" required placeholder="Ing. Juan Pérez" class="w-full bg-paper dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+              <div>
+                <label for="flota-empresa" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Empresa / Operadora *</label>
+                <input type="text" id="flota-empresa" required placeholder="Petroecuador / Operadora" class="w-full bg-paper dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="flota-email" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Correo Corporativo *</label>
+                <input type="email" id="flota-email" required placeholder="jperez@empresa.com" class="w-full bg-paper dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+              <div>
+                <label for="flota-telefono" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Teléfono de Contacto *</label>
+                <input type="tel" id="flota-telefono" required placeholder="+593 99 999 9999" class="w-full bg-paper dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="flota-equipo" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Unidad Requerida</label>
+                <select id="flota-equipo" class="w-full bg-paper dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+                  <option>Cabezal de Fuerza 6x4</option>
+                  <option>Tanquero Vacuum (120-200 bbl)</option>
+                  <option>Grúa Telescópica (60 a 120 t)</option>
+                  <option>Cama Alta (RA)</option>
+                  <option>Cama Baja (RB)</option>
+                  <option>Lowboy Industrial</option>
+                  <option>Brazo Grúa Hidráulico</option>
+                  <option>Flota Combinada para Taladro (RIG)</option>
+                </select>
+              </div>
+              <div>
+                <label for="flota-ruta" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Ruta / Destino</label>
+                <input type="text" id="flota-ruta" placeholder="Ej. Coca a Bloque 43 ITT" class="w-full bg-paper dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label for="flota-detalles" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Detalles de la Carga (Toneladas, Dimensiones)</label>
+              <textarea id="flota-detalles" rows="3" placeholder="Describe peso estimado, fechas requeridas y condiciones de la locación..." class="w-full bg-paper dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 px-6 rounded-xl bg-red hover:bg-red-deep text-white font-bold text-sm uppercase tracking-wider transition-colors shadow-lg hover:shadow-xl">
+              Enviar Requerimiento a Operaciones
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- =============== FOOTER CORPORATIVO =============== -->
+<footer class="bg-white dark:bg-console text-graphite dark:text-white/70 border-t border-steel dark:border-line transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8 py-16">
+
+    <div class="grid md:grid-cols-12 gap-10">
+      
+      <!-- Columna 1: Marca & Lema -->
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-3 h-3 rounded-full bg-red"></span>
+          <span class="font-display text-xl font-bold text-carbon dark:text-white tracking-tight">CONEXPET</span>
+        </div>
+        <p class="text-xs uppercase font-bold text-red tracking-wider mb-2">Hacemos de la logística y transporte de carga pesada un arte</p>
+        <p class="text-sm text-graphite dark:text-white/60 leading-relaxed measure">
+          Más de 38 años movilizando el sector petrolero, industrial y comercial de todo el Ecuador con disciplina, talleres propios y tecnología satelital.
+        </p>
+
+        <div class="mt-6 inline-flex items-center gap-2 border border-steel dark:border-line bg-paper dark:bg-panel px-3 py-1.5 rounded-full text-xs font-semibold text-carbon dark:text-white">
+          <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-red/40 shrink-0">
+          <span>Orgullosamente Ecuatorianos</span>
+        </div>
+      </div>
+
+      <!-- Columna 2: Navegación Empresa -->
+      <div class="md:col-span-2">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">EMPRESA</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="index.html#conocenos" class="hover:text-red dark:hover:text-white transition-colors">Conócenos</a></li>
+          <li><a href="index.html#servicios" class="hover:text-red dark:hover:text-white transition-colors">Servicios</a></li>
+          <li><a href="#talleres" class="hover:text-red dark:hover:text-white transition-colors">Talleres Propios</a></li>
+          <li><a href="#flota" class="hover:text-red dark:hover:text-white transition-colors">Flota Especializada</a></li>
+          <li><a href="cobertura.html" class="hover:text-red dark:hover:text-white transition-colors">Cobertura</a></li>
+          <li><a href="https://triboilgas.typeform.com/to/OKUP0n?typeform-source=www.triboilgas.com" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Canal de Denuncias</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Intranet Oficial -->
+      <div class="md:col-span-3">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">INTRANET & SERVICIOS</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://forms.office.com/pages/responsepage.aspx?id=oneFCI-_SEekK--m01noBwxpJwflPrlFkQlnaS6QOqRUN0JNTk1XMUwzVEswT0NLM0xaUkI5M1BUVi4u" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Tarjeta Cero (HSE)</a></li>
+          <li><a href="https://compers.online/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Compers TTHH</a></li>
+          <li><a href="http://64.190.27.46:8040/jde/E1Menu.maf?" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">JD Edwards</a></li>
+          <li><a href="https://www.triboilgas.com/hesk/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Ticket de Soporte</a></li>
+          <li><a href="https://proveedores.triboil.com/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Portal Proveedores SYSFIN</a></li>
+          <li><a href="https://triboilgas.typeform.com/to/C9u7aE?typeform-source=conexpet.com" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Solicitud TTHH</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Sedes & Contacto -->
+      <div class="md:col-span-3">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">SEDE PRINCIPAL</p>
+        <p class="text-sm leading-relaxed">
+          Oficina Matriz — Vía Tarapoa Lote 5 S/N y Km 11 ½<br>
+          Sucumbíos, Lago Agrio, Ecuador.
+        </p>
+        <p class="text-sm mt-3">
+          Tel: <a href="tel:+59323956540" class="font-semibold text-carbon dark:text-white hover:text-red transition-colors">+593 (02) 395 6540</a>
+        </p>
+        <p class="text-sm">
+          Correo: <a href="mailto:conexpet@conexpet.com" class="font-semibold text-carbon dark:text-white hover:text-red transition-colors">conexpet@conexpet.com</a>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="border-t border-steel dark:border-line mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-graphite dark:text-white/50 gap-4">
+      <p>© 2025 Conexpet Cía. Ltda. — Todos los derechos reservados. Orgullosamente Ecuatorianos.</p>
+      <div class="flex items-center gap-6">
+        <a href="#flota" class="hover:text-red transition-colors">Volver arriba ↑</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+<script src="js/navbar.js" defer></script>
+<script src="js/slider.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Operativa Nacional & Cobertura — CONEXPET Cía. Ltda.</title>
+<meta name="description" content="Mapa interactivo y red de 6 bases operativas de Conexpet en Ecuador: Lago Agrio, El Coca, Sacha, Quito, Tambillo y Durán (Guayaquil). Soporte 24/7 en campo.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<script>
+  if (localStorage.getItem('conexpet-theme') === 'dark' || (!localStorage.getItem('conexpet-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          console: '#0B0B0C',
+          panel: '#151517',
+          line: '#26262A',
+          paper: '#F4F4F6',
+          steel: '#E2E2E6',
+          carbon: '#18181B',
+          graphite: '#606066',
+          red: { DEFAULT: '#C60C30', deep: '#9E0A26', light: '#E82A2A' },
+          green: '#1E8E47'
+        },
+        fontFamily: {
+          display: ['Space Grotesk', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/cobertura.css">
+</head>
+
+<body class="bg-white dark:bg-console text-carbon dark:text-white antialiased transition-colors duration-200">
+
+<a href="#cobertura" class="skip-link">Saltar al mapa interactivo de cobertura</a>
+
+<!-- =============== CINTILLO PATRIO INSTITUCIONAL =============== -->
+<div class="bg-red text-white text-xs font-medium py-1.5 px-5 text-center flex items-center justify-center gap-2.5 tracking-wide">
+  <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-white/40 shrink-0">
+  <span>Red Operativa Nacional · Seis Bases Estratégicas Interconectadas 24/7</span>
+</div>
+
+<!-- =============== NAVEGACIÓN PRINCIPAL (ANIMATED TOP DOCK) =============== -->
+<header id="site-nav" class="sticky top-0 inset-x-0 z-50 pointer-events-none transition-all duration-300">
+  <div class="max-w-[1440px] mx-auto px-3 sm:px-5 md:px-8 pt-2.5 pb-2 pointer-events-auto">
+    <div class="atd-modern__bar flex items-center justify-between mx-auto transition-all duration-200">
+      
+      <!-- Resplandor sutil Aurora de fondo -->
+      <div class="atd-modern__aurora" aria-hidden="true"></div>
+
+      <!-- Logo Corporativo -->
+      <a href="index.html" class="atd-modern__brand flex items-center gap-3 shrink-0 group z-10" aria-label="Inicio Conexpet">
+        <span class="w-3 h-3 rounded-full bg-red pulse-dot"></span>
+        <div class="flex flex-col">
+          <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-carbon dark:text-white group-hover:text-red transition-colors">CONEXPET</span>
+          <span class="text-[9px] uppercase tracking-widest text-graphite dark:text-white/50 -mt-1 font-semibold hidden sm:inline">Logística & Carga Pesada</span>
+        </div>
+      </a>
+
+      <!-- Dock Interactivo Central con Física de Proximidad -->
+      <nav id="atd-dock-track" class="atd-modern__dock hidden lg:flex items-center" aria-label="Navegación principal" data-dock-state="idle" data-dock-max="0.00">
+        <!-- Ítem 1: Inicio / Conócenos -->
+        <a href="index.html#conocenos" class="atd-modern__item" data-dock-item aria-label="Ir a Conócenos">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M8 1.5l5.5 3.2v6.6L8 14.5l-5.5-3.2V4.7z"/><circle cx="8" cy="8" r="2.2"/></svg>
+          </span>
+          <span class="atd-modern__label">Conócenos</span>
+        </a>
+
+        <!-- Ítem 2: Servicios -->
+        <a href="index.html#servicios" class="atd-modern__item" data-dock-item aria-label="Ir a Servicios">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="9" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="2.5" y="9" width="4.5" height="4.5" rx="1"/><rect x="9" y="9" width="4.5" height="4.5" rx="1"/></svg>
+          </span>
+          <span class="atd-modern__label">Servicios</span>
+        </a>
+
+        <!-- Ítem 3: Talleres Propios -->
+        <a href="flota.html#talleres" class="atd-modern__item" data-dock-item aria-label="Ir a Talleres Propios">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M13.5 4.5l-2 2-1.5-1.5 2-2a2.5 2.5 0 00-3.5 0L3 10.5a1.5 1.5 0 000 2.1l.4.4a1.5 1.5 0 002.1 0l5.5-5.5a2.5 2.5 0 000-3.5z"/></svg>
+          </span>
+          <span class="atd-modern__label">Talleres</span>
+        </a>
+
+        <!-- Ítem 4: Flota Especializada -->
+        <a href="flota.html" class="atd-modern__item" data-dock-item aria-label="Ir a Flota Especializada">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><rect x="1.5" y="4" width="8" height="6.5" rx="1"/><path d="M9.5 6.5h2.5l2 2v2h-4.5"/><circle cx="4.5" cy="11.5" r="1.5"/><circle cx="12" cy="11.5" r="1.5"/></svg>
+          </span>
+          <span class="atd-modern__label">Flota</span>
+        </a>
+
+        <!-- Ítem 5: Cobertura Nacional (Página Actual) -->
+        <a href="#cobertura" class="atd-modern__item is-active" data-dock-item aria-pressed="true" aria-label="Cobertura Nacional">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2.5"/><path d="M8 2v3M8 11v3M2 8h3M11 8h3"/></svg>
+          </span>
+          <span class="atd-modern__label">Cobertura</span>
+        </a>
+
+        <!-- Ítem 6: Contacto -->
+        <a href="#contacto" class="atd-modern__item" data-dock-item aria-label="Ir a Contacto">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M2.5 4h11a1 1 0 011 1v6a1 1 0 01-1 1h-11a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M2.5 5l5.5 4 5.5-4"/></svg>
+          </span>
+          <span class="atd-modern__label">Contacto</span>
+        </a>
+      </nav>
+
+      <!-- Acciones de Cabecera (Derecha) -->
+      <div class="atd-modern__actions flex items-center gap-3 z-10">
+        <span class="text-[11px] font-semibold text-graphite dark:text-white/60 hidden xl:flex items-center gap-1.5 bg-paper/80 dark:bg-panel/80 px-3 py-1.5 rounded-full border border-steel/60 dark:border-line">
+          <span class="w-2 h-2 rounded-full bg-green animate-pulse"></span>
+          24/7 en ruta
+        </span>
+        
+        <!-- Conmutador Claro / Oscuro -->
+        <button type="button" class="theme-toggle-btn atd-modern__ghost border border-steel/60 dark:border-line rounded-full p-2 text-carbon dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors" aria-label="Cambiar tema">
+        </button>
+
+        <!-- Botón CTA de Acción Rápida -->
+        <a href="#contacto" class="atd-modern__cta bg-red hover:bg-red-deep text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+          <span>Cotizar</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+
+        <!-- Botón Menú Móvil -->
+        <button id="menu-btn" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="w-9 h-9 flex flex-col justify-center items-center gap-[4.5px] rounded-full border border-steel dark:border-line lg:hidden bg-paper dark:bg-panel">
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-transform"></span>
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-opacity"></span>
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-transform"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Desplegable Móvil Flotante -->
+    <div id="mobile-menu" class="lg:hidden overflow-hidden max-h-0 opacity-0 mt-2 rounded-2xl border border-steel/70 dark:border-line bg-white/95 dark:bg-console/95 backdrop-blur-xl shadow-2xl transition-all duration-300">
+      <nav class="flex flex-col px-5 py-5 gap-3 font-medium text-sm text-carbon dark:text-white/90">
+        <a href="index.html" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Inicio
+        </a>
+        <a href="index.html#servicios" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Servicios
+        </a>
+        <a href="flota.html" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Flota Especializada
+        </a>
+        <a href="flota.html#talleres" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Talleres Propios
+        </a>
+        <a href="#cobertura" class="text-red font-semibold py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Cobertura Nacional
+        </a>
+        <a href="#contacto" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Cotizar Rutas
+        </a>
+      </nav>
+    </div>
+
+    <!-- Barra de progreso de scroll -->
+    <div id="scroll-progress-track" class="w-full relative mt-2 rounded-full overflow-visible pointer-events-none">
+      <div id="scroll-progress-bar" class="h-full rounded-full relative" style="width: 0%;">
+        <div id="scroll-truck-icon" class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center">
+          <svg class="w-6 h-6 text-red filter drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5h2.5M6 18.5A1.5 1.5 0 0 1 4.5 17 1.5 1.5 0 0 1 6 15.5 1.5 1.5 0 0 1 7.5 17 1.5 1.5 0 0 1 6 18.5M20 7h-4V4H2v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h2v-6l-2-4z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<!-- =============== CABECERA DE LA PÁGINA COBERTURA =============== -->
+<section class="relative pt-12 pb-8 md:pt-16 md:pb-12 bg-white dark:bg-console border-b border-steel/60 dark:border-line transition-colors">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red/10 text-red text-xs font-bold uppercase tracking-wider mb-3">
+          <span class="w-2 h-2 rounded-full bg-red animate-pulse"></span>
+          <span>Despliegue Estratégico en Todo el Ecuador</span>
+        </div>
+        <h1 class="font-display uppercase font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-carbon dark:text-white leading-tight">
+          Red Operativa Nacional
+        </h1>
+        <p class="text-graphite dark:text-white/70 text-base md:text-lg mt-4 leading-relaxed">
+          Seis bases logísticas interconectadas que cubren desde el corazón de la producción petrolera amazónica hasta los principales centros industriales andinos y puertos marítimos.
+        </p>
+      </div>
+
+      <!-- Quick KPI Chips -->
+      <div class="flex flex-wrap gap-3">
+        <div class="px-4 py-3 rounded-2xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <span class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 block">Bases Operativas</span>
+          <span class="font-display font-bold text-xl text-red">6 Nodos Clave</span>
+        </div>
+        <div class="px-4 py-3 rounded-2xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <span class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 block">Bloques Petroleros</span>
+          <span class="font-display font-bold text-xl text-carbon dark:text-white">100% Cobertura</span>
+        </div>
+        <div class="px-4 py-3 rounded-2xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <span class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 block">Asistencia en Ruta</span>
+          <span class="font-display font-bold text-xl text-green">24 Horas / 365 Días</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SECCIÓN MAPA INTERACTIVO DEL ECUADOR =============== -->
+<section id="cobertura" class="bg-paper dark:bg-console text-carbon dark:text-white border-b border-steel dark:border-line py-16 md:py-24 transition-colors duration-200 relative overflow-hidden">
+  <!-- Retícula tecnológica de fondo -->
+  <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none bg-[radial-gradient(#E11D2A_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8 relative z-10">
+    <!-- Encabezado de Sección Minimalista -->
+    <div class="flex items-end justify-between gap-6 mb-10 flex-wrap">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red/10 border border-red/20 text-red text-xs font-bold uppercase tracking-wider mb-3">
+          <span class="w-2 h-2 rounded-full bg-red animate-ping"></span>
+          <span>Telemetría Geoespacial</span>
+        </div>
+        <h2 class="font-display uppercase font-bold text-2xl sm:text-3xl md:text-5xl leading-tight">
+          Seis bases operativas,<br>una sola red logística.
+        </h2>
+      </div>
+      <p class="measure text-graphite dark:text-white/60 font-medium text-sm sm:text-base max-w-xl">
+        Haz clic sobre cualquiera de los puntos marcados en el mapa del Ecuador o selecciona un nodo inferior para desplegar la telemetría, dirección y capacidad operativa en tiempo real.
+      </p>
+    </div>
+
+    <!-- Contenedor Principal del Mapa HUD -->
+    <div class="bg-white dark:bg-panel border border-steel dark:border-line rounded-3xl p-6 md:p-10 shadow-xl relative overflow-hidden">
+      
+      <!-- Barra superior de estado satelital HUD -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-steel dark:border-line text-xs font-mono text-graphite dark:text-white/60">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center gap-1.5 text-green font-semibold">
+            <span class="w-2.5 h-2.5 rounded-full bg-green animate-pulse"></span>
+            SISTEMA GPS / ENLACE SATELITAL ACTIVO
+          </span>
+          <span class="hidden sm:inline text-steel dark:text-line">|</span>
+          <span class="hidden sm:inline">6 NODOS SINCRONIZADOS</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs uppercase px-2 py-0.5 rounded bg-steel/50 dark:bg-line/50 text-carbon dark:text-white font-semibold">ECUADOR</span>
+          <span>LAT: 01°28'S · LON: 78°30'W</span>
+        </div>
+      </div>
+
+      <!-- Área Visual del Mapa Interactivo -->
+      <div class="relative max-w-[640px] mx-auto my-4">
+        <div class="relative w-full aspect-[512/537] mx-auto select-none">
+          <img 
+            src="images/ec_mapa.png" 
+            alt="Mapa de Cobertura Nacional Conexpet Ecuador" 
+            class="w-full h-full object-contain pointer-events-none drop-shadow-md"
+            loading="lazy"
+          >
+
+          <!-- PIN 1: Nueva Loja (Lago Agrio) -->
+          <button 
+            type="button" 
+            class="cnx-map-pin group" 
+            style="left: 70.8%; top: 20.1%;" 
+            data-base-id="1"
+            aria-label="Ver Base Matriz Nueva Loja - Lago Agrio"
+          >
+            <span class="cnx-pin-ring"></span>
+            <span class="cnx-pin-core">
+              <span class="cnx-pin-center"></span>
+            </span>
+            <span class="cnx-pin-label">
+              <span class="cnx-pin-code">N01</span>
+              <span class="cnx-pin-name">Lago Agrio</span>
+            </span>
+          </button>
+
+          <!-- PIN 2: Sacha -->
+          <button 
+            type="button" 
+            class="cnx-map-pin group" 
+            style="left: 76.3%; top: 36.1%;" 
+            data-base-id="2"
+            aria-label="Ver Base Nodo N02 Sacha"
+          >
+            <span class="cnx-pin-ring"></span>
+            <span class="cnx-pin-core">
+              <span class="cnx-pin-center"></span>
+            </span>
+            <span class="cnx-pin-label">
+              <span class="cnx-pin-code">N02</span>
+              <span class="cnx-pin-name">Sacha</span>
+            </span>
+          </button>
+
+          <!-- PIN 3: El Coca -->
+          <button 
+            type="button" 
+            class="cnx-map-pin group" 
+            style="left: 77.1%; top: 32.3%;" 
+            data-base-id="3"
+            aria-label="Ver Base Nodo N03 El Coca"
+          >
+            <span class="cnx-pin-ring"></span>
+            <span class="cnx-pin-core">
+              <span class="cnx-pin-center"></span>
+            </span>
+            <span class="cnx-pin-label">
+              <span class="cnx-pin-code">N03</span>
+              <span class="cnx-pin-name">El Coca</span>
+            </span>
+          </button>
+
+          <!-- PIN 4: Quito -->
+          <button 
+            type="button" 
+            class="cnx-map-pin group" 
+            style="left: 47.1%; top: 23.2%;" 
+            data-base-id="4"
+            aria-label="Ver Base Nodo N04 Quito"
+          >
+            <span class="cnx-pin-ring"></span>
+            <span class="cnx-pin-core">
+              <span class="cnx-pin-center"></span>
+            </span>
+            <span class="cnx-pin-label">
+              <span class="cnx-pin-code">N04</span>
+              <span class="cnx-pin-name">Quito</span>
+            </span>
+          </button>
+
+          <!-- PIN 5: Durán (Guayaquil) -->
+          <button 
+            type="button" 
+            class="cnx-map-pin group" 
+            style="left: 27.8%; top: 52.7%;" 
+            data-base-id="5"
+            aria-label="Ver Base Nodo N05 Durán Guayaquil"
+          >
+            <span class="cnx-pin-ring"></span>
+            <span class="cnx-pin-core">
+              <span class="cnx-pin-center"></span>
+            </span>
+            <span class="cnx-pin-label">
+              <span class="cnx-pin-code">N05</span>
+              <span class="cnx-pin-name">Durán</span>
+            </span>
+          </button>
+
+          <!-- PIN 6: Tambillo -->
+          <button 
+            type="button" 
+            class="cnx-map-pin group" 
+            style="left: 49.9%; top: 29.2%;" 
+            data-base-id="6"
+            aria-label="Ver Base Nodo N06 Tambillo"
+          >
+            <span class="cnx-pin-ring"></span>
+            <span class="cnx-pin-core">
+              <span class="cnx-pin-center"></span>
+            </span>
+            <span class="cnx-pin-label">
+              <span class="cnx-pin-code">N06</span>
+              <span class="cnx-pin-name">Tambillo</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Selector Rápido de Bases (Botones Píldora HUD) -->
+      <div class="mt-8 pt-6 border-t border-steel dark:border-line">
+        <p class="text-xs font-mono uppercase text-graphite dark:text-white/60 mb-3 text-center sm:text-left">
+          Explorar nodos operativos de la red:
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+          <button type="button" class="cnx-base-chip" data-base-id="1">
+            <span class="cnx-chip-dot bg-green"></span>
+            <span class="font-display font-bold text-xs uppercase">Nueva Loja</span>
+            <span class="text-[10px] text-graphite dark:text-white/50 block font-mono">Base Matriz</span>
+          </button>
+          <button type="button" class="cnx-base-chip" data-base-id="2">
+            <span class="cnx-chip-dot bg-green"></span>
+            <span class="font-display font-bold text-xs uppercase">Sacha</span>
+            <span class="text-[10px] text-graphite dark:text-white/50 block font-mono">Nodo N02</span>
+          </button>
+          <button type="button" class="cnx-base-chip" data-base-id="3">
+            <span class="cnx-chip-dot bg-green"></span>
+            <span class="font-display font-bold text-xs uppercase">El Coca</span>
+            <span class="text-[10px] text-graphite dark:text-white/50 block font-mono">Nodo N03</span>
+          </button>
+          <button type="button" class="cnx-base-chip" data-base-id="4">
+            <span class="cnx-chip-dot bg-green"></span>
+            <span class="font-display font-bold text-xs uppercase">Quito</span>
+            <span class="text-[10px] text-graphite dark:text-white/50 block font-mono">Nodo N04</span>
+          </button>
+          <button type="button" class="cnx-base-chip" data-base-id="5">
+            <span class="cnx-chip-dot bg-green"></span>
+            <span class="font-display font-bold text-xs uppercase">Durán</span>
+            <span class="text-[10px] text-graphite dark:text-white/50 block font-mono">Nodo N05</span>
+          </button>
+          <button type="button" class="cnx-base-chip" data-base-id="6">
+            <span class="cnx-chip-dot bg-green"></span>
+            <span class="font-display font-bold text-xs uppercase">Tambillo</span>
+            <span class="text-[10px] text-graphite dark:text-white/50 block font-mono">Nodo N06</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== MODAL TECNOLÓGICO (HUD TELEMETRÍA DE BASE) =============== -->
+<div id="cnx-base-modal" class="cnx-hud-modal-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
+  <!-- Fondo desenfocado -->
+  <div class="cnx-hud-modal-backdrop" id="cnx-modal-backdrop"></div>
+
+  <!-- Contenedor del Modal Tecnológico -->
+  <div class="cnx-hud-modal-container">
+    <div class="cnx-hud-card">
+      
+      <!-- Esquinas decorativas HUD -->
+      <span class="cnx-hud-corner cnx-hud-corner-tl"></span>
+      <span class="cnx-hud-corner cnx-hud-corner-tr"></span>
+      <span class="cnx-hud-corner cnx-hud-corner-bl"></span>
+      <span class="cnx-hud-corner cnx-hud-corner-br"></span>
+
+      <!-- Encabezado del Modal -->
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-steel/60 dark:border-line">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-red animate-ping"></span>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-red font-bold" id="cnx-modal-node-tag">NODO // SISTEMA</span>
+          </div>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-green" id="cnx-modal-status-badge">
+            <span class="w-2 h-2 rounded-full bg-green animate-pulse"></span>
+            <span id="cnx-modal-status-text">Operativa 24/7</span>
+          </span>
+        </div>
+
+        <button 
+          type="button" 
+          id="cnx-modal-close-btn" 
+          class="w-9 h-9 rounded-lg border border-steel dark:border-line bg-paper dark:bg-panel flex items-center justify-center text-graphite dark:text-white/70 hover:text-red hover:border-red transition-all"
+          aria-label="Cerrar ventana de telemetría"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Cuerpo de la Información de la Base -->
+      <div class="py-5 space-y-4">
+        <div>
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-carbon dark:text-white tracking-tight uppercase" id="cnx-modal-city-title">
+            Nueva Loja
+          </h3>
+          <p class="text-sm font-medium text-graphite dark:text-white/60" id="cnx-modal-city-subtitle">
+            Lago Agrio — Sucumbíos
+          </p>
+        </div>
+
+        <!-- Dirección Operativa -->
+        <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel dark:border-line">
+          <p class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 tracking-wider mb-1">Dirección de Operaciones</p>
+          <p class="text-sm font-semibold text-carbon dark:text-white leading-relaxed" id="cnx-modal-address">
+            Vía al aeropuerto Km ½ y Vía Tarapoa (Oficina Principal y Talleres).
+          </p>
+        </div>
+
+        <!-- Rol y Alcance Operativo -->
+        <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel dark:border-line">
+          <p class="text-[10px] font-mono uppercase text-graphite dark:text-white/50 tracking-wider mb-1">Capacidad & Especialidad</p>
+          <p class="text-sm text-graphite dark:text-white/80 leading-relaxed" id="cnx-modal-role">
+            Oficina matriz, coordinación de flota para operaciones petroleras, taller central y asistencia mecánica de emergencia.
+          </p>
+        </div>
+
+        <!-- Datos satelitales / Telemetría -->
+        <div class="grid grid-cols-2 gap-3 pt-1 text-xs font-mono text-graphite dark:text-white/60">
+          <div>
+            <span class="block text-[10px] uppercase text-graphite/70 dark:text-white/40">Coordenadas GPS</span>
+            <span class="text-carbon dark:text-white font-semibold" id="cnx-modal-coords">00°05'05"N 76°53'01"W</span>
+          </div>
+          <div>
+            <span class="block text-[10px] uppercase text-graphite/70 dark:text-white/40">Protocolo de Red</span>
+            <span class="text-carbon dark:text-white font-semibold">TRIB-NET // 24/7</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones del Modal -->
+      <div class="pt-4 border-t border-steel/60 dark:border-line flex flex-col sm:flex-row items-center gap-3">
+        <a 
+          href="#contacto" 
+          id="cnx-modal-cta-btn" 
+          class="w-full sm:flex-1 py-3 px-5 rounded-xl bg-red hover:bg-red-deep text-white font-bold text-center text-sm uppercase tracking-wider transition-colors shadow-md flex items-center justify-center gap-2"
+        >
+          <span>Contactar esta Base</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <button 
+          type="button" 
+          id="cnx-modal-secondary-btn" 
+          class="w-full sm:w-auto py-3 px-5 rounded-xl border border-steel dark:border-line text-xs font-bold uppercase tracking-wider text-carbon dark:text-white hover:bg-paper dark:hover:bg-line transition-colors"
+        >
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- =============== DIRECTORIO DE BASES EN DETALLE =============== -->
+<section class="bg-white dark:bg-[#111113] py-16 md:py-24 border-b border-steel dark:border-line transition-colors">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-xs font-bold uppercase tracking-wider text-red mb-2">Directorio Territorial</p>
+      <h2 class="font-display uppercase font-bold text-2xl md:text-4xl text-carbon dark:text-white">Ubicaciones y Capacidad Logística</h2>
+      <p class="text-sm text-graphite dark:text-white/60 mt-3">Infraestructura propia con patios de maniobra, talleres y abastecimiento permanente.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Base 1 -->
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="text-xs font-mono font-bold text-red bg-red/10 px-2.5 py-1 rounded-md">NODO 01</span>
+            <span class="text-[11px] font-semibold text-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green"></span> Matriz Central</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-carbon dark:text-white">Nueva Loja (Lago Agrio)</h3>
+          <p class="text-xs font-medium text-graphite dark:text-white/60 mb-3">Sucumbíos — Corazón Petrolero</p>
+          <p class="text-xs text-graphite dark:text-white/70 leading-relaxed mb-4">
+            Vía al aeropuerto Km ½ y Vía Tarapoa. Oficina principal, taller central de mantenimiento y despacho prioritario de convoyes hacia bloques petroleros.
+          </p>
+        </div>
+        <a href="#contacto" class="text-xs font-bold text-red hover:underline inline-flex items-center gap-1.5 mt-2">
+          <span>Solicitar servicio en Lago Agrio</span> →
+        </a>
+      </div>
+
+      <!-- Base 2 -->
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="text-xs font-mono font-bold text-red bg-red/10 px-2.5 py-1 rounded-md">NODO 02</span>
+            <span class="text-[11px] font-semibold text-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green"></span> Base Operativa</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-carbon dark:text-white">Joya de los Sachas</h3>
+          <p class="text-xs font-medium text-graphite dark:text-white/60 mb-3">Orellana — Enlace Directo a Bloques</p>
+          <p class="text-xs text-graphite dark:text-white/70 leading-relaxed mb-4">
+            Vía Coca - Lago Agrio. Patio de maniobras, flota de tanqueros vacuum y estacionamiento de seguridad para transferencia continua de fluidos.
+          </p>
+        </div>
+        <a href="#contacto" class="text-xs font-bold text-red hover:underline inline-flex items-center gap-1.5 mt-2">
+          <span>Solicitar servicio en Sacha</span> →
+        </a>
+      </div>
+
+      <!-- Base 3 -->
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="text-xs font-mono font-bold text-red bg-red/10 px-2.5 py-1 rounded-md">NODO 03</span>
+            <span class="text-[11px] font-semibold text-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green"></span> Base Logística</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-carbon dark:text-white">Puerto Francisco de Orellana (Coca)</h3>
+          <p class="text-xs font-medium text-graphite dark:text-white/60 mb-3">Orellana — Hub Multimodal</p>
+          <p class="text-xs text-graphite dark:text-white/70 leading-relaxed mb-4">
+            Vía Los Zorros Km 1. Centro logístico para izaje de alto tonelaje, movilización de taladros (RIGs) y conexión fluvial hacia el Bloque 43 (ITT).
+          </p>
+        </div>
+        <a href="#contacto" class="text-xs font-bold text-red hover:underline inline-flex items-center gap-1.5 mt-2">
+          <span>Solicitar servicio en El Coca</span> →
+        </a>
+      </div>
+
+      <!-- Base 4 -->
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="text-xs font-mono font-bold text-red bg-red/10 px-2.5 py-1 rounded-md">NODO 04</span>
+            <span class="text-[11px] font-semibold text-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green"></span> Sede Administrativa</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-carbon dark:text-white">Quito (Distrito Metropolitano)</h3>
+          <p class="text-xs font-medium text-graphite dark:text-white/60 mb-3">Pichincha — Gerencia y Control</p>
+          <p class="text-xs text-graphite dark:text-white/70 leading-relaxed mb-4">
+            Av. República del Salvador y Naciones Unidas. Coordinación comercial, gerencia de HSEQ, contratos corporativos y licitaciones internacionales.
+          </p>
+        </div>
+        <a href="#contacto" class="text-xs font-bold text-red hover:underline inline-flex items-center gap-1.5 mt-2">
+          <span>Contactar oficina Quito</span> →
+        </a>
+      </div>
+
+      <!-- Base 5 -->
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="text-xs font-mono font-bold text-red bg-red/10 px-2.5 py-1 rounded-md">NODO 05</span>
+            <span class="text-[11px] font-semibold text-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green"></span> Hub Costa & Puerto</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-carbon dark:text-white">Durán (Guayaquil)</h3>
+          <p class="text-xs font-medium text-graphite dark:text-white/60 mb-3">Guayas — Enlace Portuario</p>
+          <p class="text-xs text-graphite dark:text-white/70 leading-relaxed mb-4">
+            Km 4.5 Vía Durán - Tambo. Recepción de importaciones marítimas de tubería petrolera, maquinaria pesada y despacho hacia la Sierra y Oriente.
+          </p>
+        </div>
+        <a href="#contacto" class="text-xs font-bold text-red hover:underline inline-flex items-center gap-1.5 mt-2">
+          <span>Solicitar servicio en Guayaquil</span> →
+        </a>
+      </div>
+
+      <!-- Base 6 -->
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="text-xs font-mono font-bold text-red bg-red/10 px-2.5 py-1 rounded-md">NODO 06</span>
+            <span class="text-[11px] font-semibold text-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green"></span> Enlace Sierra Central</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-carbon dark:text-white">Tambillo (Pichincha)</h3>
+          <p class="text-xs font-medium text-graphite dark:text-white/60 mb-3">Pichincha — Conexión Panamericana</p>
+          <p class="text-xs text-graphite dark:text-white/70 leading-relaxed mb-4">
+            Panamericana Sur Km 22. Estación estratégica de relevo de tripulaciones, chequeo mecánico de frenos de alta montaña y consolidación de carga.
+          </p>
+        </div>
+        <a href="#contacto" class="text-xs font-bold text-red hover:underline inline-flex items-center gap-1.5 mt-2">
+          <span>Solicitar servicio en Tambillo</span> →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== CERTIFICACIONES INTERNACIONALES =============== -->
+<section class="bg-paper dark:bg-console border-b border-steel dark:border-line py-16 md:py-20 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <p class="text-xs font-bold uppercase tracking-wider text-red mb-2">Homologación y Cumplimiento</p>
+      <h2 class="font-display uppercase font-bold text-2xl md:text-4xl text-carbon dark:text-white">Certificaciones de la Red</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div class="border border-steel dark:border-line bg-white dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">ISO 9001:2015</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Gestión de Calidad en cada servicio</p>
+      </div>
+
+      <div class="border border-steel dark:border-line bg-white dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">ISO 14001:2015</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Gestión y Protección Ambiental</p>
+      </div>
+
+      <div class="border border-steel dark:border-line bg-white dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">ISO 45001:2018</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Seguridad y Salud Ocupacional</p>
+      </div>
+
+      <div class="border border-steel dark:border-line bg-white dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">BASC</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Comercio Seguro y Cadena de Custodia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACTO Y COTIZACIÓN INMEDIATA =============== -->
+<section id="contacto" class="bg-white dark:bg-[#111113] text-carbon dark:text-white py-20 md:py-28 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    
+    <div class="grid lg:grid-cols-12 gap-12">
+      
+      <div class="lg:col-span-5">
+        <div class="inline-flex items-center gap-2 border border-red/20 bg-red/5 dark:bg-red/10 rounded-full px-3.5 py-1.5 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-red">Cobertura Estratégica</span>
+        </div>
+        <h2 class="font-display uppercase font-bold text-3xl md:text-5xl leading-tight mb-6">
+          Cotiza tu Ruta o Proyecto Logístico
+        </h2>
+        <p class="text-graphite dark:text-white/70 font-normal text-base md:text-lg mb-8 leading-relaxed">
+          Nuestras 6 bases están listas para coordinar el traslado seguro de tu carga en cualquier provincia del Ecuador. Ingresa los datos y recibe respuesta técnica inmediata.
+        </p>
+
+        <div class="space-y-4 text-sm font-medium">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green"></span>
+            <span>Rutas analizadas con levantamiento previo de puentes y curvas</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green"></span>
+            <span>Custodia satelital activa y camioneta guía certificada</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green"></span>
+            <span>Permisos del MTOP y seguros de responsabilidad civil</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-3xl p-8 md:p-10 shadow-sm">
+          <form class="space-y-6" onsubmit="event.preventDefault(); alert('¡Gracias por tu solicitud! La base operativa asignada se comunicará contigo de inmediato.');">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="cobertura-nombre" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Nombre Completo *</label>
+                <input type="text" id="cobertura-nombre" required placeholder="Ing. Carlos Mendoza" class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+              <div>
+                <label for="cobertura-empresa" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Empresa / Cliente *</label>
+                <input type="text" id="cobertura-empresa" required placeholder="Operadora Petrolera / Constructora" class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="cobertura-email" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Correo Corporativo *</label>
+                <input type="email" id="cobertura-email" required placeholder="cmendoza@empresa.com" class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+              <div>
+                <label for="cobertura-telefono" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Teléfono de Contacto *</label>
+                <input type="tel" id="cobertura-telefono" required placeholder="+593 98 765 4321" class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="cobertura-base-origen" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Base de Despacho / Origen</label>
+                <select id="cobertura-base-origen" class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+                  <option>Nueva Loja (Lago Agrio)</option>
+                  <option>El Coca (Orellana)</option>
+                  <option>Joya de los Sachas</option>
+                  <option>Quito (Pichincha)</option>
+                  <option>Tambillo (Panamericana Sur)</option>
+                  <option>Durán (Guayaquil)</option>
+                  <option>Otra locación en campo</option>
+                </select>
+              </div>
+              <div>
+                <label for="cobertura-destino" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Destino Final de Entrega</label>
+                <input type="text" id="cobertura-destino" placeholder="Ej. Shushufindi, Campo Sacha, Bloque 61..." class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label for="cobertura-descripcion" class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Descripción de la Carga y Fechas Estimadas</label>
+              <textarea id="cobertura-descripcion" rows="3" placeholder="Tipo de carga, peso en toneladas, dimensiones y fechas tentativas de movilización..." class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 px-6 rounded-xl bg-red hover:bg-red-deep text-white font-bold text-sm uppercase tracking-wider transition-colors shadow-lg hover:shadow-xl">
+              Solicitar Cotización de Ruta
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- =============== FOOTER CORPORATIVO =============== -->
+<footer class="bg-white dark:bg-console text-graphite dark:text-white/70 border-t border-steel dark:border-line transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8 py-16">
+
+    <div class="grid md:grid-cols-12 gap-10">
+      
+      <!-- Columna 1: Marca & Lema -->
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-3 h-3 rounded-full bg-red"></span>
+          <span class="font-display text-xl font-bold text-carbon dark:text-white tracking-tight">CONEXPET</span>
+        </div>
+        <p class="text-xs uppercase font-bold text-red tracking-wider mb-2">Hacemos de la logística y transporte de carga pesada un arte</p>
+        <p class="text-sm text-graphite dark:text-white/60 leading-relaxed measure">
+          Más de 38 años movilizando el sector petrolero, industrial y comercial de todo el Ecuador con disciplina, talleres propios y tecnología satelital.
+        </p>
+
+        <div class="mt-6 inline-flex items-center gap-2 border border-steel dark:border-line bg-paper dark:bg-panel px-3 py-1.5 rounded-full text-xs font-semibold text-carbon dark:text-white">
+          <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-red/40 shrink-0">
+          <span>Orgullosamente Ecuatorianos</span>
+        </div>
+      </div>
+
+      <!-- Columna 2: Navegación Empresa -->
+      <div class="md:col-span-2">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">EMPRESA</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="index.html#conocenos" class="hover:text-red dark:hover:text-white transition-colors">Conócenos</a></li>
+          <li><a href="index.html#servicios" class="hover:text-red dark:hover:text-white transition-colors">Servicios</a></li>
+          <li><a href="flota.html#talleres" class="hover:text-red dark:hover:text-white transition-colors">Talleres Propios</a></li>
+          <li><a href="flota.html" class="hover:text-red dark:hover:text-white transition-colors">Flota Especializada</a></li>
+          <li><a href="#cobertura" class="hover:text-red dark:hover:text-white transition-colors">Cobertura Nacional</a></li>
+          <li><a href="https://triboilgas.typeform.com/to/OKUP0n?typeform-source=www.triboilgas.com" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Canal de Denuncias</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Intranet Oficial -->
+      <div class="md:col-span-3">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">INTRANET & SERVICIOS</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://forms.office.com/pages/responsepage.aspx?id=oneFCI-_SEekK--m01noBwxpJwflPrlFkQlnaS6QOqRUN0JNTk1XMUwzVEswT0NLM0xaUkI5M1BUVi4u" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Tarjeta Cero (HSE)</a></li>
+          <li><a href="https://compers.online/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Compers TTHH</a></li>
+          <li><a href="http://64.190.27.46:8040/jde/E1Menu.maf?" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">JD Edwards</a></li>
+          <li><a href="https://www.triboilgas.com/hesk/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Ticket de Soporte</a></li>
+          <li><a href="https://proveedores.triboil.com/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Portal Proveedores SYSFIN</a></li>
+          <li><a href="https://triboilgas.typeform.com/to/C9u7aE?typeform-source=conexpet.com" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Solicitud TTHH</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Sedes & Contacto -->
+      <div class="md:col-span-3">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">SEDE PRINCIPAL</p>
+        <p class="text-sm leading-relaxed">
+          Oficina Matriz — Vía Tarapoa Lote 5 S/N y Km 11 ½<br>
+          Sucumbíos, Lago Agrio, Ecuador.
+        </p>
+        <p class="text-sm mt-3">
+          Tel: <a href="tel:+59323956540" class="font-semibold text-carbon dark:text-white hover:text-red transition-colors">+593 (02) 395 6540</a>
+        </p>
+        <p class="text-sm">
+          Correo: <a href="mailto:conexpet@conexpet.com" class="font-semibold text-carbon dark:text-white hover:text-red transition-colors">conexpet@conexpet.com</a>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="border-t border-steel dark:border-line mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-graphite dark:text-white/50 gap-4">
+      <p>© 2025 Conexpet Cía. Ltda. — Todos los derechos reservados. Orgullosamente Ecuatorianos.</p>
+      <div class="flex items-center gap-6">
+        <a href="#cobertura" class="hover:text-red transition-colors">Volver arriba ↑</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+<script src="js/navbar.js" defer></script>
+<script src="js/cobertura.js" defer></script>
+</body>
+</html>

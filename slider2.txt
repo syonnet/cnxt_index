@@ -1,0 +1,751 @@
+import React, {
+  CSSProperties,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+
+type Slide = {
+  src: string;
+  alt: string;
+  title: string;
+  subtitle: string;
+  location: string;
+  collection: string;
+};
+
+const slides: Slide[] = [
+  {
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=88",
+    alt: "Mountain landscape",
+    title: "Open Horizons",
+    subtitle: "A quiet journey through untouched landscapes",
+    location: "Highlands",
+    collection: "Nature",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1200&q=88",
+    alt: "Mountain lake",
+    title: "Still Waters",
+    subtitle: "Calm reflections beneath distant peaks",
+    location: "North Lake",
+    collection: "Travel",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=88",
+    alt: "Snow-covered mountain",
+    title: "Northern Peak",
+    subtitle: "A silent summit above the clouds",
+    location: "Alpine Ridge",
+    collection: "Adventure",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=88",
+    alt: "Golden valley",
+    title: "Golden Valley",
+    subtitle: "A landscape shaped by evening light",
+    location: "West Valley",
+    collection: "Escape",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=88",
+    alt: "Green forest",
+    title: "Deep Forest",
+    subtitle: "Where the pathway slowly disappears",
+    location: "Evergreen",
+    collection: "Wilderness",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=88",
+    alt: "Mountain lake at sunrise",
+    title: "Quiet Morning",
+    subtitle: "Soft light settling across the water",
+    location: "Silver Lake",
+    collection: "Morning",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=88",
+    alt: "Road through a desert canyon",
+    title: "Desert Passage",
+    subtitle: "A winding road through silent terrain",
+    location: "Red Canyon",
+    collection: "Road Trips",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=88",
+    alt: "Mountain beneath the stars",
+    title: "Night Summit",
+    subtitle: "Distant peaks beneath a clear night sky",
+    location: "Frost Ridge",
+    collection: "Nightfall",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1200&q=88",
+    alt: "Green hills viewed from above",
+    title: "Wild Terrain",
+    subtitle: "Endless green valleys viewed from above",
+    location: "Emerald Hills",
+    collection: "Aerial",
+  },
+];
+
+const styles = `
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    color: #171717;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  .app {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .carousel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .carousel-stage {
+    position: relative;
+    width: 100%;
+    flex: 0 0 auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding: 36px 0 34px;
+    background: #ffffff;
+    perspective: 1200px;
+    cursor: ns-resize;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .carousel-track {
+    position: relative;
+    width: 100%;
+    height: calc(var(--card-size) + 34px);
+    transform-style: preserve-3d;
+    background: transparent;
+  }
+
+  .deck-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: min(78vw, 1080px);
+    height: 74px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.10) 0%,
+      rgba(0, 0, 0, 0.06) 35%,
+      rgba(0, 0, 0, 0.025) 55%,
+      rgba(0, 0, 0, 0) 78%
+    );
+    filter: blur(18px);
+    pointer-events: none;
+  }
+
+  .card-shadow {
+    position: absolute;
+    left: 50%;
+    top: calc(var(--card-size) - 2px);
+    width: calc(var(--card-size) * 0.76);
+    height: calc(var(--card-size) * 0.14);
+    border-radius: 999px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.22) 0%,
+      rgba(0, 0, 0, 0.14) 38%,
+      rgba(0, 0, 0, 0.06) 62%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    filter: blur(16px);
+    transform-origin: center;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+
+  .carousel-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--card-size);
+    height: var(--card-size);
+    overflow: hidden;
+    border-radius: 26px;
+    background: #ffffff;
+    box-shadow:
+      0 8px 18px rgba(20, 20, 20, 0.05),
+      0 16px 34px rgba(20, 20, 20, 0.04);
+    backface-visibility: hidden;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+
+  .carousel-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  }
+
+  .carousel-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .details {
+    flex: 0 0 auto;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    background: #ffffff;
+    text-align: center;
+  }
+
+  .caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: caption-enter 260ms ease-out both;
+  }
+
+  .caption-title {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 750;
+    letter-spacing: -0.035em;
+  }
+
+  .caption-subtitle {
+    margin: 9px 0 0;
+    color: rgba(23, 23, 23, 0.52);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .meta-list {
+    width: min(240px, 100%);
+    margin: 27px 0 0;
+    padding: 0;
+    font-size: 13px;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 5px 0;
+  }
+
+  .meta-label {
+    color: rgba(23, 23, 23, 0.45);
+  }
+
+  .meta-value {
+    margin: 0;
+    font-weight: 650;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 15px;
+  }
+
+  .pagination-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #171717;
+    opacity: 0.19;
+    transform: scale(1);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease;
+  }
+
+  .pagination-dot.active {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  .scroll-hint {
+    margin: 17px 0 0;
+    color: rgba(23, 23, 23, 0.29);
+    font-size: 12px;
+    letter-spacing: 0.025em;
+  }
+
+  @keyframes caption-enter {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .carousel-stage {
+      padding: 30px 0 30px;
+      perspective: 920px;
+    }
+
+    .carousel-card {
+      border-radius: 21px;
+    }
+
+    .details {
+      min-height: 220px;
+    }
+
+    .caption-title {
+      font-size: 17px;
+    }
+
+    .caption-subtitle {
+      font-size: 13px;
+    }
+
+    .deck-shadow {
+      height: 58px;
+      filter: blur(15px);
+    }
+
+    .card-shadow {
+      filter: blur(13px);
+    }
+  }
+
+  @media (max-height: 760px) and (min-width: 701px) {
+    .carousel-stage {
+      padding: 24px 0 26px;
+    }
+
+    .details {
+      min-height: 190px;
+    }
+
+    .meta-list {
+      margin-top: 18px;
+    }
+
+    .pagination {
+      margin-top: 10px;
+    }
+
+    .scroll-hint {
+      margin-top: 11px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caption,
+    .pagination-dot {
+      animation: none;
+      transition: none;
+    }
+  }
+`;
+
+function wrap(value: number, length: number) {
+  return ((value % length) + length) % length;
+}
+
+function getCircularOffset(
+  cardIndex: number,
+  position: number,
+  total: number,
+) {
+  let offset = cardIndex - position;
+  offset =
+    ((offset + total / 2) % total + total) % total -
+    total / 2;
+  return offset;
+}
+
+function getViewportWidth() {
+  if (typeof window === "undefined") return 1440;
+  return window.innerWidth;
+}
+
+export default function App() {
+  const total = slides.length;
+
+  const [viewportWidth, setViewportWidth] = useState(getViewportWidth);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const shadowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const positionRef = useRef(0);
+  const targetRef = useRef(0);
+  const activeIndexRef = useRef(0);
+
+  const animationFrameRef = useRef<number | null>(null);
+  const previousFrameRef = useRef(0);
+
+  const wheelDistanceRef = useRef(0);
+  const wheelLockedRef = useRef(false);
+  const wheelEndTimerRef = useRef<number | null>(null);
+
+  const autoplayTimerRef = useRef<number | null>(null);
+  const autoplayStoppedRef = useRef(false);
+
+  const isMobile = viewportWidth <= 700;
+
+  const cardSize = isMobile
+    ? Math.min(300, viewportWidth * 0.7)
+    : Math.min(360, Math.max(220, viewportWidth * 0.2));
+
+  const pitch = cardSize * (isMobile ? 0.72 : 0.68);
+
+  const updateActiveIndex = useCallback(
+    (position: number) => {
+      const nextIndex = wrap(Math.round(position), total);
+      if (nextIndex === activeIndexRef.current) return;
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+    },
+    [total],
+  );
+
+  const paint = useCallback(() => {
+    for (let index = 0; index < total; index += 1) {
+      const card = cardRefs.current[index];
+      const shadow = shadowRefs.current[index];
+      if (!card || !shadow) continue;
+
+      const offset = getCircularOffset(index, positionRef.current, total);
+      const distance = Math.abs(offset);
+      const curvedDistance = Math.pow(distance, 0.68);
+      const direction = offset === 0 ? 0 : Math.sign(offset);
+
+      const x = offset * pitch;
+      const z = -cardSize * 0.4 * curvedDistance;
+      const rotation = Math.min(35 * curvedDistance, 74) * direction;
+      const scale = 1 - Math.min(distance * 0.018, 0.075);
+      const opacity = Math.max(0.54, 1 - distance * 0.075);
+
+      card.style.transform =
+        `translateX(-50%) ` +
+        `translateX(${x}px) ` +
+        `translateZ(${z}px) ` +
+        `rotateY(${-rotation}deg) ` +
+        `scale(${scale})`;
+
+      card.style.opacity = String(opacity);
+      card.style.zIndex = String(5000 - Math.round(distance * 100));
+
+      const shadowScaleX = 1 - Math.min(distance * 0.05, 0.24);
+      const shadowScaleY = 1 - Math.min(distance * 0.04, 0.18);
+      const shadowOpacity = Math.max(0.02, 0.18 - distance * 0.024);
+
+      shadow.style.transform =
+        `translateX(-50%) ` +
+        `translateX(${x}px) ` +
+        `scaleX(${shadowScaleX}) ` +
+        `scaleY(${shadowScaleY})`;
+
+      shadow.style.opacity = String(shadowOpacity);
+      shadow.style.zIndex = String(1000 - Math.round(distance * 100));
+    }
+  }, [cardSize, pitch, total]);
+
+  const stopAutoplay = useCallback(() => {
+    autoplayStoppedRef.current = true;
+    if (autoplayTimerRef.current !== null) {
+      window.clearInterval(autoplayTimerRef.current);
+      autoplayTimerRef.current = null;
+    }
+  }, []);
+
+  const runAnimation = useCallback(() => {
+    if (animationFrameRef.current !== null) return;
+
+    const animate = (time: number) => {
+      if (!previousFrameRef.current) {
+        previousFrameRef.current = time;
+      }
+
+      const delta = Math.min(0.05, (time - previousFrameRef.current) / 1000);
+      previousFrameRef.current = time;
+
+      const remaining = targetRef.current - positionRef.current;
+      const smoothing = 1 - Math.exp(-8.8 * delta);
+
+      const nextPosition = positionRef.current + remaining * smoothing;
+      positionRef.current = nextPosition;
+
+      paint();
+      updateActiveIndex(nextPosition);
+
+      if (Math.abs(remaining) < 0.0005) {
+        positionRef.current = targetRef.current;
+        paint();
+        updateActiveIndex(targetRef.current);
+        animationFrameRef.current = null;
+        previousFrameRef.current = 0;
+        return;
+      }
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
+  }, [paint, updateActiveIndex]);
+
+  const moveOneCard = useCallback(
+    (direction: 1 | -1, manual = false) => {
+      if (manual) {
+        stopAutoplay();
+        targetRef.current = Math.round(positionRef.current) + direction;
+      } else {
+        targetRef.current = Math.round(targetRef.current) + direction;
+      }
+
+      const reducedMotion =
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+
+      if (reducedMotion) {
+        positionRef.current = targetRef.current;
+        paint();
+        updateActiveIndex(targetRef.current);
+        return;
+      }
+
+      runAnimation();
+    },
+    [paint, runAnimation, stopAutoplay, updateActiveIndex],
+  );
+
+  useLayoutEffect(() => {
+    paint();
+  }, [paint]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    paint();
+  }, [paint, viewportWidth]);
+
+  useEffect(() => {
+    const handleWheel = (event: WheelEvent) => {
+      const movement =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY)
+          ? event.deltaX
+          : event.deltaY;
+
+      if (Math.abs(movement) < 0.5) return;
+
+      event.preventDefault();
+      stopAutoplay();
+
+      if (wheelEndTimerRef.current !== null) {
+        window.clearTimeout(wheelEndTimerRef.current);
+      }
+
+      wheelEndTimerRef.current = window.setTimeout(() => {
+        wheelDistanceRef.current = 0;
+        wheelLockedRef.current = false;
+        wheelEndTimerRef.current = null;
+      }, 240);
+
+      if (wheelLockedRef.current) return;
+
+      wheelDistanceRef.current += movement;
+
+      if (Math.abs(wheelDistanceRef.current) < 16) return;
+
+      const direction: 1 | -1 = wheelDistanceRef.current > 0 ? 1 : -1;
+
+      wheelLockedRef.current = true;
+      wheelDistanceRef.current = 0;
+
+      moveOneCard(direction, true);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      if (wheelEndTimerRef.current !== null) {
+        window.clearTimeout(wheelEndTimerRef.current);
+      }
+    };
+  }, [moveOneCard, stopAutoplay]);
+
+  useEffect(() => {
+    autoplayTimerRef.current = window.setInterval(() => {
+      if (autoplayStoppedRef.current || document.hidden) return;
+      moveOneCard(1);
+    }, 2000);
+
+    return () => {
+      if (autoplayTimerRef.current !== null) {
+        window.clearInterval(autoplayTimerRef.current);
+      }
+    };
+  }, [moveOneCard]);
+
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
+  const activeSlide = slides[activeIndex];
+
+  const variables = {
+    "--card-size": `${cardSize}px`,
+  } as CSSProperties;
+
+  return (
+    <>
+      <style>{styles}</style>
+
+      <main className="app">
+        <section
+          className="carousel"
+          style={variables}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Perspective image carousel"
+        >
+          <div ref={stageRef} className="carousel-stage">
+            <div className="carousel-track">
+              <div className="deck-shadow" />
+
+              {slides.map((slide, index) => (
+                <div
+                  key={`${slide.src}-shadow`}
+                  ref={(node) => {
+                    shadowRefs.current[index] = node;
+                  }}
+                  className="card-shadow"
+                  aria-hidden="true"
+                />
+              ))}
+
+              {slides.map((slide, index) => (
+                <article
+                  key={slide.src}
+                  ref={(node) => {
+                    cardRefs.current[index] = node;
+                  }}
+                  className="carousel-card"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${index + 1} of ${total}`}
+                  aria-hidden={index !== activeIndex}
+                >
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    className="carousel-image"
+                    draggable={false}
+                    loading={index < 6 ? "eager" : "lazy"}
+                  />
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="details">
+            <div key={activeIndex} className="caption" aria-live="polite">
+              <h2 className="caption-title">{activeSlide.title}</h2>
+              <p className="caption-subtitle">{activeSlide.subtitle}</p>
+
+              <dl className="meta-list">
+                <div className="meta-row">
+                  <dt className="meta-label">Location</dt>
+                  <dd className="meta-value">{activeSlide.location}</dd>
+                </div>
+
+                <div className="meta-row">
+                  <dt className="meta-label">Collection</dt>
+                  <dd className="meta-value">{activeSlide.collection}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div className="pagination" aria-hidden="true">
+              {slides.map((slide, index) => (
+                <span
+                  key={slide.title}
+                  className={`pagination-dot ${
+                    activeIndex === index ? "active" : ""
+                  }`}
+                />
+              ))}
+            </div>
+
+            <p className="scroll-hint">Scroll to explore</p>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}

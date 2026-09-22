@@ -1,0 +1,265 @@
+/**
+ * CONEXPET — Módulo: Cobertura Nacional, Mapa Satelital & Modal HUD
+ */
+
+/* Pines Satelitales sobre el Mapa */
+.cnx-map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 20;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cnx-map-pin:hover,
+.cnx-map-pin:focus-visible,
+.cnx-map-pin.is-active {
+  transform: translate(-50%, -50%) scale(1.2);
+  z-index: 35;
+}
+
+/* Núcleo del Pin */
+.cnx-pin-core {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #E11D2A;
+  border: 2.5px solid #FFFFFF;
+  box-shadow: 0 0 12px rgba(225, 29, 42, 0.7), 0 2px 6px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.cnx-map-pin:hover .cnx-pin-core,
+.cnx-map-pin.is-active .cnx-pin-core {
+  background: #FFFFFF;
+  border-color: #E11D2A;
+  box-shadow: 0 0 18px rgba(225, 29, 42, 1), 0 0 30px rgba(225, 29, 42, 0.6);
+}
+
+.cnx-pin-center {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.cnx-map-pin:hover .cnx-pin-center,
+.cnx-map-pin.is-active .cnx-pin-center {
+  background: #E11D2A;
+}
+
+/* Anillo Radar Pulsante */
+.cnx-pin-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38px;
+  height: 38px;
+  margin-top: -19px;
+  margin-left: -19px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(225, 29, 42, 0.8);
+  pointer-events: none;
+  animation: cnx-radar-ring 2.4s cubic-bezier(0.1, 0.7, 0.3, 1) infinite;
+}
+
+.cnx-map-pin:nth-child(2) .cnx-pin-ring { animation-delay: 0.4s; }
+.cnx-map-pin:nth-child(3) .cnx-pin-ring { animation-delay: 0.8s; }
+.cnx-map-pin:nth-child(4) .cnx-pin-ring { animation-delay: 1.2s; }
+.cnx-map-pin:nth-child(5) .cnx-pin-ring { animation-delay: 1.6s; }
+.cnx-map-pin:nth-child(6) .cnx-pin-ring { animation-delay: 2.0s; }
+
+@keyframes cnx-radar-ring {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.95;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Etiqueta Flotante Tecnológica del Pin */
+.cnx-pin-label {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(11, 11, 12, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(225, 29, 42, 0.35);
+  color: #FFFFFF;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.cnx-pin-code {
+  color: #E11D2A;
+  font-weight: 700;
+}
+
+.cnx-map-pin:hover .cnx-pin-label,
+.cnx-map-pin.is-active .cnx-pin-label {
+  background: #E11D2A;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: translateX(-50%) translateY(2px);
+}
+
+.cnx-map-pin:hover .cnx-pin-code,
+.cnx-map-pin.is-active .cnx-pin-code {
+  color: #FFFFFF;
+}
+
+/* Selector Rápido de Píldoras */
+.cnx-base-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border: 1px solid #E2E2E6;
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.dark .cnx-base-chip {
+  background: #151517;
+  border-color: #26262A;
+}
+
+.cnx-base-chip:hover {
+  border-color: #E11D2A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 29, 42, 0.12);
+}
+
+.cnx-base-chip.is-active {
+  border-color: #E11D2A;
+  background: rgba(225, 29, 42, 0.05);
+  box-shadow: 0 0 0 1px #E11D2A;
+}
+
+.cnx-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+/* Overlay & Modal HUD */
+.cnx-hud-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.cnx-hud-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cnx-hud-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cnx-hud-modal-container {
+  position: relative;
+  z-index: 10;
+  max-width: 540px;
+  width: 100%;
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cnx-hud-modal-overlay.is-open .cnx-hud-modal-container {
+  transform: translateY(0) scale(1);
+}
+
+.cnx-hud-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #E2E2E6;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(225, 29, 42, 0.15);
+  overflow: hidden;
+}
+
+.dark .cnx-hud-card {
+  background: #151517;
+  border-color: #26262A;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(225, 29, 42, 0.25);
+}
+
+/* Esquinas Decorativas Estilo HUD / Militar */
+.cnx-hud-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #E11D2A;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.cnx-hud-corner-tl { top: 6px; left: 6px; border-top: 2px solid #E11D2A; border-left: 2px solid #E11D2A; }
+.cnx-hud-corner-tr { top: 6px; right: 6px; border-top: 2px solid #E11D2A; border-right: 2px solid #E11D2A; }
+.cnx-hud-corner-bl { bottom: 6px; left: 6px; border-bottom: 2px solid #E11D2A; border-left: 2px solid #E11D2A; }
+.cnx-hud-corner-br { bottom: 6px; right: 6px; border-bottom: 2px solid #E11D2A; border-right: 2px solid #E11D2A; }
+
+/* Ajustes Responsive */
+@media (max-width: 640px) {
+  .cnx-pin-label {
+    font-size: 8.5px;
+    padding: 1.5px 5px;
+  }
+  .cnx-pin-core {
+    width: 14px;
+    height: 14px;
+  }
+  .cnx-hud-card {
+    padding: 20px;
+  }
+}

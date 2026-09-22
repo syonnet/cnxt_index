@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CONEXPET — Hacemos de la logística y transporte de carga pesada un arte</title>
+<meta name="description" content="Conexpet Cía. Ltda. Líderes en transporte de carga pesada, movilización de taladros petroleros (RIGs), fluidos vacuum e izaje de hasta 120 toneladas. Orgullosamente ecuatorianos desde 1986.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<script>
+  // Script Anti-FOUC para sincronización inmediata de tema antes del render
+  if (localStorage.getItem('conexpet-theme') === 'dark' || (!localStorage.getItem('conexpet-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          console: '#0B0B0C',
+          panel: '#151517',
+          line: '#26262A',
+          paper: '#F4F4F6',
+          steel: '#E2E2E6',
+          carbon: '#18181B',
+          graphite: '#606066',
+          red: { DEFAULT: '#C60C30', deep: '#9E0A26', light: '#E82A2A' },
+          green: '#1E8E47'
+        },
+        fontFamily: {
+          display: ['Space Grotesk', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/parallax.css">
+<link rel="stylesheet" href="css/flip-cards.css">
+</head>
+
+<body class="bg-white dark:bg-console text-carbon dark:text-white antialiased transition-colors duration-200">
+
+<a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+<!-- =============== CINTILLO PATRIO INSTITUCIONAL =============== -->
+<div class="bg-red text-white text-xs font-medium py-1.5 px-5 text-center flex items-center justify-center gap-2.5 tracking-wide">
+  <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-white/60 shadow-sm shrink-0">
+  <span class="font-semibold uppercase tracking-wider">Orgullosamente Ecuatorianos</span>
+  <span class="hidden sm:inline opacity-80">·</span>
+  <span class="hidden sm:inline opacity-90">38+ años movilizando la energía, industria y desarrollo de nuestro país</span>
+</div>
+
+<!-- =============== NAVEGACIÓN PRINCIPAL (ANIMATED TOP DOCK) =============== -->
+<header id="site-nav" class="sticky top-0 inset-x-0 z-50 pointer-events-none transition-all duration-300">
+  <div class="max-w-[1440px] mx-auto px-3 sm:px-5 md:px-8 pt-2.5 pb-2 pointer-events-auto">
+    <!-- Cápsula Flotante Moderna / Sable Dock -->
+    <div class="atd-modern__bar flex items-center justify-between mx-auto transition-all duration-200">
+      
+      <!-- Resplandor sutil Aurora de fondo -->
+      <div class="atd-modern__aurora" aria-hidden="true"></div>
+
+      <!-- Logo Corporativo -->
+      <a href="index.html" class="atd-modern__brand flex items-center gap-3 shrink-0 group z-10" aria-label="Inicio Conexpet">
+        <span class="w-3 h-3 rounded-full bg-red pulse-dot"></span>
+        <div class="flex flex-col">
+          <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-carbon dark:text-white group-hover:text-red transition-colors">CONEXPET</span>
+          <span class="text-[9px] uppercase tracking-widest text-graphite dark:text-white/50 -mt-1 font-semibold hidden sm:inline">Logística & Carga Pesada</span>
+        </div>
+      </a>
+
+      <!-- Dock Interactivo Central con Física de Proximidad (Desktop) -->
+      <nav id="atd-dock-track" class="atd-modern__dock hidden lg:flex items-center" aria-label="Navegación principal" data-dock-state="idle" data-dock-max="0.00">
+        <!-- Ítem 1: Conócenos -->
+        <a href="#conocenos" class="atd-modern__item" data-dock-item aria-label="Ir a Conócenos">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M8 1.5l5.5 3.2v6.6L8 14.5l-5.5-3.2V4.7z"/><circle cx="8" cy="8" r="2.2"/></svg>
+          </span>
+          <span class="atd-modern__label">Conócenos</span>
+        </a>
+
+        <!-- Ítem 2: Servicios -->
+        <a href="#servicios" class="atd-modern__item" data-dock-item aria-label="Ir a Servicios">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="9" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="2.5" y="9" width="4.5" height="4.5" rx="1"/><rect x="9" y="9" width="4.5" height="4.5" rx="1"/></svg>
+          </span>
+          <span class="atd-modern__label">Servicios</span>
+        </a>
+
+        <!-- Ítem 3: Flota Especializada -->
+        <a href="flota.html" class="atd-modern__item" data-dock-item aria-label="Ir a Flota Especializada">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><rect x="1.5" y="4" width="8" height="6.5" rx="1"/><path d="M9.5 6.5h2.5l2 2v2h-4.5"/><circle cx="4.5" cy="11.5" r="1.5"/><circle cx="12" cy="11.5" r="1.5"/></svg>
+          </span>
+          <span class="atd-modern__label">Flota</span>
+        </a>
+
+        <!-- Ítem 4: Talleres Propios -->
+        <a href="flota.html#talleres" class="atd-modern__item" data-dock-item aria-label="Ir a Talleres Propios">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M13.5 4.5l-2 2-1.5-1.5 2-2a2.5 2.5 0 00-3.5 0L3 10.5a1.5 1.5 0 000 2.1l.4.4a1.5 1.5 0 002.1 0l5.5-5.5a2.5 2.5 0 000-3.5z"/></svg>
+          </span>
+          <span class="atd-modern__label">Talleres</span>
+        </a>
+
+        <!-- Ítem 5: Cobertura Nacional -->
+        <a href="cobertura.html" class="atd-modern__item" data-dock-item aria-label="Ir a Cobertura Nacional">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2.5"/><path d="M8 2v3M8 11v3M2 8h3M11 8h3"/></svg>
+          </span>
+          <span class="atd-modern__label">Cobertura</span>
+        </a>
+
+        <!-- Ítem 6: Contacto -->
+        <a href="#contacto" class="atd-modern__item" data-dock-item aria-label="Ir a Contacto">
+          <span class="atd-modern__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M2.5 4h11a1 1 0 011 1v6a1 1 0 01-1 1h-11a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M2.5 5l5.5 4 5.5-4"/></svg>
+          </span>
+          <span class="atd-modern__label">Contacto</span>
+        </a>
+      </nav>
+
+      <!-- Acciones de Cabecera (Derecha) -->
+      <div class="atd-modern__actions flex items-center gap-3 z-10">
+        <span class="text-[11px] font-semibold text-graphite dark:text-white/60 hidden xl:flex items-center gap-1.5 bg-paper/80 dark:bg-panel/80 px-3 py-1.5 rounded-full border border-steel/60 dark:border-line">
+          <span class="w-2 h-2 rounded-full bg-green animate-pulse"></span>
+          24/7 en ruta
+        </span>
+        
+        <!-- Conmutador Claro / Oscuro -->
+        <button type="button" class="theme-toggle-btn atd-modern__ghost border border-steel/60 dark:border-line rounded-full p-2 text-carbon dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors" aria-label="Cambiar tema">
+        </button>
+
+        <!-- Botón CTA de Acción Rápida -->
+        <a href="#contacto" class="atd-modern__cta bg-red hover:bg-red-deep text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+          <span>Cotizar</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+
+        <!-- Botón Menú Móvil -->
+        <button id="menu-btn" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="w-9 h-9 flex flex-col justify-center items-center gap-[4.5px] rounded-full border border-steel dark:border-line lg:hidden bg-paper dark:bg-panel">
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-transform"></span>
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-opacity"></span>
+          <span class="block w-4 h-[2px] bg-carbon dark:bg-white transition-transform"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Desplegable Móvil Flotante -->
+    <div id="mobile-menu" class="lg:hidden overflow-hidden max-h-0 opacity-0 mt-2 rounded-2xl border border-steel/70 dark:border-line bg-white/95 dark:bg-console/95 backdrop-blur-xl shadow-2xl transition-all duration-300">
+      <nav class="flex flex-col px-5 py-5 gap-3 font-medium text-sm text-carbon dark:text-white/90">
+        <a href="index.html#conocenos" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Conócenos
+        </a>
+        <a href="#servicios" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Servicios
+        </a>
+        <a href="flota.html" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Flota Especializada
+        </a>
+        <a href="flota.html#talleres" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Talleres Propios
+        </a>
+        <a href="cobertura.html" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Cobertura Nacional
+        </a>
+        <a href="#contacto" class="hover:text-red transition-colors py-1.5 flex items-center gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Contacto
+        </a>
+        <a href="#contacto" class="inline-flex justify-center bg-red text-white font-semibold text-sm px-5 py-3 rounded-xl mt-2 shadow-md">
+          Solicitar Cotización Inmediata
+        </a>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Barra de Progreso de Scroll Tecnológica con Cabezal de Tráiler en la Punta -->
+  <div id="scroll-progress-track" class="absolute bottom-0 left-0 w-full overflow-visible z-50 pointer-events-none">
+    <div id="scroll-progress-bar" class="relative h-full will-change-[width]" style="width: 0%;">
+      <!-- Cabezal de Tráiler (Tractocamión Heavy-Duty) viajando en la punta -->
+      <div id="scroll-truck-icon" class="absolute right-0 top-1/2 -mt-[7px] pointer-events-none select-none">
+        <svg class="w-10 h-7 overflow-visible" viewBox="0 0 42 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="headlightBeam" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" stop-color="#FDE047" stop-opacity="0.95"/>
+              <stop offset="40%" stop-color="#F59E0B" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="cabSkin" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E82A2A"/>
+              <stop offset="50%" stop-color="#C60C30"/>
+              <stop offset="100%" stop-color="#8B0820"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Haz de luz del faro del cabezal hacia adelante -->
+          <polygon points="36,14.5 48,11 48,18" fill="url(#headlightBeam)" class="headlight-beam" />
+
+          <!-- Chimenea de escape vertical cromada tras la cabina -->
+          <rect x="14" y="1" width="2" height="12" rx="0.5" fill="#E2E2E6"/>
+          <rect x="13.5" y="0.5" width="3" height="1.2" rx="0.4" fill="#9CA3AF"/>
+
+          <!-- Chasis base y Quinta Rueda para enganche de carga extrapesada -->
+          <rect x="3" y="14" width="13" height="3" rx="0.5" fill="#18181B"/>
+          <!-- Quinta Rueda (enganche) -->
+          <path d="M5.5 13H11.5L10.5 14H6.5L5.5 13Z" fill="#71717A"/>
+          <line x1="7" y1="12.5" x2="10" y2="12.5" stroke="#E2E2E6" stroke-width="0.8"/>
+
+          <!-- Tanque cilíndrico de combustible de aluminio -->
+          <rect x="8" y="13.5" width="6.5" height="3" rx="1.5" fill="#94A3B8" stroke="#475569" stroke-width="0.5"/>
+
+          <!-- Cabina del Cabezal: Dormitorio y bloque motor -->
+          <path d="M13 5H19V14.5H13V5Z" fill="url(#cabSkin)"/>
+          <path d="M19 5H24.5C25.4 5 26.2 5.5 26.7 6.3L29.3 10.5C29.7 11.1 30.4 11.5 31.2 11.5H35C35.8 11.5 36.5 12.2 36.5 13V15.5C36.5 16.3 35.8 17 35 17H19V5Z" fill="url(#cabSkin)"/>
+
+          <!-- Visera parasol en techo de la cabina -->
+          <path d="M23 4.5H28L29 6H24L23 4.5Z" fill="#18181B"/>
+
+          <!-- Parabrisas y ventanilla lateral -->
+          <path d="M20.5 7H24.8C25.4 7 26 7.4 26.3 8L28.2 10.8H20.5V7Z" fill="#E0F2FE" opacity="0.95"/>
+          <line x1="24.2" y1="7" x2="24.2" y2="10.8" stroke="#9E0A26" stroke-width="0.7"/>
+
+          <!-- Parrilla frontal cromada del cabezal -->
+          <path d="M35.5 12H36.5V16.5H35.5V12Z" fill="#E2E2E6"/>
+          <line x1="33.8" y1="13.5" x2="36" y2="13.5" stroke="#FFFFFF" stroke-width="0.6"/>
+          <line x1="33.8" y1="15" x2="36" y2="15" stroke="#FFFFFF" stroke-width="0.6"/>
+
+          <!-- Faro delantero LED -->
+          <circle cx="36" cy="14.5" r="1.3" fill="#FDE047"/>
+          <circle cx="36" cy="14.5" r="0.6" fill="#FFFFFF"/>
+
+          <!-- Tren de ruedas del cabezal (Doble eje trasero tandem + Eje direccional delantero) -->
+          <!-- Rueda trasera 1 -->
+          <circle cx="6" cy="17.5" r="3.2" fill="#18181B" stroke="#D1D5DB" stroke-width="0.8"/>
+          <circle cx="6" cy="17.5" r="1.4" fill="#4B5563"/>
+          <circle cx="6" cy="17.5" r="0.5" fill="#C60C30"/>
+          <!-- Rueda trasera 2 -->
+          <circle cx="13" cy="17.5" r="3.2" fill="#18181B" stroke="#D1D5DB" stroke-width="0.8"/>
+          <circle cx="13" cy="17.5" r="1.4" fill="#4B5563"/>
+          <circle cx="13" cy="17.5" r="0.5" fill="#C60C30"/>
+          <!-- Rueda delantera tractora -->
+          <circle cx="30" cy="17.5" r="3.2" fill="#18181B" stroke="#D1D5DB" stroke-width="0.8"/>
+          <circle cx="30" cy="17.5" r="1.4" fill="#4B5563"/>
+          <circle cx="30" cy="17.5" r="0.5" fill="#C60C30"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- =============== HERO ÉPICO CINEMATOGRÁFICO & INTERACTIVO 3D =============== -->
+<section id="top" class="relative text-carbon dark:text-white pt-16 md:pt-24 pb-14 md:pb-20 overflow-hidden border-b border-steel dark:border-line transition-colors duration-200 min-h-[94vh] flex flex-col justify-between">
+  
+  <!-- Video de Fondo Cinematográfico (Punto focal nítido sin incandescencia) -->
+  <div class="hero-video-container absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <video id="hero-bg-video" autoplay muted loop playsinline poster="images/truck-heavy.jpg" class="hero-video-cinematic w-full h-full object-cover opacity-90 transition-opacity duration-700">
+      <source src="assets/hero-video.mkv" type="video/mp4">
+    </video>
+    
+    <!-- Filtro Cinematográfico Anti-Incandescencia (Elimina el deslumbramiento blanco lechoso) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/35 to-black/10 dark:from-[#0B0B0C]/90 dark:via-[#0B0B0C]/40 dark:to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/30 dark:from-[#0B0B0C]/85 dark:via-transparent dark:to-[#0B0B0C]/60 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-black/15 pointer-events-none"></div>
+  </div>
+
+  <!-- Canvas Interactivo 3D: Red Satelital de Nodos y Partículas con Paralaje -->
+  <canvas id="hero-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-10"></canvas>
+
+  <!-- Núcleo Hero Distribuido a la Izquierda (Texto directo y limpio sin tarjeta de cristal) -->
+  <div class="relative z-20 max-w-[1440px] w-full mx-auto px-5 md:px-8 py-8 flex flex-col justify-center flex-1 my-auto">
+    
+    <!-- Tarjeta en modo cristal comentada según instrucción (dejamos solo el texto limpio) -->
+    <!-- <div class="hero-glass-capsule rounded-3xl p-6 sm:p-10 md:p-12 w-full max-w-2xl text-left transition-all duration-300"> -->
+    <div class="w-full max-w-3xl text-left">
+      
+      <!-- Badge Sutil con Bandera Ecuador en Cristal Traslúcido -->
+      <div class="rise inline-flex items-center gap-2.5 rounded-full py-1.5 px-4 mb-6 border border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-sm" style="animation-delay:.05s">
+        <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-red/40 shrink-0">
+        <span class="text-xs font-semibold tracking-wide text-white/90">
+          Orgullosamente Ecuatorianos · 38+ Años Liderando el País
+        </span>
+      </div>
+
+      <!-- Gran Titular Limpio y Poderoso con Contraste Nítido -->
+      <h1 class="rise font-display font-black text-3xl sm:text-5xl lg:text-[3.9rem] leading-[1.08] sm:leading-[1.02] text-white tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]" style="animation-delay:.15s">
+        Hacemos de la Logística y Carga Pesada <span class="text-red relative inline-block font-extrabold text-glow-red">UN ARTE.</span>
+      </h1>
+
+      <!-- Bajada Descriptiva Fluida y Comercial -->
+      <p class="rise mt-5 text-white/90 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]" style="animation-delay:.25s">
+        Movilización integral de taladros petroleros (RIGs), fluidos vacuum y maniobras de izaje de hasta 120 toneladas con máxima precisión y seguridad operativa en todo el Ecuador.
+      </p>
+
+      <!-- Botones Principales de Acción (Botón Pill + Botón Play 'Conócenos') -->
+      <div class="rise mt-8 sm:mt-9 flex flex-wrap items-center gap-5 sm:gap-6" style="animation-delay:.35s">
+        <!-- Botón Principal "Get A Free Quote" en Rojo Conexpet -->
+        <a href="#contacto" class="inline-flex items-center justify-center bg-red hover:bg-red-deep text-white font-semibold text-base sm:text-lg px-8 sm:px-9 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-red/40 hover:-translate-y-0.5">
+          Cotizar mi Carga
+        </a>
+
+        <!-- Botón de Play Circular con el texto 'Conócenos' que abre el Modal de Video -->
+        <button type="button" id="open-video-modal" class="group inline-flex items-center gap-3.5 text-white hover:text-red transition-all cursor-pointer bg-transparent border-0 p-0 focus:outline-none" aria-label="Conócenos en video de operaciones">
+          <span class="hero-play-btn w-12 h-12 rounded-full bg-white/20 hover:bg-red border border-white/30 flex items-center justify-center text-white transition-all shadow-md group-hover:scale-110">
+            <svg class="w-4 h-4 ml-0.5 fill-current" viewBox="0 0 24 24">
+              <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l11.45-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z"/>
+            </svg>
+          </span>
+          <span class="text-base sm:text-lg font-semibold tracking-wide text-white group-hover:text-red group-hover:translate-x-0.5 transition-all drop-shadow-sm">
+            Conócenos
+          </span>
+        </button>
+      </div>
+
+      <!-- Píldoras de Confianza Flotantes y Equilibradas -->
+      <div class="rise flex flex-wrap items-center gap-2.5 sm:gap-3 mt-8 pt-6 border-t border-white/15 text-xs sm:text-sm font-bold text-white/95" style="animation-delay:.45s">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/25 dark:bg-white/5 border border-white/20 shadow-sm backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-red"></span> 6 Bases Propias
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/25 dark:bg-white/5 border border-white/20 shadow-sm backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-red"></span> 120t Capacidad Izaje
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/25 dark:bg-white/5 border border-white/20 shadow-sm backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-green"></span> 99.4% Puntualidad
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/25 dark:bg-white/5 border border-white/20 shadow-sm backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-red"></span> BASC &amp; ISO Certificados
+        </span>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+
+  <!-- Indicador Cinematográfico de Scrolltelling en la Base -->
+  <div class="relative z-20 max-w-[1440px] mx-auto px-5 md:px-8 pt-4 pb-2 flex justify-center">
+    <a href="#cordillera-parallax" class="scroll-indicator flex flex-col items-center gap-2 text-[11px] font-extrabold uppercase tracking-widest text-white/80 hover:text-red transition-colors">
+      <span>Desliza para explorar</span>
+      <div class="w-5 h-9 rounded-full border-2 border-white/40 flex justify-center pt-1.5">
+        <span class="w-1.5 h-2.5 rounded-full bg-red animate-pulse"></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- =============== SECCIÓN PARALLAX MULTICAPA: CORDILLERA & PUERTA A LA AMAZONÍA =============== -->
+<section id="cordillera-parallax" class="cnx-parallax-section relative w-full overflow-hidden bg-[#0a1118]" aria-label="Rutas del Ecuador Parallax">
+  <div class="cnx-parallax-wrapper relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    
+    <!-- Capa 1: Fondo Amazónico Ecuatoriano en Alta Definición -->
+    <img src="images/parallax/amazon_bg.jpg" id="cnx-p-bg" alt="Amanecer en la Amazonía ecuatoriana, dosel selvático y cordillera andina de fondo" class="cnx-parallax-layer cnx-p-bg" loading="lazy">
+    
+    <!-- Capa 2: Logo Oficial a Color y Titular Central (Profundo, detrás de montañas) -->
+    <div id="cnx-p-text" class="cnx-parallax-title-wrap text-center select-none">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[11px] font-bold tracking-[0.28em] uppercase text-red mb-4 shadow-lg">
+        <span class="w-1.5 h-1.5 rounded-full bg-red animate-pulse"></span>
+        Ecuador · Puerta de Entrada a la Amazonía
+      </div>
+      <div class="my-3 flex justify-center">
+        <div class="bg-white/95 dark:bg-[#151517]/95 backdrop-blur-md px-7 sm:px-10 py-4 sm:py-5 rounded-3xl border border-white/60 dark:border-white/10 shadow-2xl inline-block">
+          <img src="assets/logos/conexpet-logo-color.png" alt="CONEXPET Logística y Carga Pesada" class="h-14 sm:h-20 md:h-22 max-w-[80vw] object-contain">
+        </div>
+      </div>
+      <p class="cnx-p-subtitle text-xs sm:text-base font-semibold tracking-[0.25em] uppercase text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)] mt-4">
+        De los Andes a la Amazonía · 38+ Años Conectando el País
+      </p>
+    </div>
+
+    <!-- Capa 3: Nubes Intermedias Deslizantes -->
+    <img src="images/parallax/clouds_1.png" id="cnx-p-clouds1" alt="Nubes flotantes superiores" class="cnx-parallax-layer cnx-p-clouds1" loading="lazy">
+    <img src="images/parallax/clouds_2.png" id="cnx-p-clouds2" alt="Nubes flotantes inferiores" class="cnx-parallax-layer cnx-p-clouds2" loading="lazy">
+
+    <!-- Capa 4: Flancos de la Cordillera Amazónica que se abren al hacer scroll -->
+    <img src="images/parallax/mountain_left.png" id="cnx-p-mtn-left" alt="Flanco izquierdo de la cordillera amazónica" class="cnx-parallax-layer cnx-p-mtn-left" loading="lazy">
+    <img src="images/parallax/mountain_right.png" id="cnx-p-mtn-right" alt="Flanco derecho de la cordillera amazónica" class="cnx-parallax-layer cnx-p-mtn-right" loading="lazy">
+
+    <!-- Capa 5: Degradado Inferior Suave hacia la Sección Conócenos -->
+    <div class="cnx-parallax-fade absolute bottom-0 inset-x-0 h-[200px] pointer-events-none z-30"></div>
+  </div>
+</section>
+
+<!-- =============== CONÓCENOS (ESTRUCTURA ASIMÉTRICA & COLLAGE) =============== -->
+<section id="conocenos" class="bg-white dark:bg-[#111113] border-b border-steel dark:border-line py-20 md:py-28 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    
+    <!-- Bloque Superior: Split Layout con Collage Asimétrico y KPI Flotante -->
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      <!-- Columna Izquierda: Contenido y 3 Puntos Clave -->
+      <div class="lg:col-span-6">
+        
+        <!-- Kicker de referencia -->
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red mb-4">
+          <span class="opacity-70">←</span>
+          <span>SOBRE NOSOTROS · CONÓCENOS</span>
+          <span class="opacity-70">→</span>
+        </div>
+
+        <h2 class="font-display uppercase font-bold text-3xl sm:text-4xl lg:text-[2.9rem] leading-[1.08] text-carbon dark:text-white mb-6">
+          Soluciones Logísticas Confiables Para Mover Al <span class="text-red">Ecuador</span>
+        </h2>
+
+        <p class="text-graphite dark:text-white/70 text-base md:text-lg font-normal leading-relaxed mb-8">
+          Desde movilizaciones locales hasta el transporte de taladros extrapesados a nivel nacional, brindamos servicios de logística integral que aseguran que tus equipos y fluidos lleguen al lugar correcto, en el tiempo exacto.
+        </p>
+
+        <!-- 3 Puntos con Íconos Circulares (Fiel al Diseño de Referencia) -->
+        <div class="space-y-6 mb-10">
+          
+          <!-- Punto 1 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-red/10 dark:bg-red/20 text-red flex items-center justify-center shrink-0 shadow-sm">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-base md:text-lg text-carbon dark:text-white">Red Nacional Estratégica</h3>
+              <p class="text-sm text-graphite dark:text-white/70 mt-1 leading-relaxed">
+                6 bases operativas cubriendo los principales ejes petroleros, industriales y portuarios del Ecuador.
+              </p>
+            </div>
+          </div>
+
+          <!-- Punto 2 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-red/10 dark:bg-red/20 text-red flex items-center justify-center shrink-0 shadow-sm">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-base md:text-lg text-carbon dark:text-white">Rastreo Satelital en Tiempo Real</h3>
+              <p class="text-sm text-graphite dark:text-white/70 mt-1 leading-relaxed">
+                Monitoreo GPS 24/7 de tu carga en todo momento y lugar con geocercas y comunicación continua en ruta.
+              </p>
+            </div>
+          </div>
+
+          <!-- Punto 3 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-red/10 dark:bg-red/20 text-red flex items-center justify-center shrink-0 shadow-sm">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-base md:text-lg text-carbon dark:text-white">Soporte Técnico y Flota Propia 24/7</h3>
+              <p class="text-sm text-graphite dark:text-white/70 mt-1 leading-relaxed">
+                Talleres mecánicos propios y personal certificado siempre listo para garantizar cero paradas operativas.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Botón de Acción Principal -->
+        <div>
+          <a href="#contacto" class="inline-flex items-center gap-3 bg-red hover:bg-red-deep text-white font-semibold text-sm px-8 py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+            <span>Conoce más sobre nosotros</span>
+            <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-xs">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Collage Fotográfico Asimétrico con Tarjeta Flotante -->
+      <div class="lg:col-span-6 relative">
+        <div class="conocenos-collage-container relative w-full max-w-[540px] mx-auto h-[480px] sm:h-[520px]">
+          
+          <!-- Foto 1: Vertical Superior Derecha (Grúas e Izaje en Pozo) -->
+          <div class="conocenos-collage-item top-0 right-0 w-[56%] h-[260px] sm:h-[295px] rounded-3xl border border-steel dark:border-line shadow-lg z-[1]" data-parallax-speed="0.08">
+            <img src="../cnx_index/images/conocenos/c_1.jpg" alt="Grúa industrial e izaje pesado en campo" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            
+          </div>
+
+          <!-- Foto 2: Horizontal Inferior Izquierda (Cabezal Pesado en Ruta) -->
+          <div class="conocenos-collage-item top-[140px] sm:top-[160px] left-0 w-[62%] h-[210px] sm:h-[240px] rounded-3xl border border-steel dark:border-line shadow-xl z-10" data-parallax-speed="-0.07">
+            <img src="../cnx_index/images/conocenos/c_2.jpg" alt="Cabezal pesado Conexpet en carretera" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          
+          </div>
+
+          <!-- Foto 3: Tarjeta Media Inferior Derecha (Convoy y Tanqueros) -->
+          <div class="conocenos-collage-item bottom-0 right-1 sm:right-2 w-[50%] h-[175px] sm:h-[195px] rounded-3xl border border-steel dark:border-line shadow-lg z-[5]" data-parallax-speed="0.05">
+            <img src="../cnx_index/images/conocenos/c_3.jpg" alt="Flota de transporte y fluidos en ruta" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          
+          </div>
+
+          <!-- Tarjeta Flotante de Métrica (KPI Flotante con Wrapper Parallax Dedicado) -->
+          <div class="conocenos-kpi-wrapper" data-parallax-speed="-0.12">
+            <div class="conocenos-kpi-badge bg-white/95 dark:bg-panel/95 border-2 border-red/20 dark:border-red/40 rounded-2xl p-5 sm:p-6 shadow-2xl max-w-[220px]">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-green"></span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-graphite dark:text-white/60">Garantía Conexpet</span>
+              </div>
+              <p class="font-display text-4xl sm:text-5xl font-extrabold text-red leading-none">99.4%</p>
+              <p class="text-xs sm:text-sm font-bold text-carbon dark:text-white mt-1.5 leading-snug">Índice de Entregas a Tiempo</p>
+              <p class="text-[11px] text-graphite dark:text-white/60 mt-0.5">En el tiempo pactado</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bloque Inferior: Legado del Fundador y Valores Institucionales -->
+    <div class="mt-20 pt-16 border-t border-steel dark:border-line grid lg:grid-cols-12 gap-10 items-center">
+      
+      <!-- Cita del Fundador -->
+      <div class="lg:col-span-5">
+        <div class="conocenos-quote-card bg-paper dark:bg-panel p-6 sm:p-8 rounded-r-2xl shadow-sm">
+          <p class="text-xs font-bold uppercase tracking-widest text-red mb-2">Fundada en 1986</p>
+          <p class="italic text-base sm:text-lg text-carbon dark:text-white font-medium leading-relaxed">
+            "Contribuir al desarrollo socioeconómico del Ecuador y mejorar la calidad de vida de todos sus trabajadores."
+          </p>
+          <p class="text-xs font-bold uppercase tracking-wider text-carbon dark:text-white/80 mt-4">
+            — Bolívar Barrionuevo, Fundador de Conexpet
+          </p>
+        </div>
+      </div>
+
+      <!-- Valores Institucionales en Cuadrícula -->
+      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+        <div class="conocenos-val-card p-5 rounded-xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <h4 class="font-display font-bold text-base text-carbon dark:text-white mb-1">Integridad</h4>
+          <p class="text-xs text-graphite dark:text-white/70">Hacemos lo correcto en cada kilómetro, incluso cuando nadie nos ve.</p>
+        </div>
+
+        <div class="conocenos-val-card p-5 rounded-xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <h4 class="font-display font-bold text-base text-carbon dark:text-white mb-1">Innovación</h4>
+          <p class="text-xs text-graphite dark:text-white/70">Tecnología satelital y telemetría de ruta para liderar el sector.</p>
+        </div>
+
+        <div class="conocenos-val-card p-5 rounded-xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <h4 class="font-display font-bold text-base text-carbon dark:text-white mb-1">Sostenibilidad</h4>
+          <p class="text-xs text-graphite dark:text-white/70">Respeto ambiental y cumplimiento estricto de normas ISO.</p>
+        </div>
+
+        <div class="conocenos-val-card p-5 rounded-xl border border-steel dark:border-line bg-paper dark:bg-panel">
+          <h4 class="font-display font-bold text-base text-carbon dark:text-white mb-1">Trabajo en Equipo</h4>
+          <p class="text-xs text-graphite dark:text-white/70">Conductores, mecánicos y coordinadores unidos por el Ecuador.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =============== MÉTRICAS — REGISTRO OPERATIVO =============== -->
+<section id="metricas" class="bg-white dark:bg-[#111113] border-b border-steel dark:border-line py-16 md:py-20 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="flex items-center gap-3 mb-10">
+      <span class="w-2 h-6 bg-red rounded-sm"></span>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-red">Respaldo y Solidez Operativa</p>
+        <h2 class="font-display text-2xl md:text-3xl font-bold uppercase text-carbon dark:text-white">Cifras que demuestran nuestra capacidad</h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <div class="p-6 rounded-2xl bg-paper dark:bg-panel border border-steel dark:border-line">
+        <p class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-carbon dark:text-white" data-count-to="6778" data-final="+6.778">+6.778</p>
+        <p class="mt-2 text-sm md:text-base font-semibold text-carbon dark:text-white/90">Órdenes de servicio cumplidas</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1">Con los más altos índices de satisfacción.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-paper dark:bg-panel border border-steel dark:border-line">
+        <p class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-carbon dark:text-white" data-count-to="3167905" data-final="3'167.905">3'167.905</p>
+        <p class="mt-2 text-sm md:text-base font-semibold text-carbon dark:text-white/90">Kilómetros recorridos</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1">Conectando pozos, refinerías y puertos.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-paper dark:bg-panel border border-steel dark:border-line">
+        <p class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-carbon dark:text-white" data-count-to="20000" data-final="+20.000">+20.000</p>
+        <p class="mt-2 text-sm md:text-base font-semibold text-carbon dark:text-white/90">Cargas movilizadas con éxito</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1">Seguridad total de principio a fin.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-paper dark:bg-panel border border-steel dark:border-line">
+        <p class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-red" data-count-to="300" data-final="+300">+300</p>
+        <p class="mt-2 text-sm md:text-base font-semibold text-carbon dark:text-white/90">Movilizaciones de RIG's</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1">Taladros de perforación y reacondicionamiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SERVICIOS PRINCIPALES (TARJETAS 3D FLIP CON VOLTEO EN HOVER) =============== -->
+<section id="servicios" class="bg-paper dark:bg-console border-b border-steel dark:border-line py-20 md:py-28 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    
+    <!-- Encabezado de la Sección -->
+    <div class="flex items-end justify-between gap-6 mb-14 flex-wrap">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-red mb-2">Nuestros Servicios Especializados</p>
+        <h2 class="font-display uppercase font-bold text-3xl md:text-5xl leading-tight text-carbon dark:text-white">
+          Soluciones integrales para la industria en el Ecuador
+        </h2>
+      </div>
+      <p class="measure text-graphite dark:text-white/70 font-medium text-base">
+        Flota propia homologada, talleres mecánicos in-house y personal técnico certificado. Pasa el cursor sobre cada servicio para descubrir su ficha técnica operativa.
+      </p>
+    </div>
+
+    <!-- Cuadrícula de 3 Tarjetas 3D Flip -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      
+      <!-- ==================== TARJETA 1: VACUUM & FLUIDOS ==================== -->
+      <div class="service-flip-card group" tabindex="0" role="region" aria-label="Tarjeta 3D Vacuum y Fluidos">
+        <div class="service-flip-inner shadow-xl hover:shadow-2xl transition-all">
+          
+          <!-- Cara Frontal (Imagen Completa + Badges + Título) -->
+          <div class="service-card-front flip-corner-frame bg-carbon border border-white/10 flex flex-col justify-between p-7 sm:p-8 text-white">
+            <img src="images/vacuum-tanker.jpg" alt="Camión tanquero vacuum Conexpet" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/25 pointer-events-none"></div>
+
+            <!-- Fila Superior de Badges -->
+            <div class="relative z-10 flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-extrabold uppercase tracking-widest text-white border border-white/20">
+                Fluidos Petroleros
+              </span>
+              <span class="px-3.5 py-1.5 rounded-full bg-red text-[11px] font-extrabold tracking-wider text-white shadow-md">
+                120 - 200 bbl
+              </span>
+            </div>
+
+            <!-- Pie Frontal: Identificador y Cue de Volteo -->
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-red/20 border border-red/40 backdrop-blur-md text-red flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                </svg>
+              </div>
+
+              <h3 class="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mb-1">
+                VACUUM &amp; FLUIDOS
+              </h3>
+              <p class="text-xs sm:text-sm font-semibold text-white/80 uppercase tracking-wider mb-5">
+                Transporte de Crudo y Manejo Ambiental
+              </p>
+
+              <!-- Indicador Interactivo de Giro -->
+              <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/15 hover:bg-red backdrop-blur-md border border-white/20 text-xs font-bold text-white transition-all">
+                <span>Girar para ver ficha técnica</span>
+                <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 duration-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cara Posterior (Ficha Técnica + Métricas + Botón de Cotización) -->
+          <div class="service-card-back flip-corner-frame bg-[#0E0E12] dark:bg-[#121216] border-2 border-red/40 p-7 sm:p-8 flex flex-col justify-between text-white shadow-2xl">
+            <div>
+              <!-- Cabecera Trasera -->
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                <div>
+                  <span class="text-[10px] font-extrabold uppercase tracking-widest text-red block">Ficha Técnica Operativa</span>
+                  <h4 class="font-display font-bold text-xl text-white uppercase">VACUUM &amp; FLUIDOS</h4>
+                </div>
+                <div class="w-9 h-9 rounded-xl bg-red/20 text-red flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 text-red" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Descripción Comercial -->
+              <p class="text-white/75 text-xs sm:text-sm leading-relaxed mb-5">
+                Movilización de crudo, aguas de formación y agua fresca con tanqueros de hasta 10.000 galones y bañeras de 32 m³. Garantizamos máxima hermeticidad, bombeo de alto caudal y cero derrames.
+              </p>
+
+              <!-- Métricas Técnicas en Chips -->
+              <div class="grid grid-cols-2 gap-2.5 mb-5 text-[11px] font-bold">
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Capacidad</span>
+                  <span class="text-red font-bold text-sm">120 - 200 bbl</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Volumen</span>
+                  <span class="text-white font-bold text-sm">10.000 gal</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Bañeras</span>
+                  <span class="text-white font-bold text-sm">32 m³</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Control</span>
+                  <span class="text-green font-bold text-sm">GPS + Nivel</span>
+                </div>
+              </div>
+
+              <!-- Bullets de Seguridad Verificados -->
+              <ul class="space-y-2 text-xs text-white/80 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Bombas de alto vacío para cargue rápido en pozo</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Conductores con acreditación HSE y hojas MSDS</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Protocolo ambiental BASC e ISO cero derrames</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Botón de Cotización Directo -->
+            <div class="pt-4 border-t border-white/10 mt-4">
+              <a href="#contacto" class="w-full inline-flex items-center justify-center gap-2 bg-red hover:bg-red-deep text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-all shadow-lg hover:shadow-red/40">
+                <span>Cotizar transporte de fluidos</span>
+                <span>→</span>
+              </a>
+              <span class="block text-center text-[10px] text-white/50 mt-2">Pasa el cursor o toca para girar</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TARJETA 2: TRANSPORTE PESADO ==================== -->
+      <div class="service-flip-card group" tabindex="0" role="region" aria-label="Tarjeta 3D Transporte Pesado">
+        <div class="service-flip-inner shadow-xl hover:shadow-2xl transition-all">
+          
+          <!-- Cara Frontal (Imagen Completa + Badges + Título) -->
+          <div class="service-card-front flip-corner-frame bg-carbon border border-white/10 flex flex-col justify-between p-7 sm:p-8 text-white">
+            <img src="images/truck-heavy.jpg" alt="Cabezal de transporte pesado Conexpet" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/25 pointer-events-none"></div>
+
+            <!-- Fila Superior de Badges -->
+            <div class="relative z-10 flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-extrabold uppercase tracking-widest text-white border border-white/20">
+                Carga Extrapesada
+              </span>
+              <span class="px-3.5 py-1.5 rounded-full bg-red text-[11px] font-extrabold tracking-wider text-white shadow-md">
+                RIGs &amp; Taladros
+              </span>
+            </div>
+
+            <!-- Pie Frontal: Identificador y Cue de Volteo -->
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-red/20 border border-red/40 backdrop-blur-md text-red flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 18h8m-8 0a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0zm-10-4h14a1 1 0 001-1V9a1 1 0 00-1-1h-4l-2-3H5a1 1 0 00-1 1v7a1 1 0 001 1z"/>
+                </svg>
+              </div>
+
+              <h3 class="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mb-1">
+                TRANSPORTE PESADO
+              </h3>
+              <p class="text-xs sm:text-sm font-semibold text-white/80 uppercase tracking-wider mb-5">
+                Taladros, Maquinaria y Contenedores
+              </p>
+
+              <!-- Indicador Interactivo de Giro -->
+              <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/15 hover:bg-red backdrop-blur-md border border-white/20 text-xs font-bold text-white transition-all">
+                <span>Girar para ver ficha técnica</span>
+                <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 duration-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cara Posterior (Ficha Técnica + Métricas + Botón de Cotización) -->
+          <div class="service-card-back flip-corner-frame bg-[#0E0E12] dark:bg-[#121216] border-2 border-red/40 p-7 sm:p-8 flex flex-col justify-between text-white shadow-2xl">
+            <div>
+              <!-- Cabecera Trasera -->
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                <div>
+                  <span class="text-[10px] font-extrabold uppercase tracking-widest text-red block">Ficha Técnica Operativa</span>
+                  <h4 class="font-display font-bold text-xl text-white uppercase">TRANSPORTE PESADO</h4>
+                </div>
+                <div class="w-9 h-9 rounded-xl bg-red/20 text-red flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 text-red" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Descripción Comercial -->
+              <p class="text-white/75 text-xs sm:text-sm leading-relaxed mb-5">
+                Especialistas en mudanzas de taladros petroleros (Workover y Drilling), maquinaria pesada, tuberías y contenedores secos o refrigerados de 20 y 40 pies con camas bajas de hasta 4 ejes.
+              </p>
+
+              <!-- Métricas Técnicas en Chips -->
+              <div class="grid grid-cols-2 gap-2.5 mb-5 text-[11px] font-bold">
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Taladros</span>
+                  <span class="text-red font-bold text-sm">RIGs 100%</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Plataformas</span>
+                  <span class="text-white font-bold text-sm">2, 3 y 4 Ejes</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Contenedores</span>
+                  <span class="text-white font-bold text-sm">20 y 40 ft</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Brazos Grúa</span>
+                  <span class="text-green font-bold text-sm">10 a 15 t</span>
+                </div>
+              </div>
+
+              <!-- Bullets de Seguridad Verificados -->
+              <ul class="space-y-2 text-xs text-white/80 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Winches petroleros con pluma de doble carreto</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Servicio de escolta vial y gestión de permisos MTOP</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Bases propias en Quito, Guayaquil y Lago Agrio</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Botón de Cotización Directo -->
+            <div class="pt-4 border-t border-white/10 mt-4">
+              <a href="#contacto" class="w-full inline-flex items-center justify-center gap-2 bg-red hover:bg-red-deep text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-all shadow-lg hover:shadow-red/40">
+                <span>Cotizar carga pesada o RIGs</span>
+                <span>→</span>
+              </a>
+              <span class="block text-center text-[10px] text-white/50 mt-2">Pasa el cursor o toca para girar</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TARJETA 3: IZAJE DE PRECISIÓN ==================== -->
+      <div class="service-flip-card group" tabindex="0" role="region" aria-label="Tarjeta 3D Izaje de Precisión">
+        <div class="service-flip-inner shadow-xl hover:shadow-2xl transition-all">
+          
+          <!-- Cara Frontal (Imagen Completa + Badges + Título) -->
+          <div class="service-card-front flip-corner-frame bg-carbon border border-white/10 flex flex-col justify-between p-7 sm:p-8 text-white">
+            <img src="images/oilfield-crane.jpg" alt="Grúa industrial de alto tonelaje Conexpet" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/25 pointer-events-none"></div>
+
+            <!-- Fila Superior de Badges -->
+            <div class="relative z-10 flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-extrabold uppercase tracking-widest text-white border border-white/20">
+                Alto Tonelaje
+              </span>
+              <span class="px-3.5 py-1.5 rounded-full bg-red text-[11px] font-extrabold tracking-wider text-white shadow-md">
+                Hasta 120 Toneladas
+              </span>
+            </div>
+
+            <!-- Pie Frontal: Identificador y Cue de Volteo -->
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-red/20 border border-red/40 backdrop-blur-md text-red flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+              </div>
+
+              <h3 class="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mb-1">
+                IZAJE DE PRECISIÓN
+              </h3>
+              <p class="text-xs sm:text-sm font-semibold text-white/80 uppercase tracking-wider mb-5">
+                Grúas Industriales y Maniobras Críticas
+              </p>
+
+              <!-- Indicador Interactivo de Giro -->
+              <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/15 hover:bg-red backdrop-blur-md border border-white/20 text-xs font-bold text-white transition-all">
+                <span>Girar para ver ficha técnica</span>
+                <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 duration-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cara Posterior (Ficha Técnica + Métricas + Botón de Cotización) -->
+          <div class="service-card-back flip-corner-frame bg-[#0E0E12] dark:bg-[#121216] border-2 border-red/40 p-7 sm:p-8 flex flex-col justify-between text-white shadow-2xl">
+            <div>
+              <!-- Cabecera Trasera -->
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                <div>
+                  <span class="text-[10px] font-extrabold uppercase tracking-widest text-red block">Ficha Técnica Operativa</span>
+                  <h4 class="font-display font-bold text-xl text-white uppercase">IZAJE DE PRECISIÓN</h4>
+                </div>
+                <div class="w-9 h-9 rounded-xl bg-red/20 text-red flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 text-red" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Descripción Comercial -->
+              <p class="text-white/75 text-xs sm:text-sm leading-relaxed mb-5">
+                Grúas telescópicas de 60, 110 y 120 toneladas para izajes de alta complejidad técnica. Levantamiento y montaje de estructuras industriales con rigurosos planes de izaje certificados.
+              </p>
+
+              <!-- Métricas Técnicas en Chips -->
+              <div class="grid grid-cols-2 gap-2.5 mb-5 text-[11px] font-bold">
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Capacidad Máx.</span>
+                  <span class="text-red font-bold text-sm">120 t</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Grúas</span>
+                  <span class="text-white font-bold text-sm">60 / 110 / 120 t</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Personal</span>
+                  <span class="text-white font-bold text-sm">Rigger HSE</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="text-white/50 block text-[9px] uppercase">Talleres</span>
+                  <span class="text-green font-bold text-sm">In-House</span>
+                </div>
+              </div>
+
+              <!-- Bullets de Seguridad Verificados -->
+              <ul class="space-y-2 text-xs text-white/80 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Planes de izaje elaborados por ingenieros rigger</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Inspección no destructiva de cables y grilletes</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Mantenimiento predictivo continuo en talleres propios</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Botón de Cotización Directo -->
+            <div class="pt-4 border-t border-white/10 mt-4">
+              <a href="#contacto" class="w-full inline-flex items-center justify-center gap-2 bg-red hover:bg-red-deep text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-all shadow-lg hover:shadow-red/40">
+                <span>Solicitar grúa o plan de izaje</span>
+                <span>→</span>
+              </a>
+              <span class="block text-center text-[10px] text-white/50 mt-2">Pasa el cursor o toca para girar</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- =============== SECCIONES COMENTADAS SEGÚN INSTRUCCIÓN (NO SE BORRAN) ===============
+
+=============== SHOWCASE EJECUTIVO: FLOTA & RED OPERATIVA =============== 
+<section class="bg-paper dark:bg-console border-b border-steel dark:border-line py-20 md:py-28 transition-colors duration-200 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none bg-[radial-gradient(#E11D2A_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8 relative z-10">
+    <div class="max-w-3xl mb-14">
+      <div class="inline-flex items-center gap-2 border border-red/20 bg-red/5 dark:bg-red/10 rounded-full px-3.5 py-1.5 mb-4">
+        <span class="w-2 h-2 rounded-full bg-red animate-pulse"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-red">Infraestructura & Alcance Territorial</span>
+      </div>
+      <h2 class="font-display uppercase font-bold text-3xl md:text-5xl leading-tight text-carbon dark:text-white">
+        Capacidad de Movilización y Despliegue en todo el Ecuador.
+      </h2>
+      <p class="text-graphite dark:text-white/70 font-normal text-base md:text-lg leading-relaxed mt-4">
+        Conoce en detalle nuestra flota especializada con talleres propios y la red logística de 6 bases operativas con monitoreo satelital en tiempo real.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      
+      /* Card 1: Flota Especializada & Talleres In-House */
+      <article class="bg-white dark:bg-panel border border-steel dark:border-line rounded-3xl p-8 md:p-10 shadow-lg flex flex-col justify-between group hover:border-red/50 transition-all duration-300">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-6">
+            <span class="px-3 py-1 rounded-full bg-red/10 text-red text-xs font-mono font-bold uppercase tracking-wider">
+              División Técnica // Flota
+            </span>
+            <span class="text-xs font-mono text-graphite dark:text-white/50">7 Familias de Equipos</span>
+          </div>
+
+          <h3 class="font-display uppercase font-bold text-2xl md:text-3xl text-carbon dark:text-white mb-4 group-hover:text-red transition-colors">
+            Flota Especializada & Talleres Propios
+          </h3>
+
+          <p class="text-graphite dark:text-white/70 text-sm md:text-base leading-relaxed mb-6">
+            Tractocamiones 6x4 de alta montaña, camas bajas hidráulicas, grúas telescópicas de hasta 120 toneladas y tanques vacuum. Mantenimiento predictivo continuo que garantiza cero fallas mecánicas en ruta.
+          </p>
+
+          <div class="grid grid-cols-3 gap-3 mb-8">
+            <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel/80 dark:border-line text-center">
+              <span class="font-display font-bold text-lg md:text-xl text-carbon dark:text-white block">120 TON</span>
+              <span class="text-[10px] uppercase font-mono text-graphite dark:text-white/50 tracking-wider">Cap. Máxima</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel/80 dark:border-line text-center">
+              <span class="font-display font-bold text-lg md:text-xl text-carbon dark:text-white block">100%</span>
+              <span class="text-[10px] uppercase font-mono text-graphite dark:text-white/50 tracking-wider">Flota Propia</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel/80 dark:border-line text-center">
+              <span class="font-display font-bold text-lg md:text-xl text-carbon dark:text-white block">0 FOUC</span>
+              <span class="text-[10px] uppercase font-mono text-graphite dark:text-white/50 tracking-wider">Tiempos Muertos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-steel dark:border-line flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="flota.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-red hover:bg-red-deep text-white font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-md">
+            <span>Ver Catálogo de Flota</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="flota.html#talleres" class="text-xs font-semibold text-graphite dark:text-white/70 hover:text-red dark:hover:text-white transition-colors">
+            Infraestructura de Talleres →
+          </a>
+        </div>
+      </article>
+
+      /* Card 2: Cobertura Nacional & Telemetría */
+      <article class="bg-white dark:bg-panel border border-steel dark:border-line rounded-3xl p-8 md:p-10 shadow-lg flex flex-col justify-between group hover:border-red/50 transition-all duration-300">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-6">
+            <span class="px-3 py-1 rounded-full bg-green/10 text-green text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-green animate-pulse"></span>
+              Red Activa // 24/7
+            </span>
+            <span class="text-xs font-mono text-graphite dark:text-white/50">6 Bases Operativas</span>
+          </div>
+
+          <h3 class="font-display uppercase font-bold text-2xl md:text-3xl text-carbon dark:text-white mb-4 group-hover:text-red transition-colors">
+            Red Operativa Nacional & Bases
+          </h3>
+
+          <p class="text-graphite dark:text-white/70 text-sm md:text-base leading-relaxed mb-6">
+            Presencia permanente en los polos logísticos críticos del Ecuador: Nueva Loja, Sacha, El Coca, Quito, Durán (Guayaquil) y Tambillo. Conexión multimodal desde terminales portuarios hasta los bloques petroleros.
+          </p>
+
+          <div class="grid grid-cols-3 gap-3 mb-8">
+            <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel/80 dark:border-line text-center">
+              <span class="font-display font-bold text-lg md:text-xl text-carbon dark:text-white block">6 BASES</span>
+              <span class="text-[10px] uppercase font-mono text-graphite dark:text-white/50 tracking-wider">Territorio</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel/80 dark:border-line text-center">
+              <span class="font-display font-bold text-lg md:text-xl text-carbon dark:text-white block">GPS SAT</span>
+              <span class="text-[10px] uppercase font-mono text-graphite dark:text-white/50 tracking-wider">Telemetría</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-paper dark:bg-[#101012] border border-steel/80 dark:border-line text-center">
+              <span class="font-display font-bold text-lg md:text-xl text-carbon dark:text-white block">ISO / BASC</span>
+              <span class="text-[10px] uppercase font-mono text-graphite dark:text-white/50 tracking-wider">Certificado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-steel dark:border-line flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="cobertura.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-carbon dark:bg-white text-white dark:text-carbon font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-md hover:bg-red dark:hover:bg-red dark:hover:text-white">
+            <span>Ver Mapa y Nodos HUD</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="cobertura.html#directorio-bases" class="text-xs font-semibold text-graphite dark:text-white/70 hover:text-red dark:hover:text-white transition-colors">
+            Directorio de Sedes →
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+-->
+
+<!-- =============== CERTIFICACIONES ACTIVAS ===============
+<section class="bg-white dark:bg-[#111113] border-b border-steel dark:border-line py-16 md:py-20 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <p class="text-xs font-bold uppercase tracking-wider text-red mb-2">Cumplimiento y Calidad</p>
+      <h2 class="font-display uppercase font-bold text-2xl md:text-4xl text-carbon dark:text-white">Certificaciones Internacionales</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">ISO 9001:2015</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Gestión de Calidad en cada servicio</p>
+      </div>
+
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">ISO 14001:2015</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Gestión y Protección Ambiental</p>
+      </div>
+
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">ISO 45001:2018</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Seguridad y Salud Ocupacional</p>
+      </div>
+
+      <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-2xl p-6 flex flex-col items-center text-center shadow-sm">
+        <div class="w-12 h-12 rounded-full bg-green/10 text-green flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="font-display font-bold text-lg text-carbon dark:text-white">BASC</p>
+        <p class="text-xs text-graphite dark:text-white/60 mt-1 font-medium">Comercio Seguro y Cadena de Custodia</p>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- =============== CONTACTO Y COTIZACIÓN INMEDIATA =============== -->
+<section id="contacto" class="bg-paper dark:bg-console text-carbon dark:text-white py-20 md:py-28 transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 border border-red/20 bg-red/5 dark:bg-red/10 rounded-full px-3.5 py-1.5 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-red">Atención Comercial Inmediata</span>
+        </div>
+
+        <h2 class="font-display uppercase font-bold text-3xl md:text-5xl leading-tight mb-6">
+          Hablemos de tu próxima carga.<br>Cotiza hoy mismo.
+        </h2>
+
+        <p class="text-graphite dark:text-white/70 font-normal text-base md:text-lg measure mb-8">
+          Cuéntanos los requerimientos de tu proyecto: dimensiones de maquinaria, volumen de fluidos, tonelaje de izaje o ruta de traslado. Nuestro equipo comercial y técnico te entregará una propuesta detallada en tiempo récord.
+        </p>
+
+        <!-- Tarjetas de Atención Directa -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-xl bg-white dark:bg-panel border border-steel dark:border-line shadow-sm">
+            <p class="text-xs font-bold uppercase tracking-wider text-red">Línea Telefónica Nacional</p>
+            <p class="font-display text-xl font-bold text-carbon dark:text-white mt-1">+593 (02) 395 6540</p>
+            <p class="text-xs text-graphite dark:text-white/60 mt-1">Lunes a Viernes · Atención nacional</p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-white dark:bg-panel border border-steel dark:border-line shadow-sm">
+            <p class="text-xs font-bold uppercase tracking-wider text-red">Correo de Cotizaciones</p>
+            <p class="font-display text-base font-bold text-carbon dark:text-white mt-1">conexpet@conexpet.com</p>
+            <p class="text-xs text-graphite dark:text-white/60 mt-1">Respuesta técnica en menos de 24h</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta Ejecutiva de Solicitud -->
+      <div class="lg:col-span-5">
+        <div class="p-8 md:p-10 rounded-2xl bg-white dark:bg-panel border border-steel dark:border-line shadow-lg">
+          <h3 class="font-display text-2xl font-bold uppercase text-carbon dark:text-white mb-2">Solicitar Propuesta</h3>
+          <p class="text-xs text-graphite dark:text-white/60 mb-6">Selecciona tu canal preferido o contáctanos de inmediato.</p>
+
+          <div class="space-y-4">
+            <a href="mailto:conexpet@conexpet.com?subject=Solicitud%20de%20Cotizacion%20de%20Carga%20-%20Conexpet" class="w-full inline-flex items-center justify-between bg-carbon dark:bg-white text-white dark:text-carbon font-semibold text-sm px-6 py-4 rounded-xl hover:bg-carbon/90 dark:hover:bg-white/90 transition-all shadow-sm">
+              <span>Enviar requerimiento por Email</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+
+            <a href="tel:+59323956540" class="w-full inline-flex items-center justify-between border-2 border-steel dark:border-line text-carbon dark:text-white font-semibold text-sm px-6 py-4 rounded-xl hover:border-red transition-all">
+              <span>Llamar a central telefónica</span>
+              <svg class="w-4 h-4 text-red" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </a>
+
+            <a href="https://triboilgas.typeform.com/to/OKUP0n?typeform-source=www.triboilgas.com" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-between bg-paper dark:bg-console border border-steel dark:border-line text-graphite dark:text-white/70 font-semibold text-xs px-6 py-3.5 rounded-xl hover:text-red transition-colors">
+              <span>Canal ético y de denuncias</span>
+              <svg class="w-4 h-4 text-graphite dark:text-white/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </a>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-steel dark:border-line text-center">
+            <p class="text-xs text-graphite dark:text-white/60 font-medium">
+              Oficina Principal: Sucumbíos, Lago Agrio, Ecuador.<br>Vía Tarapoa Lote 5 S/N y Km 11 ½.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== MODAL POPUP CINEMATOGRÁFICO DE VIDEO =============== -->
+<div id="video-modal" class="modal-closed fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8 bg-black/85 backdrop-blur-xl" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+  
+  <!-- Backdrop Clickable -->
+  <div id="video-modal-backdrop" class="absolute inset-0 cursor-pointer"></div>
+
+  <!-- Contenedor del Modal con Borde Luminoso de Cristal -->
+  <div id="video-modal-card" class="relative z-10 w-full max-w-5xl bg-[#0E0E11] border border-white/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+    
+    <!-- Barra Superior del Modal (Estilo Sala de Control) -->
+    <div class="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-white/10 bg-white/[0.04]">
+      <div class="flex items-center gap-3">
+        <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-6 h-6 rounded-full object-cover border border-red/40 shrink-0">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-widest text-red">CONEXPET · Operaciones en Ruta</span>
+          <h3 id="video-modal-title" class="font-display font-bold text-sm sm:text-base text-white">Registro Operativo de Transporte Pesado e Izaje</h3>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 sm:gap-4">
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-xs text-white/70 font-mono bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-green animate-pulse"></span> Ultra HD 1080p
+        </span>
+        
+        <!-- Botón de Cerrar Modal -->
+        <button type="button" id="close-video-modal" class="w-9 h-9 rounded-full bg-white/10 hover:bg-red text-white flex items-center justify-center transition-all cursor-pointer border border-white/15 hover:rotate-90" aria-label="Cerrar video">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Reproductor de Video en Alta Definición -->
+    <div class="relative aspect-video w-full bg-black flex items-center justify-center">
+      <video id="modal-player-video" controls playsinline preload="metadata" class="w-full h-full object-contain">
+        <source src="assets/hero-video.mkv" type="video/mp4">
+        Tu navegador no soporta reproducción de video HTML5.
+      </video>
+    </div>
+
+    <!-- Pie del Modal con Llamado a la Acción -->
+    <div class="px-5 sm:px-7 py-3.5 bg-white/[0.02] border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60">
+      <div class="flex items-center gap-2">
+        <span class="font-semibold text-white">CONEXPET Cía. Ltda.</span>
+        <span>·</span>
+        <span>Amazonía, Sierra y Costa Ecuatoriana</span>
+      </div>
+      <a href="#contacto" class="text-red hover:underline font-bold inline-flex items-center gap-1" onclick="document.getElementById('close-video-modal').click();">
+        <span>Cotizar proyecto de carga similar</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- =========================================================================
+     BLOQUE DE RESERVA / COMPONENTES PARA REUTILIZAR EN OTRA SECCIÓN
+     (TARJETA HUD DE CONTROL, TELEMETRÍA 24/7, RADAR SATELITAL Y COORDENADAS)
+     ========================================================================= -->
+<!--
+<div id="reserva-hud-telemetria" class="hidden">
+  <div class="tilt-card-wrapper">
+    <div class="tilt-card rounded-3xl p-7 md:p-8 shadow-xl bg-paper dark:bg-panel border border-steel dark:border-line">
+      
+      <div class="flex items-center justify-between pb-5 mb-5 border-b border-steel/80 dark:border-white/10">
+        <div class="flex items-center gap-3">
+          <img src="images/ecuador1.png" alt="Bandera Ecuador" class="w-8 h-8 rounded-full object-cover border border-red/40 shadow-sm">
+          <div>
+            <span class="text-[10px] font-extrabold uppercase tracking-widest text-red">Red Nacional Satelital</span>
+            <p class="font-display font-bold text-base text-carbon dark:text-white">Centro de Control 24/7</p>
+          </div>
+        </div>
+        <span class="flex items-center gap-1.5 text-xs font-bold text-green bg-green/10 dark:bg-green/20 px-3 py-1.5 rounded-full border border-green/20">
+          <span class="w-2 h-2 rounded-full bg-green pulse-dot"></span> EN RUTA
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="border border-steel/80 dark:border-white/10 bg-white dark:bg-white/5 rounded-2xl p-4 shadow-sm">
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-graphite dark:text-white/50 mb-1">Trayectoria Nacional</p>
+          <p class="font-display text-4xl font-extrabold text-carbon dark:text-white" data-count-to="38" data-suffix="+">38+</p>
+          <p class="text-[11px] text-graphite dark:text-white/60 mt-1 font-medium">Años movilizando al Ecuador</p>
+        </div>
+        <div class="border border-steel/80 dark:border-white/10 bg-white dark:bg-white/5 rounded-2xl p-4 shadow-sm">
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-graphite dark:text-white/50 mb-1">Capacidad Máxima</p>
+          <p class="font-display text-4xl font-extrabold text-red" data-count-to="120" data-suffix=" t">120 t</p>
+          <p class="text-[11px] text-graphite dark:text-white/60 mt-1 font-medium">Izaje con grúas certificadas</p>
+        </div>
+      </div>
+
+      <div class="border border-steel/80 dark:border-white/10 bg-white dark:bg-white/5 rounded-2xl p-5 flex items-center gap-5 shadow-sm">
+        <div class="radar w-16 h-16 shrink-0 shadow-inner">
+          <div class="radar-ring"></div>
+          <div class="radar-sweep"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-2.5 h-2.5 rounded-full bg-red shadow-lg"></span>
+          </div>
+        </div>
+        <div class="min-w-0">
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-graphite dark:text-white/50">Base Matriz Operativa · Sucumbíos</p>
+          <p class="font-display font-bold text-sm text-carbon dark:text-white">Nueva Loja (Lago Agrio)</p>
+          <p id="gps-readout" class="font-mono text-xs text-red font-bold mt-1 truncate">0°05'02.1"S · 76°52'41.3"W</p>
+        </div>
+      </div>
+
+      <div class="mt-5 pt-4 border-t border-steel/80 dark:border-white/10 flex items-center justify-between text-xs text-graphite dark:text-white/70">
+        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-red"></span> Telemetría GPS en tiempo real</span>
+        <span class="font-bold text-carbon dark:text-white">Videovigilancia continua</span>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+</main>
+
+<!-- =============== FOOTER CORPORATIVO =============== -->
+<footer class="bg-white dark:bg-console text-graphite dark:text-white/70 border-t border-steel dark:border-line transition-colors duration-200">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-8 py-16">
+
+    <div class="grid md:grid-cols-12 gap-10">
+      
+      <!-- Columna 1: Marca & Lema -->
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-3 h-3 rounded-full bg-red"></span>
+          <span class="font-display text-xl font-bold text-carbon dark:text-white tracking-tight">CONEXPET</span>
+        </div>
+        <p class="text-xs uppercase font-bold text-red tracking-wider mb-2">Hacemos de la logística y transporte de carga pesada un arte</p>
+        <p class="text-sm text-graphite dark:text-white/60 leading-relaxed measure">
+          Más de 38 años movilizando el sector petrolero, industrial y comercial de todo el Ecuador con disciplina, talleres propios y tecnología satelital.
+        </p>
+
+        <div class="mt-6 inline-flex items-center gap-2 border border-steel dark:border-line bg-paper dark:bg-panel px-3 py-1.5 rounded-full text-xs font-semibold text-carbon dark:text-white">
+          <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-red/40 shrink-0">
+          <span>Orgullosamente Ecuatorianos</span>
+        </div>
+      </div>
+
+      <!-- Columna 2: Navegación Empresa -->
+      <div class="md:col-span-2">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">EMPRESA</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="index.html#conocenos" class="hover:text-red dark:hover:text-white transition-colors">Conócenos</a></li>
+          <li><a href="#servicios" class="hover:text-red dark:hover:text-white transition-colors">Servicios</a></li>
+          <li><a href="flota.html" class="hover:text-red dark:hover:text-white transition-colors">Flota Especializada</a></li>
+          <li><a href="flota.html#talleres" class="hover:text-red dark:hover:text-white transition-colors">Talleres Propios</a></li>
+          <li><a href="cobertura.html" class="hover:text-red dark:hover:text-white transition-colors">Cobertura Nacional</a></li>
+          <li><a href="https://triboilgas.typeform.com/to/OKUP0n?typeform-source=www.triboilgas.com" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Canal de Denuncias</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Intranet Oficial -->
+      <div class="md:col-span-3">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">INTRANET & SERVICIOS</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://forms.office.com/pages/responsepage.aspx?id=oneFCI-_SEekK--m01noBwxpJwflPrlFkQlnaS6QOqRUN0JNTk1XMUwzVEswT0NLM0xaUkI5M1BUVi4u" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Tarjeta Cero (HSE)</a></li>
+          <li><a href="https://compers.online/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Compers TTHH</a></li>
+          <li><a href="http://64.190.27.46:8040/jde/E1Menu.maf?" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">JD Edwards</a></li>
+          <li><a href="https://www.triboilgas.com/hesk/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Ticket de Soporte</a></li>
+          <li><a href="https://proveedores.triboil.com/" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Portal Proveedores SYSFIN</a></li>
+          <li><a href="https://triboilgas.typeform.com/to/C9u7aE?typeform-source=conexpet.com" target="_blank" rel="noopener noreferrer" class="hover:text-red dark:hover:text-white transition-colors">Solicitud TTHH</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Sedes & Contacto -->
+      <div class="md:col-span-3">
+        <p class="font-display text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-4">SEDE PRINCIPAL</p>
+        <p class="text-sm leading-relaxed">
+          Oficina Matriz — Vía Tarapoa Lote 5 S/N y Km 11 ½<br>
+          Sucumbíos, Lago Agrio, Ecuador.
+        </p>
+        <p class="text-sm mt-3">
+          Tel: <a href="tel:+59323956540" class="font-semibold text-carbon dark:text-white hover:text-red transition-colors">+593 (02) 395 6540</a>
+        </p>
+        <p class="text-sm">
+          Correo: <a href="mailto:conexpet@conexpet.com" class="font-semibold text-carbon dark:text-white hover:text-red transition-colors">conexpet@conexpet.com</a>
+        </p>
+        <div class="mt-4 flex items-center gap-3">
+          <a href="https://www.facebook.com/triboilgas" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-paper dark:bg-panel border border-steel dark:border-line flex items-center justify-center hover:text-red transition-colors" aria-label="Facebook">
+            FB
+          </a>
+          <a href="https://www.linkedin.com/company/conexpet/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-paper dark:bg-panel border border-steel dark:border-line flex items-center justify-center hover:text-red transition-colors" aria-label="LinkedIn">
+            IN
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Derechos Reservados -->
+    <div class="border-t border-steel dark:border-line mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-graphite dark:text-white/50 gap-4">
+      <p>© 2025 Conexpet Cía. Ltda. — Todos los derechos reservados. Orgullosamente Ecuatorianos.</p>
+      <div class="flex items-center gap-6">
+        <a href="#top" class="hover:text-red transition-colors">Volver arriba ↑</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+<script src="js/navbar.js" defer></script>
+<script src="js/parallax.js" defer></script>
+<script src="js/flip-cards.js" defer></script>
+</body>
+</html>

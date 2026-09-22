@@ -1,0 +1,508 @@
+/**
+ * CONEXPET — Estilos Principales (Core)
+ * Sistema de diseño base, tokens, tipografías, componentes globales y hero
+ * Soporte Completo: Modo Claro y Modo Oscuro
+ */
+
+/* ==========================================================================
+   1. VARIABLES & TOKENS DE DISEÑO
+   ========================================================================== */
+:root {
+  --console: #0B0B0C;
+  --panel: #151517;
+  --line: #26262A;
+  --paper: #F4F4F6;
+  --steel: #E2E2E6;
+  --carbon: #18181B;
+  --graphite: #606066;
+  --red: #E11D2A;
+  --red-deep: #A31220;
+  --green: #228B47;
+
+  --theme-bg: #FFFFFF;
+  --theme-panel: #FFFFFF;
+  --theme-border: #E2E2E6;
+  --theme-text: #18181B;
+  --theme-text-muted: #606066;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.dark {
+  --console: #0B0B0C;
+  --panel: #151517;
+  --line: #26262A;
+  --paper: #18181B;
+  --steel: #26262A;
+  --carbon: #F5F5F5;
+  --graphite: #9E9EA4;
+  --red: #E11D2A;
+  --red-deep: #A31220;
+  --green: #3CCB6F;
+
+  --theme-bg: #0B0B0C;
+  --theme-panel: #151517;
+  --theme-border: #26262A;
+  --theme-text: #FFFFFF;
+  --theme-text-muted: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-padding-top: 76px;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+::selection {
+  background-color: var(--red);
+  color: #FFFFFF;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+.measure {
+  max-width: 58ch;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  background-color: var(--red);
+  color: #FFFFFF;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.25rem;
+}
+
+/* ==========================================================================
+   3. ANIMACIONES GLOBALES & UTILIDADES
+   ========================================================================== */
+/* Status Dot Pulse */
+.pulse-dot {
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: currentColor;
+  opacity: 0.6;
+  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  75% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Hero Entrance Sequence */
+.rise {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Radar Sweep (Telemetry Card) */
+.radar {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 9999px;
+}
+
+.radar-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .radar-ring {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.radar-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.radar-sweep::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, rgba(225, 29, 42, 0.5), transparent 28%);
+  animation: spin 4.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Terminal Cursor */
+.cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1.05em;
+  background-color: var(--red);
+  margin-left: 2px;
+  vertical-align: -2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   4. COMPONENTES: TARJETAS & NODOS
+   ========================================================================== */
+.bento {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento:hover {
+  transform: translateY(-3px);
+  border-color: var(--red);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.dark .bento:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.node-card {
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.node-card:hover {
+  border-color: rgba(225, 29, 42, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.06);
+}
+
+.dark .node-card:hover {
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Tarjeta Cita del Fundador */
+.conocenos-quote-card {
+  border-left: 4px solid var(--red);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.conocenos-quote-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+}
+
+.dark .conocenos-quote-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* Tarjetas de Valores Institucionales */
+.conocenos-val-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.conocenos-val-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(198, 12, 48, 0.45);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+}
+
+.dark .conocenos-val-card:hover {
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================================================================
+   5. HERO CINEMATOGRÁFICO & INTERACTIVO 3D
+   ========================================================================== */
+.hero-video-cinematic {
+  filter: contrast(1.05) saturate(1.12);
+  transform: scale(1.02);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.12);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 15, 18, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 25px 55px -12px rgba(0, 0, 0, 0.65);
+}
+
+.tilt-card-wrapper {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.tilt-card {
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.flag-badge-3d {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(245, 245, 248, 0.82));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px -5px rgba(198, 12, 48, 0.2);
+}
+
+.dark .flag-badge-3d {
+  background: linear-gradient(135deg, rgba(25, 25, 30, 0.9), rgba(15, 15, 18, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+}
+
+.flag-3d-img {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+  transition: transform 0.4s ease;
+}
+
+.flag-badge-3d:hover .flag-3d-img {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.hero-video-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.02);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  will-change: transform;
+}
+
+.hero-glass-capsule {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.dark .hero-glass-capsule {
+  background: rgba(14, 14, 16, 0.32);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 30px 70px -15px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 0 40px rgba(225, 29, 42, 0.08);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 24px rgba(225, 29, 42, 0.45);
+}
+
+.dark .text-glow-red {
+  text-shadow: 0 0 30px rgba(225, 29, 42, 0.6);
+}
+
+.glow-btn-red {
+  box-shadow: 0 10px 25px -4px rgba(225, 29, 42, 0.45);
+}
+
+.glow-btn-red:hover {
+  box-shadow: 0 15px 35px -3px rgba(225, 29, 42, 0.65);
+}
+
+@media (max-width: 640px) {
+  #top {
+    min-height: 86dvh;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  #hero-bg-video {
+    object-position: 52% center;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  #top {
+    min-height: 88dvh;
+    padding-top: 5.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  #hero-bg-video {
+    object-position: center center;
+  }
+}
+
+@media (min-width: 1025px) {
+  #top {
+    min-height: 94vh;
+  }
+
+  #hero-bg-video {
+    object-position: center 48%;
+  }
+}
+
+@media (min-width: 1920px) {
+  #top {
+    min-height: 92vh;
+  }
+
+  #hero-bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
+/* ==========================================================================
+   6. ACCESIBILIDAD (PREFERS-REDUCED-MOTION)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   7. MODAL CINEMATOGRÁFICO DE VIDEO
+   ========================================================================== */
+.hero-play-btn {
+  position: relative;
+}
+
+.hero-play-btn::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(225, 29, 42, 0.45);
+  animation: playPulse 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  pointer-events-none;
+}
+
+@keyframes playPulse {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+#video-modal {
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+}
+
+#video-modal.modal-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#video-modal.modal-closed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#video-modal-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  box-shadow: 
+    0 25px 70px -10px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 0 50px rgba(225, 29, 42, 0.18);
+}
+
+.modal-open #video-modal-card {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-closed #video-modal-card {
+  transform: scale(0.94) translateY(12px);
+  opacity: 0;
+}
