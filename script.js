@@ -42,6 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const duration = 1200;
       const startTime = performance.now();
 
+      const hasPlus = finalVal.startsWith('+');
+      const prefix = hasPlus ? '+' : '';
+      const usesApostrophe = finalVal.includes("'");
+
       const updateCounter = (currentTime) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(1, elapsed / duration);
@@ -49,7 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentVal = Math.round(easeOut * target);
 
         if (progress < 1) {
-          el.textContent = currentVal.toLocaleString('de-DE') + suffix;
+          let formatted = currentVal.toLocaleString('de-DE');
+          if (usesApostrophe) {
+            formatted = formatted.replace('.', "'");
+          }
+          el.textContent = prefix + formatted + suffix;
           requestAnimationFrame(updateCounter);
         } else {
           el.textContent = finalVal;
