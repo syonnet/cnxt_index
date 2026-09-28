@@ -301,44 +301,120 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   PLACA DE HONOR & MEDALLÓN DEL FUNDADOR (ALTA DISTINCIÓN)
+   ANIMATED GLOW BORDER DEL FUNDADOR (BASADO EN GLOW1.TXT)
+   Efecto de resplandor dinámico en el borde perimetral en hover
    ========================================================================== */
+
+/* Contenedor Wrapper */
+.founder-glow-wrapper {
+  position: relative;
+  border-radius: 24px;
+  padding: 2px; /* Grosor del borde iluminado */
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  width: 100%;
+  max-width: 42rem; /* max-w-2xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.founder-glow-wrapper:hover {
+  transform: translateY(-3px);
+}
+
+/* Capa 1: Resplandor Difuso en Borde (animated-border-box-glow de glow1.txt) */
+.founder-border-box-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  overflow: hidden;
+  filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.dark .founder-border-box-glow {
+  filter: blur(20px);
+}
+
+.founder-glow-wrapper:hover .founder-border-box-glow {
+  opacity: 0.95;
+}
+
+/* Capa 2: Borde Nítido Animado (animated-border-box de glow1.txt) */
+.founder-border-box {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+
+.founder-glow-wrapper:hover .founder-border-box {
+  opacity: 1;
+}
+
+/* Elemento rotatorio de ambas capas con Conic Gradient (conforme a glow1.txt) */
+.founder-border-box:before,
+.founder-border-box-glow:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  width: 1300px;
+  height: 1300px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  /* Conic gradient corporativo: Transparente -> Oro/Ámbar -> Rojo Conexpet -> Transparente 25% */
+  background-image: conic-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    #F59E0B 12%,
+    #E11D2A 18%,
+    #FF2E3E 22%,
+    rgba(0, 0, 0, 0) 26%
+  );
+  animation: founderBorderRotate 3.5s linear infinite;
+}
+
+@keyframes founderBorderRotate {
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+/* Tarjeta Interna (Contenido de Don Bolívar) */
 .founder-heritage-plaque {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.92) 100%);
+  z-index: 10;
+  width: 100%;
+  border-radius: 22px; /* 24px - 2px padding = ajuste milimétrico */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.96) 100%);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 
-    0 12px 32px -4px rgba(0, 0, 0, 0.06),
-    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.35s ease;
+  cursor: default;
 }
 
 .dark .founder-heritage-plaque {
-  background: linear-gradient(135deg, rgba(24, 24, 30, 0.92) 0%, rgba(14, 14, 18, 0.95) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 18px 45px -8px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(198, 12, 48, 0.15) inset,
-    0 0 35px rgba(198, 12, 48, 0.06);
+  background: linear-gradient(135deg, rgba(22, 22, 28, 0.98) 0%, rgba(14, 14, 18, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.75);
 }
 
-.founder-heritage-plaque:hover {
-  transform: translateY(-2px);
-  border-color: rgba(198, 12, 48, 0.3);
-  box-shadow: 
-    0 20px 45px -8px rgba(198, 12, 48, 0.12),
-    0 0 0 1px rgba(198, 12, 48, 0.25);
+.founder-glow-wrapper:hover .founder-heritage-plaque {
+  border-color: rgba(225, 29, 42, 0.3);
 }
 
-.dark .founder-heritage-plaque:hover {
-  transform: translateY(-2px);
-  border-color: rgba(198, 12, 48, 0.45);
-  box-shadow: 
-    0 22px 50px -8px rgba(0, 0, 0, 0.85),
-    0 0 0 1px rgba(198, 12, 48, 0.4),
-    0 0 35px rgba(198, 12, 48, 0.18);
+.dark .founder-glow-wrapper:hover .founder-heritage-plaque {
+  border-color: rgba(225, 29, 42, 0.4);
 }
 
 /* Emblema Monograma del Fundador */
@@ -646,6 +722,127 @@ button:focus-visible {
 
 .dark .swiss-row-item.row-expanded {
   background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ==========================================================================
+   CONSENTIMIENTO LEGAL & CUMPLIMIENTO LOPDP (ECUADOR)
+   ========================================================================== */
+.cnx-legal-consent-card {
+  position: relative;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.cnx-legal-consent-card:hover {
+  border-color: rgba(225, 29, 42, 0.4);
+}
+
+/* Custom Checkbox */
+.cnx-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cnx-checkbox-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid #E2E2E6;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.dark .cnx-checkbox-box {
+  border-color: rgba(255, 255, 255, 0.25);
+  background-color: #0B0B0C;
+}
+
+.cnx-checkbox-input:focus + .cnx-checkbox-box {
+  outline: 2px solid rgba(225, 29, 42, 0.35);
+  outline-offset: 2px;
+}
+
+.cnx-checkbox-input:checked + .cnx-checkbox-box {
+  background-color: #E11D2A;
+  border-color: #E11D2A;
+}
+
+.cnx-checkbox-icon {
+  width: 13px;
+  height: 13px;
+  color: #FFFFFF;
+  stroke-width: 3;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cnx-checkbox-input:checked + .cnx-checkbox-box .cnx-checkbox-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Modal Legal: Términos y Condiciones / LOPDP */
+.cnx-legal-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.cnx-legal-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cnx-legal-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 88vh;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dark .cnx-legal-modal-card {
+  background: #151517;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.cnx-legal-modal-overlay.is-open .cnx-legal-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.cnx-legal-tab-btn {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.cnx-legal-tab-btn.is-active {
+  color: #E11D2A;
+  border-bottom: 2px solid #E11D2A;
 }
 
 

@@ -1,62 +1,87 @@
 /**
- * CONEXPET — Módulo JS: Cobertura Nacional, Mapa Satelital & Modal HUD
+ * CONEXPET — Módulo JS: Cobertura Nacional, Mapa Satelital & Card Orgánica de Ciudad
+ * Información estrictamente informativa y comercial (cero datos privados ni coordenadas GPS)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const basesData = {
     '1': {
-      nodo: 'Base Matriz N01',
-      ciudad: 'Nueva Loja',
-      subtitulo: 'Lago Agrio — Sucumbíos (Matriz)',
-      estado: 'Operativa 24/7',
-      direccion: 'Vía al aeropuerto Km ½ y Vía Tarapoa (Oficina Principal y Talleres).',
-      rol: 'Oficina matriz, coordinación central de flota pesada para operaciones petroleras, taller central y asistencia mecánica de emergencia inmediata.',
-      coords: '00°05\'05"N 76°53\'01"W'
+      region: 'Amazonía Petrolera',
+      regionTheme: 'emerald',
+      regionBadgeClasses: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25',
+      ciudad: 'Nueva Loja (Lago Agrio)',
+      provincia: 'Sucumbíos — Cuenca Petrolera Norte',
+      tipo: 'Base Matriz & Centro Operativo',
+      estado: 'Operaciones 24/7',
+      descripcion: 'Sede central de operaciones en el Oriente ecuatoriano. Cuenta con infraestructura in-house de talleres de maestranza mecánica, amplio parque de maniobras y despacho prioritario de convoyes pesados hacia plataformas y bloques petroleros.',
+      ubicacion: 'Vía Tarapoa Km ½ y acceso al Aeropuerto',
+      servicios: ['Cabezales 6x4', 'Tanqueros Vacuum', 'Talleres In-House', 'Grúas Telescópicas'],
+      contactoUrl: '#contacto'
     },
     '2': {
-      nodo: 'Nodo N02',
-      ciudad: 'Sacha',
-      subtitulo: 'La Joya de los Sachas — Orellana',
-      estado: 'Operativa 24/7',
-      direccion: 'Barrio La Parker, diagonal a EP Petroecuador B60.',
-      rol: 'Soporte táctico y respuesta rápida en locaciones de pozo, taladros y bloques petroleros estratégicos de la cuenca amazónica.',
-      coords: '00°21\'43"S 76°51\'36"W'
+      region: 'Amazonía Petrolera',
+      regionTheme: 'emerald',
+      regionBadgeClasses: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25',
+      ciudad: 'La Joya de los Sachas',
+      provincia: 'Orellana — Enlace Directo a Bloques',
+      tipo: 'Base Operativa de Campo',
+      estado: 'Respuesta en Pozo 24/7',
+      descripcion: 'Punto de apoyo táctico y respuesta ágil en locación. Diseñado para la atención rápida de requerimientos operativos en pozo, transferencia continua de lodos y fluidos de perforación y sostenimiento de taladros activos.',
+      ubicacion: 'Vía Coca - Lago Agrio, Sector La Parker',
+      servicios: ['Fluidos & Lodos', 'Cisternas Vacuum', 'Auxilio Mecánico', 'Carga Petrolera'],
+      contactoUrl: '#contacto'
     },
     '3': {
-      nodo: 'Nodo N03',
-      ciudad: 'El Coca',
-      subtitulo: 'Francisco de Orellana',
-      estado: 'Operativa 24/7',
-      direccion: 'Vía a Lago Agrio, Km 7, ingreso a Corazón del Oriente.',
-      rol: 'Conexión fluvial y terrestre estratégica con el bloque Orellana/Pastaza y logística multimodal hacia la cuenca del Río Napo.',
-      coords: '00°27\'48"S 76°59\'31"W'
+      region: 'Amazonía Fluvial & Terrestre',
+      regionTheme: 'teal',
+      regionBadgeClasses: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/25',
+      ciudad: 'Puerto Francisco de Orellana (El Coca)',
+      provincia: 'Orellana — Hub Multimodal',
+      tipo: 'Hub Multimodal Fluvial & Terrestre',
+      estado: 'Operaciones 24/7',
+      descripcion: 'Centro logístico neurálgico para movilizaciones complejas de taladros (Rig Move), izajes de alto tonelaje de hasta 120 t y conexión con barcazas fluviales para el abastecimiento de los bloques petroleros en la cuenca del Río Napo y Bloque 43.',
+      ubicacion: 'Vía Los Zorros Km 1 / Vía Lago Agrio Km 7',
+      servicios: ['Grúas hasta 120 t', 'Rig Move', 'Plataformas & Lowboys', 'Conexión Fluvial'],
+      contactoUrl: '#contacto'
     },
     '4': {
-      nodo: 'Nodo N04',
-      ciudad: 'Quito',
-      subtitulo: 'Distrito Metropolitano — Pichincha',
-      estado: 'Administración',
-      direccion: 'Pedro Ponce Carrasco E8-06 y Av. Diego de Almagro, Edif. Almagro Plaza, Of. 603.',
-      rol: 'Sede corporativa central, administración financiera, relaciones comerciales corporativas, gestión de contratos y supervisión integral de telemetría.',
-      coords: '00°12\'09"S 78°29\'23"W'
+      region: 'Distrito Metropolitano / Sierra',
+      regionTheme: 'amber',
+      regionBadgeClasses: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25',
+      ciudad: 'Quito (Distrito Metropolitano)',
+      provincia: 'Pichincha — Sede Corporativa',
+      tipo: 'Sede Corporativa & Control Central',
+      estado: 'Atención Comercial 24/7',
+      descripcion: 'Sede administrativa principal de Conexpet. Desde aquí se coordinan contratos corporativos, licitaciones de gran porte, supervisión de calidad y seguridad HSEQ y la atención personalizada para clientes y operadoras.',
+      ubicacion: 'Av. Diego de Almagro y Pedro Ponce Carrasco (Edif. Almagro Plaza)',
+      servicios: ['Gerencia HSEQ', 'Contratos Corporativos', 'Monitoreo de Flota', 'Atención Comercial'],
+      contactoUrl: '#contacto'
     },
     '5': {
-      nodo: 'Nodo N05',
-      ciudad: 'Durán',
-      subtitulo: 'Gran Guayaquil — Guayas',
-      estado: 'Conexión Puerto',
-      direccion: 'Solar #1, manzana U, área 24-L (Acceso estratégico a puertos marítimos).',
-      rol: 'Acceso directo a terminales portuarias del Pacífico para recepción y traslado expedito de maquinaria pesada, tubería y carga extra-dimensionada.',
-      coords: '02°10\'24"S 79°49\'52"W'
+      region: 'Litoral Pacífico / Costa',
+      regionTheme: 'sky',
+      regionBadgeClasses: 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/25',
+      ciudad: 'Durán (Gran Guayaquil)',
+      provincia: 'Guayas — Enlace Portuario',
+      tipo: 'Hub Portuario del Pacífico',
+      estado: 'Recepción Portuaria 24/7',
+      descripcion: 'Acceso directo a las principales terminales marítimas del Pacífico (Contecon, DP World). Especializado en recepción y nacionalización de tubería petrolera OCTG, maquinaria extradimensionada y despacho terrestre hacia la Sierra y Amazonía.',
+      ubicacion: 'Vía Durán - Tambo Km 4.5 (Sector Industrial)',
+      servicios: ['Recepción Portuaria', 'Tubería OCTG', 'Cargas Sobredimensionadas', 'Despacho Terrestre'],
+      contactoUrl: '#contacto'
     },
     '6': {
-      nodo: 'Nodo N06',
-      ciudad: 'Tambillo',
-      subtitulo: 'Cantón Mejía — Eje Sierra Central',
-      estado: 'Eje Sierra',
-      direccion: 'Cantón Mejía, Panamericana Sur Km 9, Barrio El Rosal.',
-      rol: 'Punto de control y transbordo clave para el cruce cordillerano andino y la distribución logística de carga pesada a lo largo del corredor Panamericano.',
-      coords: '00°24\'35"S 78°33\'12"W'
+      region: 'Eje Panamericano Sur / Sierra',
+      regionTheme: 'indigo',
+      regionBadgeClasses: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/25',
+      ciudad: 'Tambillo (Cantón Mejía)',
+      provincia: 'Pichincha — Corredor Panamericano',
+      tipo: 'Estación de Relevo & Inspección Andina',
+      estado: 'Punto de Control 24/7',
+      descripcion: 'Estación estratégica sobre la carretera Panamericana Sur. Punto de relevo reglamentario para tripulaciones, revisión preventiva de frenos auxiliares Jake Brake y verificación de amarre de carga antes de iniciar el descenso hacia la cordillera.',
+      ubicacion: 'Panamericana Sur Km 9 (Barrio El Rosal)',
+      servicios: ['Relevo de Conductores', 'Inspección de Frenos', 'Consolidación de Carga', 'Soporte de Ruta'],
+      contactoUrl: '#contacto'
     }
   };
 
@@ -64,13 +89,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const hudBackdrop = document.getElementById('cnx-modal-backdrop');
   const hudCloseBtn = document.getElementById('cnx-modal-close-btn');
   const hudSecondaryBtn = document.getElementById('cnx-modal-secondary-btn');
-  const nodeTagEl = document.getElementById('cnx-modal-node-tag');
+  
+  // Elementos de la Card Orgánica
+  const regionBadgeEl = document.getElementById('cnx-modal-region-badge');
+  const regionTextEl = document.getElementById('cnx-modal-region-text');
+  const baseTypeEl = document.getElementById('cnx-modal-base-type');
   const statusTextEl = document.getElementById('cnx-modal-status-text');
   const cityTitleEl = document.getElementById('cnx-modal-city-title');
   const citySubtitleEl = document.getElementById('cnx-modal-city-subtitle');
-  const addressEl = document.getElementById('cnx-modal-address');
-  const roleEl = document.getElementById('cnx-modal-role');
-  const coordsEl = document.getElementById('cnx-modal-coords');
+  const descEl = document.getElementById('cnx-modal-desc');
+  const locationEl = document.getElementById('cnx-modal-location');
+  const servicesListEl = document.getElementById('cnx-modal-services-list');
+  const ctaBtn = document.getElementById('cnx-modal-cta-btn');
+  const ctaText = document.getElementById('cnx-modal-cta-text');
 
   const mapPins = document.querySelectorAll('.cnx-map-pin');
   const baseChips = document.querySelectorAll('.cnx-base-chip');
@@ -79,13 +110,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = basesData[baseId];
     if (!data || !hudModalEl) return;
 
-    if (nodeTagEl) nodeTagEl.textContent = `${data.nodo.toUpperCase()} // TELEMETRÍA`;
+    if (regionTextEl) regionTextEl.textContent = data.region;
+    if (regionBadgeEl) {
+      regionBadgeEl.className = `inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wide uppercase border ${data.regionBadgeClasses}`;
+    }
+    if (baseTypeEl) baseTypeEl.textContent = data.tipo;
     if (statusTextEl) statusTextEl.textContent = data.estado;
     if (cityTitleEl) cityTitleEl.textContent = data.ciudad;
-    if (citySubtitleEl) citySubtitleEl.textContent = data.subtitulo;
-    if (addressEl) addressEl.textContent = data.direccion;
-    if (roleEl) roleEl.textContent = data.rol;
-    if (coordsEl) coordsEl.textContent = data.coords;
+    if (citySubtitleEl) citySubtitleEl.textContent = data.provincia;
+    if (descEl) descEl.textContent = data.descripcion;
+    if (locationEl) locationEl.textContent = data.ubicacion;
+
+    if (servicesListEl && Array.isArray(data.servicios)) {
+      servicesListEl.innerHTML = data.servicios.map(serv => `
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-paper dark:bg-white/5 border border-steel/70 dark:border-white/10 text-xs font-medium text-carbon dark:text-white shadow-2xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span>
+          <span>${serv}</span>
+        </span>
+      `).join('');
+    }
+
+    if (ctaText) ctaText.textContent = `Cotizar Transporte desde ${data.ciudad.split(' ')[0]}`;
+    if (ctaBtn) ctaBtn.href = data.contactoUrl || '#contacto';
 
     // Resaltar pin y chip correspondiente
     mapPins.forEach(p => p.classList.toggle('is-active', p.getAttribute('data-base-id') === baseId));

@@ -570,93 +570,99 @@
               </p>
             </blockquote>
 
-            <!-- Tarjeta de Identificación y Honor del Fundador (Placa de Alta Distinción) -->
-            <div class="founder-heritage-plaque inline-flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-6 px-6 sm:px-8 py-5 sm:py-6 rounded-3xl max-w-2xl mx-auto text-left relative overflow-hidden">
+            <!-- Contenedor con Efecto Glow en Borde (Basado en glow1.txt) -->
+            <div class="founder-glow-wrapper group">
               
-              <!-- Resplandor sutil de fondo -->
-              <div class="absolute -top-12 -left-12 w-36 h-36 bg-red/10 dark:bg-red/20 rounded-full blur-2xl pointer-events-none"></div>
+              <!-- Capa 1: Resplandor Difuso en Borde (Glow Blur de glow1.txt) -->
+              <div class="founder-border-box-glow" aria-hidden="true"></div>
 
-              <!-- Medallón Heráldico de Honor (Diseño Bespoke de Alta Ingeniería y Prestigio) -->
-              <div class="relative shrink-0">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center relative">
-                  <svg class="w-16 h-16 sm:w-20 sm:h-20 drop-shadow-md" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Medallón Conmemorativo Fundador">
-                    <defs>
-                      <linearGradient id="founderGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#F59E0B"/>
-                        <stop offset="50%" stop-color="#C60C30"/>
-                        <stop offset="100%" stop-color="#E11D2A"/>
-                      </linearGradient>
-                      <linearGradient id="founderInnerObsidian" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#221216"/>
-                        <stop offset="50%" stop-color="#141418"/>
-                        <stop offset="100%" stop-color="#09090C"/>
-                      </linearGradient>
-                      <radialGradient id="founderRadialGlow" cx="35%" cy="30%" r="65%">
-                        <stop offset="0%" stop-color="#E11D2A" stop-opacity="0.45"/>
-                        <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-                      </radialGradient>
-                    </defs>
+              <!-- Capa 2: Borde Nítido Animado (Animated Border Box de glow1.txt) -->
+              <div class="founder-border-box" aria-hidden="true"></div>
 
-                    <!-- Anillo exterior ornamental con micro-puntos estilo relojería suiza -->
-                    <circle cx="36" cy="36" r="34" stroke="url(#founderGoldGrad)" stroke-width="1.2" stroke-dasharray="2.5 2.5" opacity="0.65"/>
-                    <circle cx="36" cy="36" r="31" stroke="url(#founderGoldGrad)" stroke-width="1.5" opacity="0.9"/>
-                    
-                    <!-- Cuerpo del medallón en obsidiana con bisel -->
-                    <circle cx="36" cy="36" r="27" fill="url(#founderInnerObsidian)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-                    <circle cx="36" cy="36" r="27" fill="url(#founderRadialGlow)"/>
+              <!-- Capa 3: Tarjeta de Identificación y Honor del Fundador -->
+              <div class="founder-heritage-plaque flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-6 px-6 sm:px-8 py-5 sm:py-6 text-left relative overflow-hidden">
+                
+                <!-- Medallón Heráldico de Honor (Diseño Bespoke de Alta Ingeniería y Prestigio) -->
+                <div class="relative shrink-0 z-10">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center relative">
+                    <svg class="founder-medallion-svg w-16 h-16 sm:w-20 sm:h-20 drop-shadow-md" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Medallón Conmemorativo Fundador">
+                      <defs>
+                        <linearGradient id="founderGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#F59E0B"/>
+                          <stop offset="50%" stop-color="#C60C30"/>
+                          <stop offset="100%" stop-color="#E11D2A"/>
+                        </linearGradient>
+                        <linearGradient id="founderInnerObsidian" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#221216"/>
+                          <stop offset="50%" stop-color="#141418"/>
+                          <stop offset="100%" stop-color="#09090C"/>
+                        </linearGradient>
+                        <radialGradient id="founderRadialGlow" cx="35%" cy="30%" r="65%">
+                          <stop offset="0%" stop-color="#E11D2A" stop-opacity="0.45"/>
+                          <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+                        </radialGradient>
+                      </defs>
 
-                    <!-- Corona de Laureles Clásica grabada con finura -->
-                    <g stroke="url(#founderGoldGrad)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.85">
-                      <!-- Laurel izquierdo -->
-                      <path d="M22 43 C20 37 21 30 25 25"/>
-                      <path d="M20 39 C18 37 19 34 22 34"/>
-                      <path d="M20 32 C19 30 20 28 23 28"/>
-                      <path d="M22 26 C21 24 23 22 25 24"/>
-                      <!-- Laurel derecho -->
-                      <path d="M50 43 C52 37 51 30 47 25"/>
-                      <path d="M52 39 C54 37 53 34 50 34"/>
-                      <path d="M52 32 C53 30 52 28 49 28"/>
-                      <path d="M50 26 C51 24 49 22 47 24"/>
-                    </g>
+                      <!-- Anillo exterior ornamental con micro-puntos estilo relojería suiza -->
+                      <circle cx="36" cy="36" r="34" stroke="url(#founderGoldGrad)" stroke-width="1.2" stroke-dasharray="2.5 2.5" opacity="0.65"/>
+                      <circle cx="36" cy="36" r="31" stroke="url(#founderGoldGrad)" stroke-width="1.5" opacity="0.9"/>
+                      
+                      <!-- Cuerpo del medallón en obsidiana con bisel -->
+                      <circle cx="36" cy="36" r="27" fill="url(#founderInnerObsidian)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                      <circle cx="36" cy="36" r="27" fill="url(#founderRadialGlow)"/>
 
-                    <!-- Estrella superior de distinción -->
-                    <path d="M36 15 L37.2 17.5 L39.8 17.7 L37.8 19.4 L38.4 22 L36 20.6 L33.6 22 L34.2 19.4 L32.2 17.7 L34.8 17.5 LZ" fill="#F59E0B"/>
+                      <!-- Corona de Laureles Clásica grabada con finura -->
+                      <g stroke="url(#founderGoldGrad)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.85">
+                        <!-- Laurel izquierdo -->
+                        <path d="M22 43 C20 37 21 30 25 25"/>
+                        <path d="M20 39 C18 37 19 34 22 34"/>
+                        <path d="M20 32 C19 30 20 28 23 28"/>
+                        <path d="M22 26 C21 24 23 22 25 24"/>
+                        <!-- Laurel derecho -->
+                        <path d="M50 43 C52 37 51 30 47 25"/>
+                        <path d="M52 39 C54 37 53 34 50 34"/>
+                        <path d="M52 32 C53 30 52 28 49 28"/>
+                        <path d="M50 26 C51 24 49 22 47 24"/>
+                      </g>
 
-                    <!-- Monograma Serif de Honor "BB" -->
-                    <text x="36" y="42" font-family="'Cinzel', 'Georgia', 'Times New Roman', serif" font-size="14.5" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">BB</text>
-                    
-                    <!-- Grabado conmemorativo 1986 -->
-                    <text x="36" y="52" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#F59E0B" text-anchor="middle" letter-spacing="1.5">1986</text>
-                  </svg>
-                </div>
-              </div>
+                      <!-- Estrella superior de distinción -->
+                      <path d="M36 15 L37.2 17.5 L39.8 17.7 L37.8 19.4 L38.4 22 L36 20.6 L33.6 22 L34.2 19.4 L32.2 17.7 L34.8 17.5 LZ" fill="#F59E0B"/>
 
-              <!-- Contenido Editorial Prestigioso -->
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2.5 flex-wrap mb-1">
-                  <h4 class="font-display font-black text-base sm:text-lg uppercase text-carbon dark:text-white tracking-wide">
-                    Don Bolívar Barrionuevo
-                  </h4>
-                  <!-- Badge de Honor con Sello Rubí/Ámbar -->
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-gradient-to-r from-red/15 via-amber-500/15 to-red/15 text-red dark:text-red-400 border border-red/30 shadow-xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-red animate-pulse"></span>
-                    <span>Fundador de Conexpet</span>
-                  </span>
-                </div>
-
-                <p class="text-xs sm:text-[13px] text-graphite dark:text-white/75 font-medium leading-relaxed mb-2.5">
-                  Pionero de la Logística Petrolera y Movilización de Taladros (RIGs) en el Ecuador
-                </p>
-
-                <!-- Barra de Condecoración & Firma Digitalizada con Estilo Charter -->
-                <div class="flex items-center justify-between gap-4 pt-2.5 border-t border-black/[0.06] dark:border-white/[0.08] text-[11px] font-mono text-graphite/80 dark:text-white/50">
-                  <div class="flex items-center gap-2">
-                    <img src="images/ecuador1.png" alt="Ecuador" class="w-3.5 h-3.5 rounded-full object-cover">
-                    <span>Legado Activo · Desde 1986</span>
+                      <!-- Monograma Serif de Honor "BB" -->
+                      <text x="36" y="42" font-family="'Cinzel', 'Georgia', 'Times New Roman', serif" font-size="14.5" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">BB</text>
+                      
+                      <!-- Grabado conmemorativo 1986 -->
+                      <text x="36" y="52" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#F59E0B" text-anchor="middle" letter-spacing="1.5">1986</text>
+                    </svg>
                   </div>
-                  <!-- Firma facsimilar elegante en trazo SVG vectorial -->
-                  
                 </div>
+
+                <!-- Contenido Editorial Prestigioso -->
+                <div class="flex-1 min-w-0 relative z-10">
+                  <div class="flex items-center gap-2.5 flex-wrap mb-1">
+                    <h4 class="font-display font-black text-base sm:text-lg uppercase text-carbon dark:text-white tracking-wide">
+                      Don Bolívar Barrionuevo
+                    </h4>
+                    <!-- Badge de Honor con Sello Rubí/Ámbar -->
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-gradient-to-r from-red/15 via-amber-500/15 to-red/15 text-red dark:text-red-400 border border-red/30 shadow-xs">
+                      <span class="w-1.5 h-1.5 rounded-full bg-red animate-pulse"></span>
+                      <span>Fundador de Conexpet</span>
+                    </span>
+                  </div>
+
+                  <p class="text-xs sm:text-[13px] text-graphite dark:text-white/75 font-medium leading-relaxed mb-2.5">
+                    Pionero de la Logística Petrolera y Movilización de Taladros en el Ecuador
+                  </p>
+
+                  <!-- Barra de Condecoración & Firma Digitalizada con Estilo Charter -->
+                  <div class="flex items-center justify-between gap-4 pt-2.5 border-t border-black/[0.06] dark:border-white/[0.08] text-[11px] font-mono text-graphite/80 dark:text-white/50">
+                    <div class="flex items-center gap-2">
+                      <img src="images/ecuador1.png" alt="Ecuador" class="w-3.5 h-3.5 rounded-full object-cover">
+                      <span>Legado Activo · Desde 1986</span>
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
             </div>

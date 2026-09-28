@@ -218,36 +218,241 @@
   transform: translateY(0) scale(1);
 }
 
-.cnx-hud-card {
+/* Card Orgánica de la Ciudad / Base Seleccionada */
+.cnx-city-card {
   position: relative;
-  background: #FFFFFF;
-  border: 1px solid #E2E2E6;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(225, 29, 42, 0.15);
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+  padding: 28px 24px;
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   overflow: hidden;
 }
 
-.dark .cnx-hud-card {
-  background: #151517;
-  border-color: #26262A;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(225, 29, 42, 0.25);
+.dark .cnx-city-card {
+  background: rgba(21, 21, 23, 0.96);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 30px 70px -15px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 40px rgba(225, 29, 42, 0.12);
 }
 
-/* Esquinas Decorativas Estilo HUD / Militar */
-.cnx-hud-corner {
+@media (min-width: 640px) {
+  .cnx-city-card {
+    border-radius: 36px;
+    padding: 36px 32px;
+  }
+}
+
+/* Micro-aura orgánica ambiental en la esquina */
+.cnx-city-card-glow {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border-color: #E11D2A;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(225, 29, 42, 0.16) 0%, transparent 70%);
   pointer-events: none;
-  opacity: 0.85;
+  border-radius: 50%;
+  filter: blur(25px);
 }
 
-.cnx-hud-corner-tl { top: 6px; left: 6px; border-top: 2px solid #E11D2A; border-left: 2px solid #E11D2A; }
-.cnx-hud-corner-tr { top: 6px; right: 6px; border-top: 2px solid #E11D2A; border-right: 2px solid #E11D2A; }
-.cnx-hud-corner-bl { bottom: 6px; left: 6px; border-bottom: 2px solid #E11D2A; border-left: 2px solid #E11D2A; }
-.cnx-hud-corner-br { bottom: 6px; right: 6px; border-bottom: 2px solid #E11D2A; border-right: 2px solid #E11D2A; }
+/* ==========================================================================
+   RUTAS VECTORIALES & CORREDORES ACTIVOS EN MAPA
+   ========================================================================== */
+.cnx-routes-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.cnx-route-bg {
+  stroke: rgba(225, 29, 42, 0.25);
+  fill: none;
+  stroke-linecap: round;
+}
+
+.dark .cnx-route-bg {
+  stroke: rgba(225, 29, 42, 0.38);
+}
+
+.cnx-route-flow {
+  stroke: #E11D2A;
+  stroke-dasharray: 6 8;
+  stroke-linecap: round;
+  fill: none;
+  animation: cnxRouteFlow 14s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(225, 29, 42, 0.65));
+}
+
+@keyframes cnxRouteFlow {
+  from {
+    stroke-dashoffset: 280;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.cnx-corridor-hub {
+  fill: #E11D2A;
+  animation: cnxHubPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes cnxHubPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.35); }
+}
+
+/* ==========================================================================
+   MATRIZ EDITORIAL DE BASES Y CORREDORES (SIN TARJETAS)
+   ========================================================================== */
+.cobertura-row {
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease, padding 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cobertura-row:hover {
+  background: linear-gradient(90deg, rgba(198, 12, 48, 0.035) 0%, rgba(198, 12, 48, 0.008) 45%, transparent 100%);
+}
+
+.dark .cobertura-row:hover {
+  background: linear-gradient(90deg, rgba(225, 29, 42, 0.08) 0%, rgba(225, 29, 42, 0.015) 45%, transparent 100%);
+}
+
+@media (min-width: 768px) {
+  .cobertura-row:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* ==========================================================================
+   ESTÁNDARES ISO & BASC: SELLOS DE EXCELENCIA TÉCNICA
+   ========================================================================== */
+.cert-seal-strip {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+}
+
+.cert-seal-strip:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.dark .cert-seal-strip:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* Medallón Emblema de Alta Precisión */
+.cert-medallion {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cert-seal-strip:hover .cert-medallion {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Micro-anillo punteado orbital */
+.cert-medallion-ring {
+  position: absolute;
+  inset: 3px;
+  border-radius: 17px;
+  border: 1px dashed currentColor;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Variantes cromáticas de medallones */
+.cert-medallion-red {
+  background: linear-gradient(135deg, rgba(225, 29, 42, 0.12) 0%, rgba(225, 29, 42, 0.03) 100%);
+  border: 1px solid rgba(225, 29, 42, 0.22);
+  color: #E11D2A;
+}
+.dark .cert-medallion-red {
+  background: linear-gradient(135deg, rgba(225, 29, 42, 0.18) 0%, rgba(225, 29, 42, 0.04) 100%);
+  border-color: rgba(225, 29, 42, 0.32);
+}
+.cert-seal-strip:hover .cert-medallion-red {
+  border-color: rgba(225, 29, 42, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(225, 29, 42, 0.28);
+}
+
+.cert-medallion-green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.03) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  color: #10B981;
+}
+.dark .cert-medallion-green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0.04) 100%);
+  border-color: rgba(16, 185, 129, 0.32);
+}
+.cert-seal-strip:hover .cert-medallion-green {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.28);
+}
+
+.cert-medallion-amber {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0.03) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  color: #F59E0B;
+}
+.dark .cert-medallion-amber {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0.04) 100%);
+  border-color: rgba(245, 158, 11, 0.32);
+}
+.cert-seal-strip:hover .cert-medallion-amber {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.28);
+}
+
+.cert-medallion-cyan {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0.03) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  color: #06B6D4;
+}
+.dark .cert-medallion-cyan {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.18) 0%, rgba(6, 182, 212, 0.04) 100%);
+  border-color: rgba(6, 182, 212, 0.32);
+}
+.cert-seal-strip:hover .cert-medallion-cyan {
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.28);
+}
+
+/* Línea de acento inferior en hover */
+.cert-seal-strip::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.cert-seal-strip-red:hover::after { background: #E11D2A; }
+.cert-seal-strip-green:hover::after { background: #10B981; }
+.cert-seal-strip-amber:hover::after { background: #F59E0B; }
+.cert-seal-strip-cyan:hover::after { background: #06B6D4; }
 
 /* Ajustes Responsive */
 @media (max-width: 640px) {

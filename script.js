@@ -257,4 +257,100 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* ==========================================================================
+     6. MODAL LEGAL: TÉRMINOS Y CONDICIONES & LOPDP (ECUADOR)
+     ========================================================================== */
+  const legalModal = document.getElementById('cnx-legal-modal');
+  const legalBackdrop = document.getElementById('cnx-legal-backdrop');
+  const legalCloseBtns = document.querySelectorAll('[data-close-legal]');
+  const legalTabBtns = document.querySelectorAll('[data-legal-tab]');
+  const legalPanels = document.querySelectorAll('[data-legal-panel]');
+  const legalTriggers = document.querySelectorAll('[data-open-legal]');
+  const legalAcceptBtn = document.getElementById('cnx-legal-accept-btn');
+
+  function openLegalModal(tabName) {
+    if (!legalModal) return;
+    switchLegalTab(tabName || 'lopdp');
+    legalModal.classList.remove('hidden');
+    legalModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+      legalModal.classList.add('is-open');
+    });
+  }
+
+  function closeLegalModal() {
+    if (!legalModal) return;
+    legalModal.classList.remove('is-open');
+    legalModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!legalModal.classList.contains('is-open')) {
+        legalModal.classList.add('hidden');
+      }
+    }, 250);
+  }
+
+  function switchLegalTab(tabName) {
+    legalTabBtns.forEach(btn => {
+      const isActive = btn.getAttribute('data-legal-tab') === tabName;
+      btn.classList.toggle('is-active', isActive);
+      if (isActive) {
+        btn.classList.add('text-carbon', 'dark:text-white', 'border-red');
+        btn.classList.remove('text-graphite', 'dark:text-white/60', 'border-transparent');
+      } else {
+        btn.classList.remove('text-carbon', 'dark:text-white', 'border-red');
+        btn.classList.add('text-graphite', 'dark:text-white/60', 'border-transparent');
+      }
+    });
+
+    legalPanels.forEach(panel => {
+      const matches = panel.getAttribute('data-legal-panel') === tabName;
+      panel.classList.toggle('hidden', !matches);
+    });
+  }
+
+  legalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tab = trigger.getAttribute('data-open-legal') || 'lopdp';
+      openLegalModal(tab);
+    });
+  });
+
+  legalCloseBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeLegalModal();
+    });
+  });
+
+  if (legalBackdrop) {
+    legalBackdrop.addEventListener('click', closeLegalModal);
+  }
+
+  legalTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-legal-tab');
+      switchLegalTab(tab);
+    });
+  });
+
+  if (legalAcceptBtn) {
+    legalAcceptBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Auto-marcar checkbox de consentimiento en los formularios
+      document.querySelectorAll('input[name="acepta_terminos_lopdp"]').forEach(chk => {
+        chk.checked = true;
+      });
+      closeLegalModal();
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && legalModal && !legalModal.classList.contains('hidden')) {
+      closeLegalModal();
+    }
+  });
 });

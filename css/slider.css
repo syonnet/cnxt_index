@@ -1,11 +1,12 @@
 /**
- * CONEXPET — Módulo: Slider Cinemático de la Flota Especializada
- * Distribución Premium: Miniaturas en el cuadrante inferior derecho y contenido despejado
+ * CONEXPET — Módulo: Slider Cinemático de la Flota Especializada (Edición Premium)
+ * Efectos: Transición cinematográfica, Ken Burns breathing, HUD tecnológico y miniaturas flotantes
  */
 
 .cnx-cslider-section {
   position: relative;
   width: 100%;
+  background-color: #0b0c0e;
 }
 
 .cnx-cslider-container {
@@ -24,8 +25,8 @@
    1. ELEMENTOS DEL SLIDER (TARJETAS Y FONDO ACTIVO)
    ========================================================================== */
 .cnx-cslider-item {
-  width: 175px;
-  height: 245px;
+  width: 185px;
+  height: 260px;
   list-style-type: none;
   position: absolute;
   bottom: 2.75rem;
@@ -35,10 +36,10 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 
-    0 16px 36px -8px rgba(0, 0, 0, 0.85),
-    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 20px 40px -10px rgba(0, 0, 0, 0.9),
+    0 4px 12px rgba(0, 0, 0, 0.6),
     inset 0 0 0 1px rgba(255, 255, 255, 0.22);
   transition: 
     left 0.75s cubic-bezier(0.25, 1, 0.5, 1),
@@ -48,18 +49,19 @@
     height 0.75s cubic-bezier(0.25, 1, 0.5, 1),
     border-radius 0.75s ease,
     opacity 0.6s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   overflow: hidden;
 }
 
+/* Miniatura hover con efecto Glow */
 .cnx-cslider-item:hover:not(:nth-child(1)):not(:nth-child(2)) {
-  transform: translateY(-6px) scale(1.03);
+  transform: translateY(-8px) scale(1.04);
   box-shadow: 
-    0 22px 42px -6px rgba(0, 0, 0, 0.95),
-    0 0 0 2px rgba(225, 29, 42, 0.7),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    0 25px 50px -10px rgba(0, 0, 0, 0.95),
+    0 0 30px rgba(225, 29, 42, 0.55),
+    inset 0 0 0 1.5px rgba(225, 29, 42, 0.8);
 }
 
 /* Slide Principal Activo (Ocupa el 100% de la pantalla) */
@@ -78,21 +80,31 @@
   cursor: default;
 }
 
+/* Animación sutil de respiración Ken Burns en el slide activo */
+.cnx-cslider-item:nth-child(2) {
+  animation: cnxKenBurnsZoom 14s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+}
+
+@keyframes cnxKenBurnsZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.045); }
+}
+
 /* Tarjetas Miniaturas Preview (Ubicadas en la Parte Inferior Derecha) */
 .cnx-cslider-item:nth-child(3) {
-  left: calc(100% - 590px);
+  left: calc(100% - 630px);
   z-index: 8;
   opacity: 1;
 }
 
 .cnx-cslider-item:nth-child(4) {
-  left: calc(100% - 395px);
+  left: calc(100% - 425px);
   z-index: 7;
   opacity: 1;
 }
 
 .cnx-cslider-item:nth-child(5) {
-  left: calc(100% - 200px);
+  left: calc(100% - 220px);
   z-index: 6;
   opacity: 1;
 }
@@ -103,30 +115,50 @@
   pointer-events: none;
 }
 
-/* Micro-etiqueta sutil en las miniaturas de preview */
-.cnx-cslider-badge-preview {
+/* Micro-etiquetas enriquecidas en las miniaturas de preview */
+.cnx-cslider-thumb-info {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: rgba(15, 15, 18, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.2;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
-.cnx-cslider-item:nth-child(1) .cnx-cslider-badge-preview,
-.cnx-cslider-item:nth-child(2) .cnx-cslider-badge-preview {
+.cnx-cslider-thumb-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  color: #F59E0B;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3px 8px;
+  border-radius: 8px;
+  align-self: flex-start;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+}
+
+.cnx-cslider-thumb-label {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(14, 15, 18, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.cnx-cslider-item:nth-child(1) .cnx-cslider-thumb-info,
+.cnx-cslider-item:nth-child(2) .cnx-cslider-thumb-info {
   opacity: 0;
   pointer-events: none;
 }
@@ -139,10 +171,10 @@
   inset: 0;
   background: linear-gradient(
     90deg, 
-    rgba(11, 11, 12, 0.94) 0%, 
-    rgba(11, 11, 12, 0.82) 35%, 
-    rgba(11, 11, 12, 0.40) 65%, 
-    rgba(11, 11, 12, 0.25) 100%
+    rgba(8, 8, 10, 0.96) 0%, 
+    rgba(8, 8, 10, 0.88) 32%, 
+    rgba(8, 8, 10, 0.52) 65%, 
+    rgba(8, 8, 10, 0.30) 100%
   );
   pointer-events: none;
   opacity: 0;
@@ -155,12 +187,12 @@
 }
 
 /* ==========================================================================
-   3. CONTENIDO TEXTUAL DEL SLIDE ACTIVO
+   3. CONTENIDO TEXTUAL DEL SLIDE ACTIVO (STAGGERED ENTRANCE)
    ========================================================================== */
 .cnx-cslider-content {
-  width: min(92vw, 580px);
+  width: min(92vw, 620px);
   position: absolute;
-  top: 40%;
+  top: 38%;
   left: 5%;
   transform: translateY(-50%);
   color: #ffffff;
@@ -172,45 +204,52 @@
 @media (min-width: 1024px) {
   .cnx-cslider-content {
     left: 7%;
-    top: 42%;
+    top: 40%;
   }
 }
 
 .cnx-cslider-item:nth-of-type(2) .cnx-cslider-content {
   display: block;
-  animation: cnx-cslider-show 0.75s ease-in-out 0.3s forwards;
+  opacity: 1;
 }
 
-@keyframes cnx-cslider-show {
+/* Animaciones escalonadas de entrada */
+.cnx-cslider-item:nth-of-type(2) .cnx-cslider-kicker {
+  animation: cnxFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.cnx-cslider-item:nth-of-type(2) .cnx-cslider-title {
+  animation: cnxFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.cnx-cslider-item:nth-of-type(2) .cnx-cslider-desc {
+  animation: cnxFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.cnx-cslider-item:nth-of-type(2) .cnx-cslider-specs {
+  animation: cnxFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.cnx-cslider-item:nth-of-type(2) .cnx-cslider-action-wrap {
+  animation: cnxFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+@keyframes cnxFadeUp {
   0% {
-    filter: blur(6px);
-    transform: translateY(calc(-50% + 40px));
     opacity: 0;
+    filter: blur(8px);
+    transform: translateY(22px);
   }
   100% {
     opacity: 1;
     filter: blur(0);
-    transform: translateY(-50%);
+    transform: translateY(0);
   }
 }
 
 /* ==========================================================================
-   4. CONTROLES DE NAVEGACIÓN Y COMPAGINACIÓN
+   4. DOCK DE CONTROL CINEMÁTICO & BOTONES
    ========================================================================== */
-.cnx-cslider-nav {
-  position: absolute;
-  bottom: 2.75rem;
-  left: 5%;
-  z-index: 20;
-  user-select: none;
-}
-
-@media (min-width: 1024px) {
-  .cnx-cslider-nav {
-    left: 7%;
-  }
-}
-
 .cnx-cslider-btn-nav {
   display: inline-flex;
   align-items: center;
@@ -218,66 +257,79 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: rgba(22, 23, 26, 0.75);
+  background-color: rgba(18, 19, 22, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.22);
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6);
 }
 
 .cnx-cslider-btn-nav:hover {
   background-color: #E11D2A;
   border-color: #E11D2A;
   transform: scale(1.08);
-  box-shadow: 0 8px 24px rgba(225, 29, 42, 0.45);
+  box-shadow: 0 10px 28px rgba(225, 29, 42, 0.55);
 }
 
 .cnx-cslider-btn-nav:active {
-  transform: scale(0.95);
+  transform: scale(0.94);
 }
 
 /* ==========================================================================
    5. RESPONSIVIDAD ADAPTATIVA (TABLETS Y SMARTPHONES)
    ========================================================================== */
+@media (min-width: 1400px) {
+  .cnx-cslider-item {
+    width: 200px;
+    height: 280px;
+  }
+  .cnx-cslider-item:nth-child(3) {
+    left: calc(100% - 680px);
+  }
+  .cnx-cslider-item:nth-child(4) {
+    left: calc(100% - 460px);
+  }
+  .cnx-cslider-item:nth-child(5) {
+    left: calc(100% - 240px);
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .cnx-cslider-item {
-    width: 145px;
-    height: 205px;
+    width: 150px;
+    height: 215px;
     bottom: 2.25rem;
   }
   .cnx-cslider-item:nth-child(3) {
-    left: calc(100% - 480px);
+    left: calc(100% - 495px);
   }
   .cnx-cslider-item:nth-child(4) {
-    left: calc(100% - 325px);
+    left: calc(100% - 335px);
   }
   .cnx-cslider-item:nth-child(5) {
-    left: calc(100% - 170px);
+    left: calc(100% - 175px);
   }
   .cnx-cslider-item:nth-child(n + 6) {
     left: 100%;
     opacity: 0;
     pointer-events: none;
   }
-  .cnx-cslider-nav {
-    bottom: 2.25rem;
-  }
 }
 
 @media (max-width: 767px) {
   .cnx-cslider-item {
-    width: 105px;
-    height: 150px;
+    width: 110px;
+    height: 155px;
     bottom: 1.25rem;
-    border-radius: 12px;
+    border-radius: 14px;
   }
   .cnx-cslider-item:nth-child(3) {
-    left: calc(100% - 225px);
+    left: calc(100% - 235px);
   }
   .cnx-cslider-item:nth-child(4) {
-    left: calc(100% - 115px);
+    left: calc(100% - 120px);
   }
   .cnx-cslider-item:nth-child(n + 5) {
     left: 100%;
@@ -285,16 +337,46 @@
     pointer-events: none;
   }
   .cnx-cslider-content {
-    top: 32%;
-  }
-  .cnx-cslider-nav {
-    bottom: 1.25rem;
+    top: 30%;
+    width: 90vw;
   }
   .cnx-cslider-btn-nav {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
   }
-  .cnx-cslider-badge-preview {
-    display: none;
+  .cnx-cslider-thumb-info {
+    padding: 8px;
+  }
+  .cnx-cslider-thumb-num {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  .cnx-cslider-thumb-label {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+}
+
+/* ==========================================================================
+   6. CUADRO OPERATIVO: FILAS EDITORIALES SUIZAS (SIN TARJETAS)
+   Diseño de alta pureza estética, espacioso y sin amontonamiento
+   ========================================================================== */
+.op-row {
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease, padding 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.op-row:hover {
+  background: linear-gradient(90deg, rgba(198, 12, 48, 0.035) 0%, rgba(198, 12, 48, 0.008) 45%, transparent 100%);
+}
+
+.dark .op-row:hover {
+  background: linear-gradient(90deg, rgba(225, 29, 42, 0.08) 0%, rgba(225, 29, 42, 0.015) 45%, transparent 100%);
+}
+
+@media (min-width: 768px) {
+  .op-row:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
