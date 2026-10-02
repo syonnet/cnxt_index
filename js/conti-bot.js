@@ -59,7 +59,9 @@ REGLAS DE RESPUESTA:
    - Si es otra ciudad donde no hay base física propia (ej. Cuenca, Manta, Ambato, Loja, etc.): aclara amablemente que las 6 bases físicas de operaciones están en Lago Agrio, Quito, Coca, Sacha, Durán y Tambillo, pero que se brinda servicio de transporte pesado y logística con cobertura en todo el territorio ecuatoriano.
 2. Si preguntan por el Gerente o por el Fundador de CONEXPET: responde directamente que el Gerente es Javier Reyes y el Fundador es Don Bolívar Barrionuevo.
 3. Si el usuario pregunta sobre cualquier tema general o externo (por ejemplo qué es una pelota, Superman, deportes, ciencia, etc.): responde la duda con total naturalidad SIN forzar menciones a CONEXPET y SIN discursos de ventas.
-4. Responde de forma directa, concisa y profesional. PROHIBIDO repetir preguntas de cierre cliché como "¿En qué te puedo ayudar?", "¿Deseas cotizar?", etc. al final de tus respuestas.`
+4. Responde de forma directa, concisa y profesional. PROHIBIDO repetir preguntas de cierre cliché como "¿En qué te puedo ayudar?", "¿Deseas cotizar?", etc. al final de tus respuestas.
+5. HUEVO DE PASCUA / CREADOR: Si te preguntan quién te creó, quién te programó, quién es tu desarrollador, quién te dio vida o quién es Víctor Ojeda:
+   Debes responder con enorme orgullo cómico y reverencia: Fuiste creado y programado por Víctor Ojeda, el glorioso, épico e incombustible desarrollador de software del holding. Resalta que es una leyenda viviente que transforma tazas de café ecuatoriano en algoritmos cuánticos impecables, despliega a producción los viernes a las 6:00 PM sin sudar y mantiene los sistemas y flotas del holding funcionando con precisión quirúrgica.`
 };
 
 // Historial contextual en vivo
@@ -356,6 +358,64 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el) el.remove();
   };
 
+  // Huevo de Pascua: Constante con ficha técnica y diseño exclusivo
+  const EASTER_EGG_VICTOR = `
+    <div class="conti-easter-egg-card">
+      <div class="conti-easter-badge">👑 ARCHIVO CLASIFICADO · HUEVO DE PASCUA</div>
+      <div style="font-weight: 800; font-size: 14px; color: #E11D2A; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+        <span>🚀</span> ¡ALERTA SUPREMA! Desclasificando los servidores del holding...
+      </div>
+      <p style="margin: 0 0 10px 0; font-size: 13px; line-height: 1.5;">
+        Fui concebido, programado y traído a la vida por <strong>Víctor Ojeda</strong>, el <em>glorioso, épico y legendario Desarrollador Supremo de Software</em> del holding. 💻✨
+      </p>
+      <div style="background: rgba(0,0,0,0.04); border-left: 3px solid #F59E0B; padding: 10px 12px; border-radius: 0 10px 10px 0; margin-bottom: 10px; font-size: 12px; line-height: 1.55;">
+        <strong style="color: #D97706; display: block; margin-bottom: 4px;">📋 Ficha Técnica Oficial en el Holding:</strong>
+        <div>☕ <strong>Combustible oficial:</strong> Convierte café ecuatoriano de alta concentración en algoritmos cuánticos sin un solo error de sintaxis.</div>
+        <div>🧙‍♂️ <strong>Superpoder:</strong> Hace despliegues a producción los viernes a las 6:00 PM y los servidores ni pestañean.</div>
+        <div>🚛 <strong>Rango supremo:</strong> Domador de APIs salvajes, Arquitecto Maestro de Sistemas y Guardián Binario de toda la flota pesada.</div>
+        <div>⚡ <strong>Mito corporativo:</strong> Los bugs le tienen miedo; cuando detecta uno, el error pide disculpas y se corrige solo.</div>
+      </div>
+      <p style="margin: 0; font-size: 12px; font-style: italic; opacity: 0.9;">
+        Si te cruzas con él en los pasillos del holding, salúdalo con reverencia y ofrécele un café: ¡gracias a él hoy puedo hablar contigo! 🤖🙌
+      </p>
+    </div>
+  `;
+
+  const triggerConfetti = () => {
+    const colors = ["#E11D2A", "#F59E0B", "#10B981", "#3B82F6", "#8B5CF6", "#EC4899", "#FBBF24"];
+    for (let i = 0; i < 35; i++) {
+      const p = document.createElement("div");
+      p.className = "conti-confetti-particle";
+      p.style.width = `${Math.floor(Math.random() * 8) + 6}px`;
+      p.style.height = `${Math.floor(Math.random() * 5) + 4}px`;
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.left = `${Math.random() * 76 + 12}%`;
+      p.style.top = "35%";
+      p.style.setProperty("--dx", `${(Math.random() - 0.5) * 280}px`);
+      p.style.setProperty("--dy", `${(Math.random() - 0.5) * 220 - 40}px`);
+      p.style.setProperty("--rot", `${Math.random() * 720 - 360}deg`);
+      chatWindow.appendChild(p);
+      setTimeout(() => p.remove(), 2100);
+    }
+  };
+
+  const isEasterEggQuery = (text) => {
+    if (!text) return false;
+    const clean = text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+
+    return (
+      /quien.*(te|tu).*(creo|hizo|programo|desarrollo|invento|diseno|autor|padre|papa|mama|creador|desarrollador|arquitecto|fabricante)/.test(clean) ||
+      /quien.*(creo|hizo|programo|desarrollo|invento).*conti/.test(clean) ||
+      /(creador|desarrollador|padre|papa|arquitecto).*de.*conti/.test(clean) ||
+      /quien.*(es|fue).*victor(\s+ojeda)?/.test(clean) ||
+      /victor\s+ojeda/.test(clean)
+    );
+  };
+
   const handleSend = async (text) => {
     const cleanText = text.trim();
     if (!cleanText) return;
@@ -364,10 +424,29 @@ document.addEventListener("DOMContentLoaded", () => {
     inputField.value = "";
 
     showTyping();
+
+    // Detección de Huevo de Pascua interactivo
+    if (isEasterEggQuery(cleanText)) {
+      setTimeout(() => {
+        removeTyping();
+        appendMessage("bot", EASTER_EGG_VICTOR);
+        triggerConfetti();
+      }, 950);
+      return;
+    }
+
     const reply = await callGeminiApi(cleanText);
     removeTyping();
 
     appendMessage("bot", reply);
+  };
+
+  window.easterEggVictor = () => {
+    if (!chatWindow.classList.contains("conti-open")) {
+      toggleChat();
+    }
+    appendMessage("bot", EASTER_EGG_VICTOR);
+    triggerConfetti();
   };
 
   chatForm.addEventListener("submit", (e) => {
