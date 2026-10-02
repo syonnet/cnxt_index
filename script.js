@@ -5,12 +5,12 @@
 
 (function () {
   // Inicialización inmediata para evitar parpadeo de tema (Anti-FOUC)
+  // Modo oscuro prioritario por defecto salvo selección explícita 'light'
   const savedTheme = localStorage.getItem('conexpet-theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    document.documentElement.classList.add('dark');
-  } else {
+  if (savedTheme === 'light') {
     document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
   }
 })();
 

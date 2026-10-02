@@ -22,36 +22,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateAllParallax = () => {
     const windowH = window.innerHeight;
 
-    // A. Cordillera Parallax (Sección Superior) — Inicio anticipado y velocidad suave
+    // A. Cordillera Parallax (Apertura geológica limpia y descenso suave del titular con desvanecimiento)
     if (parallaxSection) {
       const rect = parallaxSection.getBoundingClientRect();
-      // Se activa con anticipación desde que la sección se aproxima al viewport
-      if (rect.bottom >= 0 && rect.top <= windowH * 1.35) {
-        // Cálculo continuo que inicia antes de ingresar a la sección
-        const progressDistance = Math.max(0, (windowH * 1.25) - rect.top);
 
-        // Flancos/Montañas: apertura geológica pausada, lenta y cinematográfica (factor reducido)
-        const mtnOffset = (progressDistance * 0.22).toFixed(1);
+      if (rect.bottom >= 0 && rect.top <= windowH * 1.25) {
+        const progressDistance = Math.max(0, (windowH * 1.15) - rect.top);
+
+        // Flancos/Montañas: ancladas a los bordes exteriores (cero cortes ni franjas laterales)
+        // Se abren progresivamente hacia afuera al descender
+        const mtnOffset = (progressDistance * 0.20).toFixed(1);
         if (mtnLeft) mtnLeft.style.transform = `translate3d(-${mtnOffset}px, 0, 0)`;
         if (mtnRight) mtnRight.style.transform = `translate3d(${mtnOffset}px, 0, 0)`;
 
-        // Nubes: brisa atmosférica sutil y cadenciosa
-        const c1Offset = (progressDistance * 0.14).toFixed(1);
-        const c2Offset = (progressDistance * 0.11).toFixed(1);
+        // Nubes intermedias
+        const c1Offset = (progressDistance * 0.12).toFixed(1);
+        const c2Offset = (progressDistance * 0.09).toFixed(1);
         if (cloud1) cloud1.style.transform = `translate3d(${c1Offset}px, 0, 0)`;
         if (cloud2) cloud2.style.transform = `translate3d(-${c2Offset}px, 0, 0)`;
 
-        // Titular & Logo: descenso fluido con atenuación progresiva
-        const textOffset = (progressDistance * 0.10).toFixed(1);
+        // Titular & Logo: desciende poco a poco y se desvanece suavemente
+        const textOffset = (progressDistance * 0.14).toFixed(1);
         const scrollPastTop = Math.max(0, -rect.top);
-        const textOpacity = Math.max(0, Math.min(1, 1 - (scrollPastTop / (windowH * 0.9)))).toFixed(2);
+        const textOpacity = Math.max(0, Math.min(1, 1 - (scrollPastTop / (windowH * 0.75)))).toFixed(2);
         if (pText) {
           pText.style.transform = `translate3d(0, ${textOffset}px, 0)`;
           pText.style.opacity = textOpacity;
         }
 
-        // Fondo amazónico: profundidad sutil sin saltos
-        const bgOffset = (progressDistance * 0.04).toFixed(1);
+        // Fondo amazónico: profundidad sutil
+        const bgOffset = (progressDistance * 0.035).toFixed(1);
         if (pBg) pBg.style.transform = `scale(1.05) translate3d(0, ${bgOffset}px, 0)`;
       }
     }
