@@ -56,7 +56,7 @@
 
 <!-- =============== CINTILLO PATRIO INSTITUCIONAL =============== -->
 <div class="bg-red text-white text-xs font-medium py-1.5 px-5 text-center flex items-center justify-center gap-2.5 tracking-wide">
-  <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-white/40 shrink-0">
+  <img src="images/ecuador1.webp" alt="Bandera del Ecuador" class="w-4 h-4 rounded-full object-cover border border-white/40 shrink-0">
   <span>Red Operativa Nacional · Seis Bases Estratégicas Interconectadas 24/7</span>
 </div>
 
@@ -268,10 +268,18 @@
       <!-- Área Visual del Mapa Interactivo -->
       <div class="relative max-w-[640px] mx-auto my-4">
         <div class="relative w-full aspect-[512/537] mx-auto select-none">
+          <!-- Mapa para Tema Claro (Rojo corporativo sobre fondo transparente) -->
           <img 
-            src="images/ec_mapa.png" 
+            src="images/ec_mapa.webp" 
             alt="Mapa de Cobertura Nacional Conexpet Ecuador" 
-            class="w-full h-full object-contain pointer-events-none drop-shadow-md"
+            class="w-full h-full object-contain pointer-events-none drop-shadow-md dark:hidden"
+            loading="lazy"
+          >
+          <!-- Mapa para Tema Oscuro (Tactical Radar HUD sobre fondo transparente) -->
+          <img 
+            src="images/ec_mapa-dark.webp" 
+            alt="Mapa de Cobertura Nacional Conexpet Ecuador - Modo Oscuro" 
+            class="w-full h-full object-contain pointer-events-none drop-shadow-[0_0_20px_rgba(225,29,42,0.18)] hidden dark:block"
             loading="lazy"
           >
 
@@ -975,7 +983,6 @@
 
 </main>
 
-<!-- =============== FOOTER CORPORATIVO =============== -->
 <!-- =============== FOOTER CORPORATIVO ÉPICO =============== -->
 <footer class="relative bg-paper dark:bg-[#0B0D12] text-graphite dark:text-white/70 border-t border-steel/80 dark:border-white/10 transition-colors duration-200 overflow-hidden">
 
@@ -1034,7 +1041,7 @@
 
           <!-- CÁPSULA ORGULLOSAMENTE ECUATORIANOS: MÁS ARRIBA, MÁS GRANDE Y DESTACADA -->
           <div class="mb-5 inline-flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-red/20 via-red/10 to-transparent border-2 border-red/50 shadow-lg shadow-red/10 backdrop-blur-md">
-            <img src="images/ecuador1.png" alt="Bandera del Ecuador" class="w-8 h-8 rounded-full object-cover border-2 border-red shadow-md shrink-0">
+            <img src="images/ecuador1.webp" alt="Bandera del Ecuador" class="w-8 h-8 rounded-full object-cover border-2 border-red shadow-md shrink-0">
             <div class="flex flex-col text-left">
               <span class="text-[10px] font-mono font-extrabold uppercase tracking-widest text-red">Liderazgo & Compromiso</span>
               <span class="text-sm sm:text-base font-display font-extrabold text-carbon dark:text-white leading-tight">Orgullosamente Ecuatorianos · 1986 - 2026</span>

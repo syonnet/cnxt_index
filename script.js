@@ -17,10 +17,22 @@
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Pausar video de fondo automáticamente si el usuario prefiere movimiento reducido
+  // Manejo robusto del video de fondo en móviles y preferencias de accesibilidad
   const heroVideo = document.getElementById('hero-bg-video');
-  if (heroVideo && prefersReducedMotion) {
-    heroVideo.pause();
+  if (heroVideo) {
+    if (prefersReducedMotion) {
+      heroVideo.pause();
+    } else {
+      // En móviles (iOS Safari / Android), muted por JS es mandatorio para permitir autoplay
+      heroVideo.muted = true;
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Si el modo de ahorro de energía bloquea el autoplay en el móvil,
+          // el poster de fondo ya está desplegado como respaldo visual.
+        });
+      }
+    }
   }
 
   /* ==========================================================================
