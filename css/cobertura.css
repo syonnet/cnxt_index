@@ -437,6 +437,25 @@
   box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.28);
 }
 
+.cert-medallion-blue {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.03) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  color: #2563EB;
+}
+.dark .cert-medallion-blue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0.04) 100%);
+  border-color: rgba(59, 130, 246, 0.32);
+  color: #3B82F6;
+}
+.cert-seal-strip:hover .cert-medallion-blue {
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.28);
+}
+.dark .cert-seal-strip:hover .cert-medallion-blue {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.28);
+}
+
 /* Línea de acento inferior en hover */
 .cert-seal-strip::after {
   content: '';
@@ -453,6 +472,8 @@
 .cert-seal-strip-green:hover::after { background: #10B981; }
 .cert-seal-strip-amber:hover::after { background: #F59E0B; }
 .cert-seal-strip-cyan:hover::after { background: #06B6D4; }
+.cert-seal-strip-blue:hover::after { background: #2563EB; }
+.dark .cert-seal-strip-blue:hover::after { background: #3B82F6; }
 
 /* Ajustes Responsive */
 @media (max-width: 640px) {

@@ -380,3 +380,58 @@
     padding-right: 1rem;
   }
 }
+
+/* ==========================================================================
+   7. TARJETA GLASS GLOW & PULSE LUMINOSO DE DISPONIBILIDAD
+   Efecto de cristal esmerilado con respiración luminosa (Glow Pulse) al hover
+   ========================================================================== */
+.cnx-glass-glow-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 250, 252, 0.75) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(226, 226, 230, 0.95);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06), 
+              0 1px 3px 0 rgba(0, 0, 0, 0.04),
+              inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease,
+              background 0.4s ease;
+  cursor: default;
+}
+
+.dark .cnx-glass-glow-card {
+  background: linear-gradient(135deg, rgba(24, 27, 36, 0.85) 0%, rgba(14, 16, 22, 0.7) 100%);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 35px -8px rgba(0, 0, 0, 0.55), 
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+              inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+@keyframes cnxGlassPulse {
+  0%, 100% {
+    box-shadow: 0 0 22px rgba(225, 29, 42, 0.35),
+                0 0 45px rgba(225, 29, 42, 0.18),
+                0 18px 40px -10px rgba(225, 29, 42, 0.25),
+                inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    border-color: rgba(225, 29, 42, 0.65);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(225, 29, 42, 0.65),
+                0 0 75px rgba(225, 29, 42, 0.35),
+                0 22px 50px -8px rgba(225, 29, 42, 0.4),
+                inset 0 0 20px rgba(225, 29, 42, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    border-color: rgba(225, 29, 42, 1);
+  }
+}
+
+.cnx-glass-glow-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  animation: cnxGlassPulse 2s ease-in-out infinite;
+}
+
+.dark .cnx-glass-glow-card:hover {
+  background: linear-gradient(135deg, rgba(30, 33, 44, 0.95) 0%, rgba(18, 20, 28, 0.88) 100%);
+}

@@ -845,5 +845,140 @@ button:focus-visible {
   border-bottom: 2px solid #E11D2A;
 }
 
+/* ==========================================================================
+   10. LISTAS Y ENLACES CORPORATIVOS DEL FOOTER
+   Estilo profesional suizo, limpio y con micro-interacciones de alta fidelidad
+   ========================================================================== */
+.cnx-footer-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 10px;
+}
 
+/* Enlaces de Servicios */
+.cnx-footer-svc-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #606066;
+  border: 1px solid transparent;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
 
+.dark .cnx-footer-svc-link {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cnx-footer-svc-link:hover {
+  color: #18181B;
+  background: rgba(198, 12, 48, 0.04);
+  border-color: rgba(198, 12, 48, 0.15);
+  transform: translateX(4px);
+}
+
+.dark .cnx-footer-svc-link:hover {
+  color: #FFFFFF;
+  background: rgba(225, 29, 42, 0.08);
+  border-color: rgba(225, 29, 42, 0.25);
+  transform: translateX(4px);
+}
+
+/* Indicador numeral mono */
+.cnx-footer-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #C60C30;
+  background: rgba(198, 12, 48, 0.08);
+  border: 1px solid rgba(198, 12, 48, 0.2);
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: all 0.22s ease;
+}
+
+.dark .cnx-footer-num {
+  color: #FF4D61;
+  background: rgba(225, 29, 42, 0.14);
+  border-color: rgba(225, 29, 42, 0.3);
+}
+
+.cnx-footer-svc-link:hover .cnx-footer-num {
+  background: #C60C30;
+  color: #FFFFFF;
+  border-color: #C60C30;
+  box-shadow: 0 0 10px rgba(198, 12, 48, 0.5);
+}
+
+/* Enlaces de Accesos y Sistemas (Tarjetas ejecutivas compactas) */
+.cnx-footer-sys-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #18181B;
+  background: #FFFFFF;
+  border: 1px solid #E2E2E6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.dark .cnx-footer-sys-link {
+  color: #F4F4F6;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.cnx-footer-sys-link:hover {
+  color: #C60C30;
+  border-color: rgba(198, 12, 48, 0.45);
+  background: #FFFFFF;
+  box-shadow: 0 4px 14px -2px rgba(198, 12, 48, 0.18);
+  transform: translateY(-1.5px);
+}
+
+.dark .cnx-footer-sys-link:hover {
+  color: #FFFFFF;
+  border-color: rgba(225, 29, 42, 0.6);
+  background: rgba(225, 29, 42, 0.1);
+  box-shadow: 0 6px 18px -2px rgba(225, 29, 42, 0.35);
+  transform: translateY(-1.5px);
+}
+
+.cnx-footer-sys-arrow {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: #606066;
+  opacity: 0.45;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.dark .cnx-footer-sys-arrow {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cnx-footer-sys-link:hover .cnx-footer-sys-arrow {
+  opacity: 1;
+  color: #C60C30;
+  transform: translate(2px, -2px);
+}
+
+.dark .cnx-footer-sys-link:hover .cnx-footer-sys-arrow {
+  color: #FF4D61;
+}
