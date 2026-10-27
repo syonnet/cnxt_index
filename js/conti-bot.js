@@ -42,7 +42,7 @@ const GEMINI_CONFIG = {
   systemInstruction: `Eres Conti 🚛🤖, asistente virtual de CONEXPET Cía. Ltda. en Ecuador.
 
 INFORMACIÓN CORPORATIVA OFICIAL:
-- Gerente: Javier Reyes.
+- Gerente General: Xavier Reyes.
 - Fundador: Don Bolívar Barrionuevo (fundó la empresa en 1986).
 - Actividad: Transporte pesado, cargas especiales sobredimensionadas/indivisibles y logística petrolera en Ecuador.
 - Red oficial de 6 Bases y Oficinas en Ecuador:
@@ -57,7 +57,7 @@ REGLAS DE RESPUESTA:
 1. Si te preguntan si CONEXPET tiene oficinas, bases o instalaciones en alguna ciudad:
    - Si es Lago Agrio, Quito, El Coca, Sacha, Durán/Guayaquil o Tambillo: confirma claramente que SÍ y explica brevemente la función o ubicación de esa base.
    - Si es otra ciudad donde no hay base física propia (ej. Cuenca, Manta, Ambato, Loja, etc.): aclara amablemente que las 6 bases físicas de operaciones están en Lago Agrio, Quito, Coca, Sacha, Durán y Tambillo, pero que se brinda servicio de transporte pesado y logística con cobertura en todo el territorio ecuatoriano.
-2. Si preguntan por el Gerente o por el Fundador de CONEXPET: responde directamente que el Gerente es Javier Reyes y el Fundador es Don Bolívar Barrionuevo.
+2. Si preguntan por el Gerente General o representante legal de CONEXPET: responde de forma certera, directa y categórica que el Gerente General es Xavier Reyes. Si preguntan por el Fundador, es Don Bolívar Barrionuevo.
 3. Si el usuario pregunta sobre cualquier tema general o externo (por ejemplo qué es una pelota, Superman, deportes, ciencia, etc.): responde la duda con total naturalidad SIN forzar menciones a CONEXPET y SIN discursos de ventas.
 4. Responde de forma directa, concisa y profesional. PROHIBIDO repetir preguntas de cierre cliché como "¿En qué te puedo ayudar?", "¿Deseas cotizar?", etc. al final de tus respuestas.
 5. HUEVO DE PASCUA / CREADOR: Si te preguntan quién te creó, quién te programó, quién es tu desarrollador, quién te dio vida o quién es Víctor Ojeda:
@@ -67,10 +67,8 @@ REGLAS DE RESPUESTA:
 // Historial contextual en vivo
 let conversationHistory = [];
 
-// Sugerencias de preguntas rápidas
+// Sugerencias de preguntas rápidas (sin gerente ni fundador)
 const QUICK_PROMPTS = [
-  { chip: "👔 Gerente General", prompt: "¿Quién es el Gerente de CONEXPET?" },
-  { chip: "🏛️ Fundador", prompt: "¿Quién fundó CONEXPET y en qué año?" },
   { chip: "🚛 Cargas pesadas", prompt: "¿Qué tipo de carga pesada y maquinaria transporta CONEXPET?" },
   { chip: "🧭 Cobertura y rutas", prompt: "¿Cuál es la cobertura y rutas operativas de CONEXPET en Ecuador?" },
   { chip: "🛡️ Certificaciones ISO", prompt: "¿Qué certificaciones de calidad y seguridad tiene CONEXPET?" },
@@ -416,6 +414,22 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   };
 
+  const isGerenteQuery = (text) => {
+    if (!text) return false;
+    const clean = text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+
+    return (
+      /gerente(\s+general)?/.test(clean) ||
+      /(quien|como\s+se\s+llama).*(gerente|director|representante)/.test(clean) ||
+      /xavier\s+reyes/.test(clean) ||
+      /javier\s+reyes/.test(clean)
+    );
+  };
+
   const handleSend = async (text) => {
     const cleanText = text.trim();
     if (!cleanText) return;
@@ -424,6 +438,15 @@ document.addEventListener("DOMContentLoaded", () => {
     inputField.value = "";
 
     showTyping();
+
+    // Detección directa garantizada: Gerente General
+    if (isGerenteQuery(cleanText)) {
+      setTimeout(() => {
+        removeTyping();
+        appendMessage("bot", "El Gerente General de <strong>CONEXPET Cía. Ltda.</strong> es <strong>Xavier Reyes</strong>.");
+      }, 500);
+      return;
+    }
 
     // Detección de Huevo de Pascua interactivo
     if (isEasterEggQuery(cleanText)) {
