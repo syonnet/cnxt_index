@@ -1,3 +1,6 @@
+# Capturas temporales de revisión
+capturas/
+
 # Documentos de Office y notas temporales
 *.docx
 *.doc
