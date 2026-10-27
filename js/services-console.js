@@ -1,5 +1,5 @@
 /**
- * CONEXPET — Módulo JS: Consola de Operaciones de Servicios (Opción 1)
+ * CONEXPET — Módulo JS: Consola de Operaciones de Servicios 
  * Selector de pestañas técnico, transiciones fluidas y sincronización HUD
  */
 

@@ -1,5 +1,5 @@
 /**
- * CONEXPET — Módulo JS: Filas Expandibles Suizas / Acordeón de Ingeniería (Opción 3)
+ * CONEXPET — Módulo JS: Filas Expandibles Suizas / Acordeón de Ingeniería 
  * Transiciones CSS fluidas, control de teclado y accesibilidad ARIA
  */
 
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const icon = row.querySelector('[data-swiss-icon]');
     const indicator = row.querySelector('[data-swiss-indicator]');
 
-    row.setAttribute('data-state', 'closed');
+    row.setAttribute('data-state', 'closed'); 
     if (trigger) trigger.setAttribute('aria-expanded', 'false');
     if (content) {
       content.style.maxHeight = '0px';
