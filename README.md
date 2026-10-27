@@ -3,7 +3,7 @@
 # CONEXPET S.A. · PLATAFORMA DIGITAL INSTITUCIONAL
 
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-emerald?style=for-the-badge&logo=statuspage)](https://conexpet.com)
-[![Version](https://img.shields.io/badge/Version-2.5.0-red?style=for-the-badge)](https://github.com/syonnet/cnxt_index)
+[![Version](https://img.shields.io/badge/Version-1.0.0-red?style=for-the-badge)](https://github.com/syonnet/cnxt_index)
 [![Standards](https://img.shields.io/badge/Standards-ISO%209001%20%7C%2014001%20%7C%2045001%20%7C%20BASC-black?style=for-the-badge)](https://conexpet.com)
 [![Compliance](https://img.shields.io/badge/Compliance-LOPDP%20Ecuador%20%28POL--SIG--02%29-blue?style=for-the-badge)](https://conexpet.com)
 
