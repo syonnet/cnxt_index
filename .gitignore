@@ -1,8 +1,11 @@
-# Documentos de Office y texto
+# Documentos de Office y notas temporales
 *.docx
 *.doc
 *.txt
+!robots.txt
 
-# Archivos temporales generados por Office
+# Archivos temporales generados por Office y SO
 ~$*.docx
 ~$*.doc
+Thumbs.db
+.DS_Store
