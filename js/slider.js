@@ -1,5 +1,5 @@
 /**
- * CONEXPET — Módulo JS: Slider Cinemático de la Flota Especializada (Edición Premium)
+ * CONEXPET — Módulo JS: Slider Cinemático de la Flota Especializada 
  * Funcionalidades:
  * - Rotación de elementos en DOM con transiciones cinematográficas
  * - Contador dinámico de diapositivas (01 / 07)

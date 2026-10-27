@@ -1,5 +1,5 @@
 /**
- * CONEXPET — Módulo JS: Sticky Split-Screen Scrollytelling (Opción 2)
+ * CONEXPET — Módulo JS: Sticky Split-Screen Scrollytelling 
  * Sincronización a 60fps con IntersectionObserver entre los bloques de texto y la ventana fija
  */
 
