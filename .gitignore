@@ -1,8 +1,14 @@
-# Documentos de Office y texto
+# Capturas temporales de revisión
+capturas/
+
+# Documentos de Office y notas temporales
 *.docx
 *.doc
 *.txt
+!robots.txt
 
-# Archivos temporales generados por Office
+# Archivos temporales generados por Office y SO
 ~$*.docx
 ~$*.doc
+Thumbs.db
+.DS_Store

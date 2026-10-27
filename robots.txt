@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap corporativo
+Sitemap: https://conexpet.com/sitemap.xml
