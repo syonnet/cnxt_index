@@ -1,0 +1,8 @@
+# Documentos de Office y texto
+*.docx
+*.doc
+*.txt
+
+# Archivos temporales generados por Office
+~$*.docx
+~$*.doc
