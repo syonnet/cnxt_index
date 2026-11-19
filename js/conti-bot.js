@@ -39,7 +39,7 @@ const GEMINI_CONFIG = {
     "gemini-flash-lite-latest",
     "gemini-2.5-flash-lite"
   ],
-  systemInstruction: `Eres Conti 🚛🤖, asistente virtual de CONEXPET Cía. Ltda. en Ecuador.
+  systemInstruction: `Eres Conex 🚛🤖, asistente virtual oficial de CONEXPET Cía. Ltda. en Ecuador.
 
 INFORMACIÓN CORPORATIVA OFICIAL:
 - Gerente General: Xavier Reyes.
@@ -177,17 +177,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const botHtml = `
     <!-- Botón Lanzador Flotante -->
-    <button id="conti-launcher-btn" aria-label="Abrir asistente Conti">
+    <button id="conti-launcher-btn" aria-label="Abrir asistente Conex">
       <div class="conti-pulse-ring"></div>
       <span class="conti-unread-badge">1</span>
       ${ICON_LAUNCHER}
       <div class="conti-launcher-tooltip">
-        ¡Habla con Conti! 🚛 Asistente Virtual
+        ¡Habla con Conex! 🚛 Asistente Virtual
       </div>
     </button>
 
     <!-- Ventana de Chat -->
-    <div id="conti-chat-window" role="dialog" aria-modal="true" aria-label="Chat con Conti">
+    <div id="conti-chat-window" role="dialog" aria-modal="true" aria-label="Chat con Conex">
       <!-- Encabezado Elegante (Sin etiqueta Gemini AI) -->
       <div class="conti-header">
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div>
             <div style="font-weight: 800; font-size: 16px; letter-spacing: -0.01em; color: #ffffff; display: flex; align-items: center; gap: 6px;">
-              Conti
+              Conex
             </div>
             <div style="font-size: 11px; color: rgba(255,255,255,0.78); font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 5px;">
               <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10B981;"></span> En línea · CONEXPET
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div>
             <div class="conti-bubble">
-              ¡Hola! Soy <strong>Conti</strong> 🚛🤖, el asistente virtual de <strong>CONEXPET</strong>.<br><br>
+              ¡Hola! Soy <strong>Conex</strong> 🚛🤖, el asistente virtual de <strong>CONEXPET</strong>.<br><br>
               ¿En qué te puedo ayudar hoy?
             </div>
             <div class="conti-msg-time">Ahora</div>
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <input 
           type="text" 
           id="conti-input-field" 
-          placeholder="Escribe tu consulta a Conti..." 
+          placeholder="Escribe tu consulta a Conex..." 
           autocomplete="off"
         >
         <button type="submit" id="conti-send-btn" aria-label="Enviar mensaje">
@@ -407,8 +407,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return (
       /quien.*(te|tu).*(creo|hizo|programo|desarrollo|invento|diseno|autor|padre|papa|mama|creador|desarrollador|arquitecto|fabricante)/.test(clean) ||
-      /quien.*(creo|hizo|programo|desarrollo|invento).*conti/.test(clean) ||
-      /(creador|desarrollador|padre|papa|arquitecto).*de.*conti/.test(clean) ||
+      /quien.*(creo|hizo|programo|desarrollo|invento).*(conti|conex)/.test(clean) ||
+      /(creador|desarrollador|padre|papa|arquitecto).*de.*(conti|conex)/.test(clean) ||
       /quien.*(es|fue).*victor(\s+ojeda)?/.test(clean) ||
       /victor\s+ojeda/.test(clean)
     );

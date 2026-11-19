@@ -13,8 +13,11 @@
   <link rel="canonical" href="https://conexpet.com/cobertura.html">
 
   <!-- Favicon e Identidad de Marca -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
   <!-- Open Graph / Meta de Enlace (WhatsApp, LinkedIn, Facebook) -->
   <meta property="og:type" content="website">
@@ -451,7 +454,7 @@
                   <span class="cnx-pin-center"></span>
                 </span>
                 <span class="cnx-pin-label">
-                  <span class="cnx-pin-name">Lago Agrio</span>
+                  <span class="cnx-pin-name">Nueva Loja (Lago Agrio)</span>
                 </span>
               </button>
 
@@ -525,7 +528,7 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
               <button type="button" class="cnx-base-chip" data-base-id="1">
                 <span class="cnx-chip-dot bg-green"></span>
-                <span class="font-display font-bold text-xs uppercase">Nueva Loja</span>
+                <span class="font-display font-bold text-xs uppercase">Nueva Loja (Lago Agrio)</span>
               </button>
               <button type="button" class="cnx-base-chip" data-base-id="2">
                 <span class="cnx-chip-dot bg-green"></span>
@@ -596,7 +599,7 @@
             <h3
               class="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-carbon dark:text-white tracking-tight leading-tight"
               id="cnx-modal-city-title">
-              Nueva Loja
+              Nueva Loja (Lago Agrio)
             </h3>
             <p class="text-sm font-medium text-graphite dark:text-white/60 mt-0.5" id="cnx-modal-city-subtitle">
               Lago Agrio · Sucumbíos
@@ -949,21 +952,25 @@
 
           <div class="lg:col-span-7">
             <div class="border border-steel dark:border-line bg-paper dark:bg-panel rounded-3xl p-8 md:p-10 shadow-sm">
-              <form class="space-y-6"
-                onsubmit="event.preventDefault(); alert('¡Gracias por tu solicitud! La base operativa asignada se comunicará contigo de inmediato.');">
+              <form id="form-cobertura" action="https://formsubmit.co/conexpet@conexpet.com" method="POST" class="space-y-6">
+                <!-- Parámetros de Envío Corporativo FormSubmit -->
+                <input type="hidden" name="_subject" value="Nueva Solicitud de Cotización de Ruta y Cobertura — CONEXPET">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+
                 <div class="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label for="cobertura-nombre"
                       class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Nombre
                       Completo *</label>
-                    <input type="text" id="cobertura-nombre" required placeholder="Ing. Carlos Mendoza"
+                    <input type="text" id="cobertura-nombre" name="nombre" required placeholder="Ing. Carlos Mendoza"
                       class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
                   </div>
                   <div>
                     <label for="cobertura-empresa"
                       class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Empresa
                       / Cliente *</label>
-                    <input type="text" id="cobertura-empresa" required placeholder="Operadora Petrolera / Constructora"
+                    <input type="text" id="cobertura-empresa" name="empresa" required placeholder="Operadora Petrolera / Constructora"
                       class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
                   </div>
                 </div>
@@ -973,14 +980,14 @@
                     <label for="cobertura-email"
                       class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Correo
                       Corporativo *</label>
-                    <input type="email" id="cobertura-email" required placeholder="cmendoza@empresa.com"
+                    <input type="email" id="cobertura-email" name="email" required placeholder="cmendoza@empresa.com"
                       class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
                   </div>
                   <div>
                     <label for="cobertura-telefono"
                       class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Teléfono
                       de Contacto *</label>
-                    <input type="tel" id="cobertura-telefono" required placeholder="+593 98 765 4321"
+                    <input type="tel" id="cobertura-telefono" name="telefono" required placeholder="+593 98 765 4321"
                       class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
                   </div>
                 </div>
@@ -990,7 +997,7 @@
                     <label for="cobertura-base-origen"
                       class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Base de
                       Despacho / Origen</label>
-                    <select id="cobertura-base-origen"
+                    <select id="cobertura-base-origen" name="base_origen"
                       class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
                       <option>Nueva Loja (Lago Agrio)</option>
                       <option>El Coca (Orellana)</option>
@@ -1005,7 +1012,7 @@
                     <label for="cobertura-destino"
                       class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Destino
                       Final de Entrega</label>
-                    <input type="text" id="cobertura-destino" placeholder="Ej. Shushufindi, Campo Sacha, Bloque 61..."
+                    <input type="text" id="cobertura-destino" name="destino_final" placeholder="Ej. Shushufindi, Campo Sacha, Bloque 61..."
                       class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors">
                   </div>
                 </div>
@@ -1014,7 +1021,7 @@
                   <label for="cobertura-descripcion"
                     class="block text-xs font-bold uppercase tracking-wider text-carbon dark:text-white mb-2">Descripción
                     de la Carga y Fechas Estimadas</label>
-                  <textarea id="cobertura-descripcion" rows="3"
+                  <textarea id="cobertura-descripcion" name="descripcion_carga" rows="3"
                     placeholder="Tipo de carga, peso en toneladas, dimensiones y fechas tentativas de movilización..."
                     class="w-full bg-white dark:bg-console border border-steel dark:border-line rounded-xl px-4 py-3 text-sm text-carbon dark:text-white focus:outline-none focus:border-red transition-colors resize-none"></textarea>
                 </div>
@@ -1054,18 +1061,13 @@
                     </div>
 
                     <div class="text-xs leading-relaxed text-graphite dark:text-white/80">
-                      <span>He leído y acepto los </span>
-                      <button type="button" class="text-red hover:underline font-bold transition-colors inline-block"
-                        data-open-legal="terminos">
-                        Términos y Condiciones
-                      </button>
-                      <span> y autorizo a <strong>CONEXPET S.A.</strong> el tratamiento de mis datos personales conforme
-                        a la </span>
-                      <button type="button" class="text-red hover:underline font-bold transition-colors inline-block"
-                        data-open-legal="lopdp">
-                        Ley Orgánica de Protección de Datos Personales del Ecuador
-                      </button>
-                      <span> con fines exclusivos de cotización y coordinación de transporte.</span>
+                      <span>He leído la </span>
+                      <a href="assets/pdf/PDPv2.pdf" target="_blank" rel="noopener noreferrer"
+                        class="text-red hover:underline font-bold transition-colors inline-block"
+                        data-open-legal="lopdp" title="Ver Política de Privacidad y Protección de Datos Personales">
+                        Política de Privacidad
+                      </a>
+                      <span> y autorizo a <strong>CONEXPET Cía. Ltda.</strong> a tratar mis datos personales para atender mi solicitud de cotización y coordinar los servicios requeridos.</span>
                     </div>
                   </label>
 
@@ -1243,7 +1245,7 @@
             <li>
               <a href="flota.html#vacuum" class="cnx-footer-svc-link">
                 <span class="cnx-footer-num">01</span>
-                <span>Transporte de fluidos con vacuum</span>
+                <span>Transporte de fluidos y combustibles</span>
               </a>
             </li>
             <li>
@@ -1464,7 +1466,7 @@
       <div
         class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-graphite dark:text-white/60 gap-4">
         <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-          <p>© 2026 CONEXPET Cía. Ltda.</p>
+          <p>© 2026 CONEXPET Cía. Ltda. · RUC 1790870073001 · Todos los derechos reservados.</p>
           <span class="hidden sm:inline opacity-30">|</span>
           <p class="font-mono text-[11px] text-red font-semibold">//VoJ.DEV// · Enterprise Engineering</p>
         </div>

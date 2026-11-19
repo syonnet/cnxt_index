@@ -88,9 +88,9 @@ cnxt_index/
 ├── styles.css                    # Estilos globales, diseño de tokens y reset
 │
 ├── assets/                       # Recursos estáticos de alta densidad
-│   ├── hero-video.mp4            # Video institucional principal
-│   ├── hero-video-web.mp4        # Video background comprimido para web
-│   ├── logos/                    # Identidad de marca, imagotipos e isolux
+│   ├── hero-video.mp4            # Video institucional principal (Modal Full-HD)
+│   ├── hero-video-web.mp4        # Video background optimizado para web
+│   ├── logos/                    # Identidad de marca oficial (blanco y color)
 │   └── pdf/
 │       └── PDPv2.pdf             # Política de Protección de Datos Personales (POL-SIG-02)
 │
@@ -110,10 +110,7 @@ cnxt_index/
 │   ├── flip-cards.js             # Gestor de eventos táctiles/hover para fichas técnicas
 │   ├── navbar.js                 # Manejador del header reactivo al scroll y dark mode
 │   ├── parallax.js               # Cálculo cinemático de scroll en capas visuales
-│   ├── scrollytelling.js         # Disparador de animaciones por umbral de visibilidad
-│   ├── services-console.js       # Consola de servicios e inspección técnica
-│   ├── slider.js                 # Carrusel autónomo con aceleración por hardware
-│   └── swiss-rows.js             # Acordeones y tablas de arquitectura helvética
+│   └── slider.js                 # Carrusel autónomo con aceleración por hardware
 │
 └── images/                       # Activos gráficos optimizados (WebP / SVG)
     ├── brazos_H.webp             # Brazo grúa hidráulico
