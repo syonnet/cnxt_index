@@ -365,4 +365,127 @@ document.addEventListener('DOMContentLoaded', () => {
       closeLegalModal();
     }
   });
+
+  /* ==========================================================================
+     8. GESTIÓN DE FORMULARIOS DE COTIZACIÓN (FormSubmit AJAX + Fallback Mailto)
+     ========================================================================== */
+  const quoteForms = document.querySelectorAll('#form-flota, #form-cobertura');
+
+  quoteForms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+
+      // Remover feedback previo si existía
+      const prevFeedback = form.querySelector('.cnx-form-feedback');
+      if (prevFeedback) prevFeedback.remove();
+
+      // Estado de carga en botón
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+        submitBtn.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+          <span>Transmitiendo solicitud a conexpet@conexpet.com...</span>
+        `;
+      }
+
+      const formData = new FormData(form);
+      const dataObj = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(form.action || 'https://formsubmit.co/ajax/conexpet@conexpet.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(dataObj)
+        });
+
+        const result = await response.json();
+
+        if (response.ok || result.success === "true" || result.success === true) {
+          // Contenedor de éxito estilizado
+          const feedbackDiv = document.createElement('div');
+          feedbackDiv.className = 'cnx-form-feedback p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-carbon dark:text-white my-4 text-center';
+          feedbackDiv.innerHTML = `
+            <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h4 class="font-display font-bold text-lg text-emerald-600 dark:text-emerald-400">¡Solicitud recibida con éxito!</h4>
+            <p class="text-xs sm:text-sm text-graphite dark:text-white/80 mt-1.5 max-w-lg mx-auto leading-relaxed">
+              Hemos transmitido tus requerimientos técnicos al correo corporativo <strong>conexpet@conexpet.com</strong>.<br>Un asesor comercial de operaciones se comunicará contigo de inmediato.
+            </p>
+          `;
+
+          form.reset();
+          if (submitBtn) {
+            submitBtn.parentNode.insertBefore(feedbackDiv, submitBtn);
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+            submitBtn.innerHTML = originalBtnHtml;
+          }
+          feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          throw new Error(result.message || 'Error en respuesta del servidor');
+        }
+      } catch (err) {
+        console.warn('[CONEXPET] Envío AJAX en proceso de contingencia:', err);
+
+        // Construir mailto estructurado como respaldo transparente
+        const subject = encodeURIComponent(dataObj._subject || 'Solicitud de Cotización CONEXPET');
+        const bodyLines = [
+          'NUEVA SOLICITUD DE COTIZACIÓN - CONEXPET',
+          '========================================',
+          `Nombre: ${dataObj.nombre || 'No especificado'}`,
+          `Empresa / Operadora: ${dataObj.empresa || 'No especificado'}`,
+          `Correo: ${dataObj.email || 'No especificado'}`,
+          `Teléfono: ${dataObj.telefono || 'No especificado'}`,
+          dataObj.unidad_requerida ? `Unidad Requerida: ${dataObj.unidad_requerida}` : '',
+          dataObj.ruta_destino ? `Ruta / Destino: ${dataObj.ruta_destino}` : '',
+          dataObj.base_origen ? `Base Origen: ${dataObj.base_origen}` : '',
+          dataObj.destino_final ? `Destino Final: ${dataObj.destino_final}` : '',
+          `Detalles de la Carga: ${dataObj.detalles_carga || dataObj.descripcion_carga || 'Sin detalles adicionales'}`,
+          '========================================'
+        ].filter(Boolean).join('\n');
+
+        const mailtoUrl = `mailto:conexpet@conexpet.com?subject=${subject}&body=${encodeURIComponent(bodyLines)}`;
+
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.className = 'cnx-form-feedback p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-carbon dark:text-white my-4 text-center';
+        feedbackDiv.innerHTML = `
+          <h4 class="font-display font-bold text-base text-amber-600 dark:text-amber-400">Canal de envío directo</h4>
+          <p class="text-xs text-graphite dark:text-white/80 mt-1 max-w-md mx-auto">
+            Puedes remitir tus datos directamente en tu cliente de correo (Outlook / Gmail) a <strong>conexpet@conexpet.com</strong>:
+          </p>
+          <a href="${mailtoUrl}" class="mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red hover:bg-red-deep text-white font-bold text-xs uppercase tracking-wider transition-colors shadow">
+            <span>Abrir en mi correo</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        `;
+
+        if (submitBtn) {
+          submitBtn.parentNode.insertBefore(feedbackDiv, submitBtn);
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+          submitBtn.innerHTML = originalBtnHtml;
+        }
+      }
+    });
+  });
 });

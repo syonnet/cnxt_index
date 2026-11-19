@@ -613,21 +613,81 @@ button:focus-visible {
    ========================================================================== */
 .hero-play-btn {
   position: relative;
+  isolation: isolate;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Halo de luz moderno UI que respira con brillo sutil y especular */
+  animation: heroHaloGlow 2.6s ease-in-out infinite alternate;
 }
 
+.hero-play-btn:hover {
+  background: #C60C30;
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 26px rgba(198, 12, 48, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Anillo exterior de halo estilizado (5% más amplio y definición moderna) */
 .hero-play-btn::before {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -4.5px;
   border-radius: 9999px;
-  border: 1.5px solid rgba(225, 29, 42, 0.45);
-  animation: playPulse 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  border: 1.5px solid rgba(232, 42, 42, 0.85);
+  box-shadow: 0 0 14px rgba(232, 42, 42, 0.7), inset 0 0 10px rgba(232, 42, 42, 0.45);
+  animation: heroHaloRing 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
   pointer-events: none;
+  z-index: -1;
 }
 
-@keyframes playPulse {
-  0% { transform: scale(0.95); opacity: 0.9; }
-  100% { transform: scale(1.4); opacity: 0; }
+/* Aura difuminada de profundidad (Halo Bloom 5% mayor) */
+.hero-play-btn::after {
+  content: '';
+  position: absolute;
+  inset: -3.5px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(232, 42, 42, 0.45) 0%, rgba(198, 12, 48, 0.18) 55%, rgba(232, 42, 42, 0) 75%);
+  filter: blur(3px);
+  animation: heroHaloBreath 2.6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -2;
+}
+
+@keyframes heroHaloGlow {
+  0% {
+    box-shadow: 0 0 10px 1px rgba(232, 42, 42, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 20px 3.5px rgba(232, 42, 42, 0.8), 0 0 0 1.5px rgba(255, 255, 255, 0.5), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+  }
+}
+
+@keyframes heroHaloRing {
+  0% {
+    transform: scale(0.97);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.95;
+    border-color: rgba(255, 75, 75, 0.95);
+  }
+  100% {
+    transform: scale(1.22);
+    opacity: 0;
+  }
+}
+
+@keyframes heroHaloBreath {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.24);
+    opacity: 0.85;
+  }
 }
 
 #video-modal {
