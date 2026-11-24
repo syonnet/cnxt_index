@@ -10,6 +10,18 @@ DirectoryIndex index.html index.php
 # Página de Error 404 Personalizada
 ErrorDocument 404 /404.html
 
+# ==============================================================================
+# CABECERAS DE SEGURIDAD HTTP (Calificación A en SecurityHeaders / Snyk)
+# ==============================================================================
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://formsubmit.co https://generativelanguage.googleapis.com; frame-ancestors 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; upgrade-insecure-requests;"
+</IfModule>
+
 # Forzar HTTPS (Certificado SSL Activo en cPanel)
 <IfModule mod_rewrite.c>
   RewriteEngine On
