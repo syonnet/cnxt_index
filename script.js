@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     8. GESTIÓN DE FORMULARIOS DE COTIZACIÓN (FormSubmit AJAX + Fallback Mailto)
+     8. GESTIÓN DE FORMULARIOS DE COTIZACIÓN (cPanel PHP Nativo + Respaldo)
      ========================================================================== */
   const quoteForms = document.querySelectorAll('#form-flota, #form-cobertura');
 
@@ -403,8 +403,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(form);
       const dataObj = Object.fromEntries(formData.entries());
 
-      try {
-        const response = await fetch(form.action || 'https://formsubmit.co/ajax/conexpet@conexpet.com', {
+      // Intento 1: Endpoint PHP Nativo en servidor cPanel (conexpet.com)
+      // Intento 2 (contingencia en entornos sin PHP como GitHub Pages): FormSubmit AJAX
+      const sendRequest = async (url) => {
+        const res = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -412,10 +414,22 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify(dataObj)
         });
+        const json = await res.json();
+        if (!res.ok && json.success !== true && json.success !== "true") {
+          throw new Error(json.message || 'Error en respuesta del servidor');
+        }
+        return json;
+      };
 
-        const result = await response.json();
+      try {
+        let result;
+        try {
+          result = await sendRequest('enviar_cotizacion.php');
+        } catch (phpErr) {
+          result = await sendRequest('https://formsubmit.co/ajax/conexpet@conexpet.com');
+        }
 
-        if (response.ok || result.success === "true" || result.success === true) {
+        if (result && (result.success === "true" || result.success === true)) {
           // Contenedor de éxito estilizado
           const feedbackDiv = document.createElement('div');
           feedbackDiv.className = 'cnx-form-feedback p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-carbon dark:text-white my-4 text-center';
